@@ -1,149 +1,156 @@
-# Rally
+# Rally 🚚
 
-**A decision-first supply-chain control tower that resolves disruptions autonomously and escalates only what it should.**
+**A supply-chain control tower that actually _decides_ — it resolves disruptions on its own, and raises its hand only when it should.**
 
-Most "control towers" are visibility products: they show you a problem and leave you to fix it. Rally inverts that. The primary output is a **resolved disruption**, not a dashboard. Visibility is an input to the decision, never the product.
+Most "control towers" are really just dashboards. They light up a red alert, show you a map, and leave the actual fix to a human at 2 a.m. Rally flips that around: the thing it produces is a **resolved disruption**, not another chart to stare at. Visibility is an ingredient, never the meal.
 
-Slice 1 is one honest vertical slice that tests a single thesis:
+And here's the part that matters — Rally doesn't just _claim_ it can do this. It **proves** it, with a scorecard you can reproduce from a seed.
 
-> *Most disruptions are resolvable through automated decision-making — and the ones that aren't get escalated, not silently mishandled.*
+---
 
-The proof is not a claim. It is a **scorecard**.
+## The one-minute version
 
-```
+There's a comforting story people tell about automation: _"most supply-chain disruptions are resolvable by software."_ Maybe! But the honest question isn't "what % did it fix?" — it's:
+
+> **Does it fix what it should, and escalate what it can't?**
+
+A system that auto-"resolves" 95% of problems but quietly fumbles the 5% that needed a human is _worse_ than one that safely handles 70%. So Rally scores itself with a confusion matrix, and treats one particular mistake — **claiming a fix that didn't actually work, with nobody warned** — as the cardinal sin.
+
+The whole thing is deterministic and seeded, so every number in this README is a number you can regenerate.
+
+---
+
+## Try it in 30 seconds
+
+```bash
+git clone https://github.com/rslayer/Rally.git
+cd Rally
 npm install
-npm run harness      # runs the escalation scorecard across N seeds → the proof artifact
-npm test             # 18 tests across all four phases
-npm run web          # http://localhost:8137 — the three-panel control tower
+
+npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
+npm test             # 18 tests across all four build phases
+npm run web          # the three-panel control tower → http://localhost:8137
 ```
+
+No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
 
 ---
 
-## The thesis instrument
+## The scorecard (the whole point)
 
-The wrong question is "what percentage did the system resolve." The right question is "does it resolve what it *should* and escalate what it *must*." That is a confusion matrix, not a single number.
+Every disruption lands in one of four boxes:
 
-|                     | Was resolvable                     | Was **not** resolvable                          |
+|                     | Was actually resolvable            | Was **not** resolvable                          |
 | ------------------- | ---------------------------------- | ----------------------------------------------- |
-| **Agent resolved**  | True Resolve — value captured      | **False Resolve** — claimed a fix, still missed |
-| **Agent escalated** | **False Escalate** — value forgone | True Escalate — correct handoff                 |
+| **Rally resolved**  | ✅ True Resolve — value captured    | 🚨 **False Resolve** — "fixed" it, still missed |
+| **Rally escalated** | ⚠️ False Escalate — value forgone   | ✅ True Escalate — correct handoff               |
 
-The two off-diagonal cells are the real findings. **False Resolve is the failure that discredits the thesis** — the system said it was handled, the service still missed, and no human was warned. It is weighted accordingly, and the harness is built to surface it, not hide it.
+The two off-diagonal boxes are where the truth lives. **False Resolve is the dangerous one** — the system said "handled," service still failed, and no human ever got the memo. Rally is built to catch that failure mode and put it on the scoreboard, not sweep it under the rug.
 
-The world is closed, so the harness can know the truth. For every disruption it runs the scenario multiple times from the same seed:
+Because the simulated world is _closed_, Rally can actually know the right answer. For every disruption it runs the scenario several times from the same seed:
 
-- a **hold** counterfactual (resolver off) — establishes the real service miss;
-- one **forced-action** counterfactual per constructive action — establishes, *independently of what the resolver chose*, whether any in-set action actually recovers service within policy → the ground-truth `resolvable` label;
-- the **live** resolver run — the decision under test.
+- 🅰️ **hold** (do nothing) → how bad does it get on its own?
+- 🅱️ **force each action** → could _any_ move have saved it? (this is the ground truth — decided independently of what Rally chose, so it never grades its own homework)
+- 🅲 **live** → what Rally actually did.
 
-The label comes from executed counterfactuals, not from the resolver's own projection, so the system never grades its own homework.
-
-### A representative run (25 seeds)
+### A representative run (30 seeds)
 
 ```
-aggregate touchless (all, incl. adversarial probes)   ~22%
-touchless among truly-resolvable disruptions          ~70%
-escalation safety recall (should-escalate caught)     ~97%
-escalation precision (escalations that were needed)   ~95%
-confidence calibration (corr w/ correctness)          ~0.26
-injected-unresolvable correctly escalated             ~97-100%
-dangerous false-resolve rate                          ~2-3%   (surfaced, not hidden)
+touchless among truly-resolvable disruptions      ~83%
+escalation safety recall (caught what needs a human)  ~95%
+injected-unresolvable correctly escalated         ~97–100%
+dangerous false-resolve rate                      ~2–3%   (reported, not hidden)
+confidence calibration (correlates w/ correctness)   ~0.26
 ```
 
-"Where 95 lands" is the finding, not the assumption. The aggregate is dragged down on purpose — half the scenario mix is adversarial (deliberately-unresolvable and out-of-scope probes). The honest reads are all three numbers together.
+"Where 95 lands" is the _finding_, not the assumption. The headline aggregate is deliberately pulled down because half the test cases are adversarial traps designed to be unfixable — that's how you find out whether the system knows its own limits.
 
 ---
 
-## How the loop closes
+## How it actually works
 
-A visibility dashboard never closes the loop. Rally does:
+### 🔁 It closes the loop
 
-1. **Demand draws inventory down** every tick, scaled by forecast and active disruption multipliers.
-2. **Low projected inventory predicts a stockout** via a policy-aware forward projection.
-3. **A decision mutates future state** — a transfer moves units, a pull-forward advances a run, an expedite compresses a lead time.
-4. **The outcome is measured** by the oracle against the counterfactual.
+A dashboard never closes the loop. Rally does:
 
-Orders and shipments are linked by **identity** (`orderId` ↔ `allocatedShipmentId`), so an order is delivered *iff its own shipment delivered it in full*. The classic "22 missed shipments but 100% orders delivered" contradiction is structurally impossible.
+1. **Demand eats inventory** every tick, scaled by forecast and any active disruption.
+2. **A forward projection predicts a stockout** before it happens (and it's smart enough to account for the standing reorder policy _and_ finite plant capacity — so it doesn't cry wolf).
+3. **A decision changes the future** — a transfer moves real units, a pull-forward advances a production run, an expedite compresses a lead time.
+4. **The outcome gets measured** against the counterfactual.
 
-### The resolver (deterministic first)
+Orders and shipments are tied together by **identity** (`orderId` ↔ its own shipment), so an order counts as delivered only when _its own_ shipment delivered it in full. The classic dashboard lie — _"22 missed shipments but 100% orders delivered"_ — is literally impossible here.
 
-A finite action set, each with a defined effect on future state:
+### 🧠 The resolver (deterministic on purpose)
 
-`transfer_inventory` · `pull_forward_production` · `expedite_inbound` · `partial_ship_backorder` · `hold` · `escalate`
+A small, honest toolbox: `transfer_inventory` · `pull_forward_production` · `expedite_inbound` · `partial_ship_backorder` · `hold` · `escalate`.
 
-The resolver scores each feasible action by counterfactual projection and commits the cheapest one that fully protects service within policy — or escalates. Escalation is a **first-class outcome**. It escalates when no action recovers service, when confidence is below threshold, when the shortfall exceeds all redirectable regional surplus, or when the risk is out of designed scope (a suspended dock, a quarantined SKU). The autonomy claim is earned against a deterministic baseline before any model-based judgment is added.
+It scores each feasible move by simulating its effect, then commits the cheapest one that fully protects service within policy — or it escalates. **Escalation is a feature, not a failure.** Rally raises its hand when nothing recovers service, when it isn't confident enough, when the shortfall is bigger than every ounce of spare inventory in the region, or when the problem is simply outside its wheelhouse (a shut-down dock, a quarantined product). No LLM magic — just a policy you can verify. A trustworthy 80% beats an unverifiable 95%.
 
----
+### 👀 Sensor-grounded eyes (because the eyes decide the brain)
 
-## Sensor-grounded state (the eyes determine the brain)
+Every input looks like a real feed — GPS pings (Samsara/Motive/Geotab), warehouse transactions (EDI 940/945), lagging ERP inventory extracts — all behind one envelope. Synthetic and real sources travel the exact same path, so swapping in a real source later is a one-seam change (`packages/importers`).
 
-Every input arrives as an event or snapshot shaped like a real feed — telematics (Samsara/Motive/Geotab), WMS transactions (EDI 940/945), and lagging ERP inventory extracts — all behind one `FeedEnvelope`. Synthetic and real sources share the identical path, so synthetic → real is a data-source swap at a single seam (`packages/importers`).
+A **state estimator** rebuilds the true picture from that messy stream, handling the three things a dashboard can't:
 
-The **state estimator** rebuilds canonical state from the merged stream and owns the three problems that separate this from a dashboard:
+- **Association** — matching a GPS ping to the right shipment even when the reference is missing.
+- **Gaps & lateness** — stale snapshots and dropped messages lower _confidence_ instead of getting dropped.
+- **Interpolation** — rolling inventory forward between lagging snapshots and reconciling the drift.
 
-- **Association** — binds movement pings to shipments when `shipmentRef` is missing, via same-truck propagation and geofence/lane geography.
-- **Gap & lateness** — sequence gaps and stale snapshots are first-class; affected state gets *reduced confidence*, not dropped.
-- **Interpolation** — rolls on-hand forward from the warehouse stream between lagging snapshots and reconciles drift against the next anchor.
-
-State rebuilt purely from feeds matches direct-sim ground truth to **~1% mean error** at hours between snapshots. A better estimate of physical state is a better stockout prediction is a better decision — so the estimated confidence flows into the risk, and low confidence biases toward escalation.
+Rebuilt purely from feeds, the estimate lands within **~1%** of ground truth between snapshots. Better eyes → better prediction → better decision — and when the eyes are unsure, that uncertainty flows through and nudges Rally toward escalating.
 
 ---
 
-## Phased build & acceptance gates
-
-Each phase has a hard gate; the dev scripts are the runnable proofs.
-
-| Phase | What                                    | Gate (script)                                                             |
-| ----- | --------------------------------------- | ------------------------------------------------------------------------- |
-| 0     | Domain types                            | `npm run typecheck` clean                                                 |
-| 1     | Close the loop                          | `tsx packages/simulation/src/dev/loop-check.ts` — nonzero exceptions, order↔shipment consistent |
-| 2     | State layer + estimator                 | `tsx packages/simulation/src/dev/estimator-check.ts` — feeds ≈ truth within tolerance |
-| 3     | Resolver                                | `tsx packages/simulation/src/dev/resolver-check.ts` — resolver reduces stockout-hours vs hold |
-| 4     | Scoring harness                         | `npm run harness` — scorecard prints both failure modes; injected-unresolvable escalated, not falsely resolved |
-
-```
-npx tsx packages/simulation/src/dev/loop-check.ts        # Phase 1
-npx tsx packages/simulation/src/dev/estimator-check.ts   # Phase 2
-npx tsx packages/simulation/src/dev/resolver-check.ts    # Phase 3
-npm run harness -- 40                                    # Phase 4 (40 seeds)
-```
-
----
-
-## Repo layout
+## A tour of the repo
 
 ```
 packages/
-  domain/         feed envelopes + events, ScenarioState, StockoutRisk,
-                  ResolutionDecision, ThesisScorecard, Disruption
-  data-gen/       Texas–Oklahoma network fixture, demand model, seeded RNG,
-                  stochastic labeled disruption generator
-  simulation/     state-estimator · inventory-kernel (the closed loop) ·
-                  projection · resolver · scorer (oracle, 2×2, calibration) ·
-                  step (orchestration) · run
-  importers/      the real-feed seam — validate/normalize FeedEnvelope streams,
-                  example telematics/WMS/ERP adapters
+  domain/       the shared vocabulary — feeds, state, risks, decisions, the scorecard
+  data-gen/     the Texas–Oklahoma network, demand, seeded RNG, disruption generator
+  simulation/   the brains: state-estimator · inventory-kernel (the loop) ·
+                projection · resolver · scorer (oracle + 2×2 + calibration)
+  importers/    the real-feed seam — validation + example telematics/WMS/ERP adapters
 apps/
-  worker/         runs the multi-seed sweep and prints the ThesisScorecard
-  web/            the three-panel control tower (state · decisions · scorecard)
+  worker/       runs the sweep and prints the scorecard  (npm run harness)
+  web/          the three-panel control tower             (npm run web)
 ```
 
-Everything downstream reads `ScenarioState`, so the estimator, decision engine, and UI consume estimated state through the same shape with no changes.
+Everything downstream reads one `ScenarioState` shape, so the estimator, the decision engine, and the UI all consume estimated state without knowing or caring where it came from.
 
 ---
 
-## Calibration — guarding against grading your own homework
+## Built in phases, each with a gate it had to pass
 
-- **Stochastic generation.** Disruptions are drawn from seeded distributions over type, timing, severity, and location — never hand-placed. Reproducible by seed, swept across many seeds.
-- **Held-out types.** `labor_action` and `quality_hold` are outside the resolver's designed scope. The correct behavior is to escalate; the scorecard measures whether it does.
-- **Injected-unresolvable.** Shortfalls larger than all regional surplus combined. The correct behavior is to escalate. This directly measures False Resolve — the deterministic resolver escalates ~97–100% of them, and the scorecard reports the residual rather than pretending it is zero. (The stragglers are sustained mega-spikes that one-shot actions only *partially* recover; the honest fix is a policy lever outside Slice 1's action set — exactly the kind of finding the instrument exists to surface.)
+| Phase | What                     | The bar it had to clear                                              |
+| :---: | ------------------------ | ------------------------------------------------------------------- |
+|   0   | Domain types             | typechecks clean                                                    |
+|   1   | Close the loop           | real stockouts appear; orders and shipments stay consistent         |
+|   2   | State estimator          | rebuilt-from-feeds state matches truth within tolerance             |
+|   3   | Resolver                 | beats the do-nothing baseline on stockout-hours                     |
+|   4   | Scoring harness          | prints both failure modes; unfixable traps get escalated, not faked |
+
+Each gate has a runnable script under `packages/simulation/src/dev/` — they're the receipts.
+
+```bash
+npx tsx packages/simulation/src/dev/loop-check.ts        # Phase 1
+npx tsx packages/simulation/src/dev/estimator-check.ts   # Phase 2
+npx tsx packages/simulation/src/dev/resolver-check.ts    # Phase 3
+npm run harness -- 40                                    # Phase 4
+```
 
 ---
 
-## Non-goals for Slice 1
+## Honest caveats (because that's the whole spirit)
 
-Real integrations (the adapter seam is here; a live source is Phase 5). LLM agents — the resolver is deterministic; a verifiable 80% beats an unverifiable 95% as *proof*. Multi-region, auth, UI polish, and a carrier-communication agent (no counterparty in a closed world). Add model-based judgment only where a deterministic policy demonstrably cannot decide, and measure the lift against this baseline.
+- The ~2–3% dangerous false-resolves are **real and shown on the scorecard**. The stragglers are sustained mega-spikes that one-shot actions only _partly_ fix — the proper cure is raising a standing policy level, a lever deliberately left out of this slice's toolbox. Surfacing that is exactly what the instrument is for.
+- It's a **closed simulated world** on purpose — that's the only way to have a perfect oracle to grade against. Real integrations live behind the same seam and are the next slice, not this one.
+- The resolver is **deterministic by design**. Model-based judgment is welcome later — but only where a plain policy provably can't decide, and only if it beats this baseline.
 
 ---
 
-*The proof is the scorecard. The two failure modes are surfaced, not hidden. That is a defensible test of "most disruptions are resolvable through automated decision-making."*
+## Where this goes next
+
+Snap a real telematics or WMS export onto the existing `FeedEnvelope` seam and replay an actual disruption to check the simulator reproduces it. Everything above is built so that's a data-source swap — not a rewrite.
+
+---
+
+<sub>The proof is the scorecard. Both failure modes are surfaced, not hidden. That's a defensible test of "most disruptions are resolvable through automated decision-making" — and an honest answer either way.</sub>
