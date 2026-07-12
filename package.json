@@ -1,0 +1,24 @@
+{
+  "name": "rally",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Rally — a decision-first supply chain control tower that resolves disruptions autonomously and escalates only what it should.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "harness": "tsx apps/worker/src/main.ts",
+    "loop": "tsx packages/simulation/src/dev/loop-check.ts",
+    "web": "tsx apps/web/src/server.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

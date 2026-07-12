@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "rally-web", "runtimeExecutable": "npx", "runtimeArgs": ["tsx", "apps/web/src/server.ts"], "port": 8137 }
+  ]
+}
