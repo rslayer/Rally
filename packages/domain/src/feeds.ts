@@ -8,7 +8,7 @@
 
 import type { GeoPoint } from "./geo.js";
 
-export type FeedType = "movement" | "warehouse" | "inventory_snapshot" | "asn";
+export type FeedType = "movement" | "warehouse" | "inventory_snapshot" | "asn" | "ops_status";
 export type Provenance = "synthetic" | "real";
 
 export interface FeedQuality {
@@ -105,12 +105,33 @@ export interface AdvanceShipNotice {
   expectedArrivalAt: string; // promised delivery (ETA)
 }
 
+/* ------------------------------------------------------------------ *
+ * Operational-status feed (ops / EDI 824-style status message).
+ * Real analog: a facility ops system reporting a dock/labor stoppage, or a
+ * quality system reporting a network-wide SKU quarantine. It makes the two
+ * held-out disruption types OBSERVABLE, so the resolver escalates them from
+ * sensed status rather than privileged knowledge.
+ * ------------------------------------------------------------------ */
+
+export type OpsStatusType = "facility_throughput" | "sku_quality_hold";
+
+export interface OperationalStatus {
+  type: OpsStatusType;
+  facilityId?: string; // set for facility_throughput
+  skuId?: string; // set for sku_quality_hold
+  /** true = the hold is in effect; false = it has been lifted. */
+  active: boolean;
+  effectiveAt: string;
+  note?: string;
+}
+
 /** Discriminated union carried on the wire, one envelope per message. */
 export type AnyFeedMessage =
   | FeedEnvelope<MovementEvent>
   | FeedEnvelope<WarehouseEvent>
   | FeedEnvelope<InventorySnapshot>
-  | FeedEnvelope<AdvanceShipNotice>;
+  | FeedEnvelope<AdvanceShipNotice>
+  | FeedEnvelope<OperationalStatus>;
 
 export function isMovement(
   m: AnyFeedMessage,
@@ -129,4 +150,7 @@ export function isInventorySnapshot(
 }
 export function isAsn(m: AnyFeedMessage): m is FeedEnvelope<AdvanceShipNotice> {
   return m.feedType === "asn";
+}
+export function isOpsStatus(m: AnyFeedMessage): m is FeedEnvelope<OperationalStatus> {
+  return m.feedType === "ops_status";
 }

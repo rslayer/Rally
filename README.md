@@ -30,7 +30,7 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 61 tests across all build phases
+npm test             # 64 tests across all build phases
 npm run web          # the control-tower dashboard (state · decisions · scorecard · live loop) → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
@@ -42,6 +42,7 @@ npm run live-detect  # Slice 7: run stockout detection on ESTIMATED state, score
 npm run asn          # Slice 8: prove the ASN feed closes the inbound gap (precision 14% → 98%)
 npm run control-tower  # Slice 9: the whole system running — ingest→estimate→detect→resolve
 npm run estimated-scorecard  # Slice 11: the scorecard, resolver deciding on estimated state
+npm run ops-status   # Slice 12: labor/quality holds escalated from a sensed ops feed
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -316,6 +317,19 @@ dangerous false-resolves             1              6
 ```
 
 The honest verdict: deciding on sensor-grounded state costs real touchless rate and adds a few dangerous resolves — but it **stays safe** (recall > 90%, and it never falsely resolves an injected-unresolvable). And it degrades in the *right* direction (it can't out-perform the oracle it approximates). Better eyes ⇒ closer to the oracle — which is exactly why Slices 2–8 were worth building. This is the whole thesis, closed: not "95% resolved," but *"here is precisely what automation buys, what it costs, and how safely it fails — measured, on the real path."*
+
+## Slice 12 — out-of-scope, observed 🚧
+
+There was one bit of privileged knowledge left: the resolver escalated labor strikes and quality recalls by reading the disruption *config* directly. On a real system it wouldn't have that — it would learn about a shut-down dock or a network-wide recall from an **operational-status feed** (an ops / EDI-824-style status message). So that became a first-class feed too: the emitter reports holds on change, the estimator surfaces them into `ScenarioState.opsHolds`, and on the estimated path the resolver detects *and* escalates them from that sensed status — never from config.
+
+```
+held-out disruptions (estimated path)   24
+correctly escalated                     24  (100.0%)
+decisions sourced from the ops feed     23  (95.8%)
+dangerous (false-resolve / silent)       0
+```
+
+A suspended dock strands inventory without depleting it, so the stockout projection is blind to it — but the ops feed sees it, so it's surfaced and handed off. No config peeking: every held-out disruption is escalated because it was *observed*. `npm run ops-status` is the gate.
 
 ---
 

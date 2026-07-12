@@ -14,6 +14,7 @@ import type {
   GeoPoint,
   InventorySnapshot,
   MovementEvent,
+  OperationalStatus,
   WarehouseEvent,
 } from "@rally/domain";
 import { hourToIso } from "./time.js";
@@ -148,6 +149,22 @@ export function emitFeedsForHour(world: SimWorld): void {
     // EDI can lag; the shipper's notice sometimes arrives after the truck rolls.
     sink.push(envelope(world, `asn-${a.originId}`, "asn", h, rng.int(0, 45), rng.float(0.9, 1), payload));
   }
+
+  // --- Ops-status feed: report labor/quality holds on change (onset + lift). ---
+  const activeFrozen = new Set(
+    world.config.disruptions.filter((d) => d.type === "labor_action" && h >= d.startHour && h < d.startHour + d.durationHours).map((d) => d.facilityId),
+  );
+  const activeQuality = new Set(
+    world.config.disruptions.filter((d) => d.type === "quality_hold" && h >= d.startHour && h < d.startHour + d.durationHours).map((d) => d.skuId),
+  );
+  const emitOps = (payload: OperationalStatus, feedId: string) =>
+    sink.push(envelope(world, feedId, "ops_status", h, rng.int(5, 60), rng.float(0.9, 1), payload));
+  for (const fac of activeFrozen) if (!world.reportedFrozen.has(fac)) emitOps({ type: "facility_throughput", facilityId: fac, active: true, effectiveAt: hourToIso(h), note: "dock/throughput suspended" }, `ops-${fac}`);
+  for (const fac of world.reportedFrozen) if (!activeFrozen.has(fac)) emitOps({ type: "facility_throughput", facilityId: fac, active: false, effectiveAt: hourToIso(h), note: "throughput restored" }, `ops-${fac}`);
+  for (const sku of activeQuality) if (!world.reportedQuality.has(sku)) emitOps({ type: "sku_quality_hold", skuId: sku, active: true, effectiveAt: hourToIso(h), note: "network-wide quarantine" }, `ops-${sku}`);
+  for (const sku of world.reportedQuality) if (!activeQuality.has(sku)) emitOps({ type: "sku_quality_hold", skuId: sku, active: false, effectiveAt: hourToIso(h), note: "quality hold released" }, `ops-${sku}`);
+  world.reportedFrozen = activeFrozen;
+  world.reportedQuality = activeQuality;
 
   // --- Inventory feed: periodic, lagging on-hand extract per facility. ---
   if (h % SNAPSHOT_INTERVAL_HOURS === 0) {

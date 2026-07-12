@@ -21,6 +21,7 @@ import type {
   InventoryPosition,
   InventorySnapshot,
   MovementEvent,
+  OperationalStatus,
   WarehouseEvent,
   WarehouseEventType,
 } from "@rally/domain";
@@ -264,6 +265,63 @@ export function parseAsn(text: string): FeedEnvelope<AdvanceShipNotice>[] {
   });
 }
 
+/* ------------------------------- ops status ----------------------------- */
+
+interface OpsJsonEntry {
+  seq: number;
+  effective_at: string;
+  received: string;
+  status_type: string;
+  facility_id?: string;
+  sku?: string;
+  active: boolean;
+  note?: string;
+}
+
+export function serializeOps(feeds: AnyFeedMessage[]): string {
+  const out: OpsJsonEntry[] = [];
+  for (const m of feeds) {
+    if (m.feedType !== "ops_status") continue;
+    const p = m.payload as OperationalStatus;
+    out.push({
+      seq: m.sequence,
+      effective_at: p.effectiveAt,
+      received: m.ingestedAt,
+      status_type: p.type,
+      ...(p.facilityId ? { facility_id: p.facilityId } : {}),
+      ...(p.skuId ? { sku: p.skuId } : {}),
+      active: p.active,
+      ...(p.note ? { note: p.note } : {}),
+    });
+  }
+  return JSON.stringify(out, null, 2) + "\n";
+}
+
+export function parseOps(text: string): FeedEnvelope<OperationalStatus>[] {
+  const entries = JSON.parse(text) as OpsJsonEntry[];
+  return entries.map((e) => {
+    const payload: OperationalStatus = {
+      type: e.status_type === "sku_quality_hold" ? "sku_quality_hold" : "facility_throughput",
+      ...(e.facility_id ? { facilityId: e.facility_id } : {}),
+      ...(e.sku ? { skuId: e.sku } : {}),
+      active: e.active,
+      effectiveAt: e.effective_at,
+      ...(e.note ? { note: e.note } : {}),
+    };
+    const lat = latencyMinutes(e.effective_at, e.received);
+    return {
+      feedId: `ops-${e.facility_id ?? e.sku ?? "x"}`,
+      feedType: "ops_status",
+      sequence: e.seq,
+      emittedAt: e.effective_at,
+      ingestedAt: e.received,
+      provenance: "real",
+      quality: { latencyMinutes: lat, confidence: estimateConfidence(lat) },
+      payload,
+    };
+  });
+}
+
 /* --------------------------------- API ---------------------------------- */
 
 export interface VendorFiles {
@@ -271,6 +329,7 @@ export interface VendorFiles {
   wms: string;
   inventory: string;
   asn: string;
+  ops: string;
 }
 
 /** Serialize a synthetic feed stream into vendor-shaped export files. */
@@ -280,6 +339,7 @@ export function feedsToVendorFiles(feeds: AnyFeedMessage[]): VendorFiles {
     wms: serializeWms(feeds),
     inventory: serializeInventory(feeds),
     asn: serializeAsn(feeds),
+    ops: serializeOps(feeds),
   };
 }
 
@@ -290,5 +350,6 @@ export function loadVendorFiles(files: Partial<VendorFiles>): AnyFeedMessage[] {
   if (files.wms) out.push(...parseWms(files.wms));
   if (files.inventory) out.push(...parseInventory(files.inventory));
   if (files.asn) out.push(...parseAsn(files.asn));
+  if (files.ops) out.push(...parseOps(files.ops));
   return out;
 }

@@ -32,6 +32,23 @@ interface Candidate {
   apply: () => ResolutionEffect | undefined;
 }
 
+/**
+ * Is this risk outside the resolver's designed scope? On the estimated path the
+ * answer comes from the ops-status FEED (world.opsHolds); on the ground-truth
+ * path it falls back to the known disruptions. Either way, a suspended dock or a
+ * quarantined SKU is escalated, never acted on.
+ */
+function scopeCheck(world: SimWorld, risk: StockoutRisk): { held: boolean; reason: string } {
+  if (world.opsHolds) {
+    if (world.opsHolds.suspendedFacilities.includes(risk.facilityId))
+      return { held: true, reason: `receiving suspended at ${risk.facilityId} (ops feed) — out of designed scope` };
+    if (world.opsHolds.qualityHeldSkus.includes(risk.skuId))
+      return { held: true, reason: `${risk.skuId} under quality hold (ops feed) — out of designed scope` };
+    return { held: false, reason: "" };
+  }
+  return outOfScopeHold(world.config.disruptions, risk.facilityId, risk.skuId, world.hour, RISK_HORIZON_HOURS);
+}
+
 /** Total surplus that could physically be redirected to cover a shortfall of
  *  this SKU: every DC's above-reorder-point stock, plus the plant's on-hand. */
 function regionalSupply(world: SimWorld, skuId: string): number {
@@ -230,7 +247,7 @@ export function resolveRisk(world: SimWorld, risk: StockoutRisk): ResolutionDeci
   // Out-of-scope operational holds are escalated before any action is considered:
   // no in-set action can land against a suspended dock or a quarantined SKU.
   if (!forced) {
-    const scope = outOfScopeHold(world.config.disruptions, risk.facilityId, risk.skuId, world.hour, RISK_HORIZON_HOURS);
+    const scope = scopeCheck(world, risk);
     if (scope.held) return escalate(risk, scope.reason, 0, []);
 
     // Safety guard: if the peak shortfall exceeds all redirectable regional

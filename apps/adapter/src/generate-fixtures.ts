@@ -24,6 +24,7 @@ writeFileSync(`${dir}/telematics.csv`, files.telematics);
 writeFileSync(`${dir}/wms.csv`, files.wms);
 writeFileSync(`${dir}/inventory.json`, files.inventory);
 writeFileSync(`${dir}/asn.json`, files.asn);
+writeFileSync(`${dir}/ops.json`, files.ops);
 
 // The observed physical outcome (no feeds — those are the vendor files above).
 const observed = {

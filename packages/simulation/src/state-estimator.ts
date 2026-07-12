@@ -24,11 +24,12 @@ import type {
   InventorySnapshot,
   MovementEvent,
   Network,
+  OperationalStatus,
   ScenarioState,
   Shipment,
   WarehouseEvent,
 } from "@rally/domain";
-import { haversineMiles, isMovement, isWarehouse, isInventorySnapshot, isAsn, lane } from "@rally/domain";
+import { haversineMiles, isMovement, isWarehouse, isInventorySnapshot, isAsn, isOpsStatus, lane } from "@rally/domain";
 import { isoToHour } from "./time.js";
 import { laneLeadHours } from "./lead.js";
 
@@ -78,6 +79,7 @@ export function estimateState(
   const snapsByFacility = new Map<string, SnapEvt[]>();
   const movementByAsset = new Map<string, MovEvt[]>();
   const asnByRef = new Map<string, { originId: string; destId: string; skuId: string; qty: number; etaHour: number; conf: number }>();
+  const opsLatest = new Map<string, { hour: number; s: OperationalStatus }>();
 
   for (const m of feeds) {
     const emitHour = isoToHour(m.emittedAt);
@@ -93,7 +95,19 @@ export function estimateState(
     } else if (isAsn(m)) {
       const a = m.payload;
       asnByRef.set(a.shipmentRef, { originId: a.originId, destId: a.destId, skuId: a.skuId, qty: a.quantityUnits, etaHour: isoToHour(a.expectedArrivalAt), conf: m.quality.confidence });
+    } else if (isOpsStatus(m)) {
+      const key = `${m.payload.type}:${m.payload.facilityId ?? m.payload.skuId ?? ""}`;
+      const prev = opsLatest.get(key);
+      if (!prev || emitHour >= prev.hour) opsLatest.set(key, { hour: emitHour, s: m.payload });
     }
+  }
+
+  // Latest ops-status per facility/SKU → the currently-sensed holds.
+  const opsHolds = { suspendedFacilities: [] as string[], qualityHeldSkus: [] as string[] };
+  for (const { s } of opsLatest.values()) {
+    if (!s.active) continue;
+    if (s.type === "facility_throughput" && s.facilityId) opsHolds.suspendedFacilities.push(s.facilityId);
+    if (s.type === "sku_quality_hold" && s.skuId) opsHolds.qualityHeldSkus.push(s.skuId);
   }
 
   // --- Positions: anchor on latest snapshot ≤ T, roll forward, score drift. ---
@@ -202,6 +216,7 @@ export function estimateState(
       orders: [],
       production: [],
       assets,
+      opsHolds,
       overallConfidence: Number(overall.toFixed(3)),
     },
     drift,

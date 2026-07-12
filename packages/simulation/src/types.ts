@@ -113,6 +113,11 @@ export interface SimWorld {
   assetOf: Map<string, string>;
   /** Active supplier short-ship (supply_shortfall) per dest cell → fraction cut. */
   pendingShort: Map<string, { fraction: number; untilHour: number }>;
+  /** Ops holds already reported to the ops feed, so we emit only on change. */
+  reportedFrozen: Set<string>;
+  reportedQuality: Set<string>;
+  /** Operational holds sensed for the resolver (set on the estimated path). */
+  opsHolds?: import("@rally/domain").OpsHolds;
   /** Optional feed sink (Phase 2). */
   feedSink?: import("@rally/domain").AnyFeedMessage[];
   /** Per-source monotonic sequence counters for the feed emitter. */

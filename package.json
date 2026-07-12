@@ -25,7 +25,8 @@
     "asn": "tsx packages/simulation/src/dev/asn-check.ts",
     "control-tower": "tsx apps/adapter/src/control-tower.ts",
     "control-tower-check": "tsx packages/simulation/src/dev/control-tower-check.ts",
-    "estimated-scorecard": "tsx packages/simulation/src/dev/estimated-scorecard-check.ts"
+    "estimated-scorecard": "tsx packages/simulation/src/dev/estimated-scorecard-check.ts",
+    "ops-status": "tsx packages/simulation/src/dev/ops-status-check.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

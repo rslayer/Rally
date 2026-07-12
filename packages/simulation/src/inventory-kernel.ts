@@ -127,6 +127,8 @@ export function initWorld(config: SimConfig, rng: SimWorld["rng"]): SimWorld {
     feedSeq: new Map(),
     assetOf: new Map(),
     pendingShort: new Map(),
+    reportedFrozen: new Set(),
+    reportedQuality: new Set(),
   };
 }
 
@@ -452,7 +454,10 @@ export function detectRisks(world: SimWorld): StockoutRisk[] {
   const h = world.hour;
   const fresh: StockoutRisk[] = [];
   for (const dc of DC_IDS) {
-    const frozen = facilityFrozen(world.config.disruptions, dc, h);
+    // Prefer the sensed ops feed when present (estimated path); else config.
+    const frozen = world.opsHolds
+      ? world.opsHolds.suspendedFacilities.includes(dc)
+      : facilityFrozen(world.config.disruptions, dc, h);
     for (const sku of world.config.network.skus) {
       // A frozen dock causes a service miss WITHOUT depleting on-hand, so the
       // stockout projection is blind to it. Surface it directly as a risk (which
@@ -483,6 +488,28 @@ export function detectRisks(world: SimWorld): StockoutRisk[] {
           });
         }
         continue; // don't also run stockout projection for a frozen cell
+      }
+      // A sensed network-wide quality hold (ops feed) makes the SKU unusable —
+      // surface it directly so the resolver escalates rather than silently miss.
+      if (world.opsHolds?.qualityHeldSkus.includes(sku.skuId)) {
+        const qKey = `QUAL|${dc}|${sku.skuId}`;
+        const cell = getCell(world, dc, sku.skuId);
+        if (cell && cell.hourlyDemand > 0 && !world.seenRiskKeys.has(qKey)) {
+          world.seenRiskKeys.set(qKey, 1);
+          const risk: StockoutRisk = {
+            riskId: `RISK-${world.seq.risk++}`,
+            facilityId: dc,
+            skuId: sku.skuId,
+            detectedAtHour: h,
+            hoursToStockout: 0,
+            projectedShortfallUnits: Math.round(cell.hourlyDemand * 24),
+            confidence: 0.9,
+            drivers: [`quality hold on ${sku.skuId} (ops feed)`],
+          };
+          world.risks.push(risk);
+          fresh.push(risk);
+        }
+        continue;
       }
       const proj = projectCell(world, dc, sku.skuId, h, RISK_HORIZON_HOURS);
       const key = `${dc}|${sku.skuId}`;
@@ -573,6 +600,11 @@ export function snapshot(world: SimWorld): ScenarioState {
     reorderPointUnits: c.reorderPointUnits,
     confidence: 1,
   }));
+  const disruptions = world.config.disruptions;
+  const h = world.hour;
+  const suspendedFacilities = [...new Set(disruptions.filter((d) => d.type === "labor_action" && h >= d.startHour && h < d.startHour + d.durationHours).map((d) => d.facilityId))];
+  const qualityHeldSkus = [...new Set(disruptions.filter((d) => d.type === "quality_hold" && h >= d.startHour && h < d.startHour + d.durationHours).map((d) => d.skuId))];
+
   return {
     networkId: world.config.network.networkId,
     hour: world.hour,
@@ -581,6 +613,7 @@ export function snapshot(world: SimWorld): ScenarioState {
     orders: world.orders.map((o) => ({ ...o })),
     production: world.production.map((p) => ({ ...p })),
     assets: [],
+    opsHolds: { suspendedFacilities, qualityHeldSkus },
     overallConfidence: 1,
   };
 }

@@ -48,7 +48,7 @@ export interface IngestResult {
   issues: IngestIssue[];
 }
 
-const FEED_TYPES: FeedType[] = ["movement", "warehouse", "inventory_snapshot", "asn"];
+const FEED_TYPES: FeedType[] = ["movement", "warehouse", "inventory_snapshot", "asn", "ops_status"];
 
 function isFiniteNumber(x: unknown): x is number {
   return typeof x === "number" && Number.isFinite(x);

@@ -90,6 +90,12 @@ export interface AssetTrack {
   confidence: Confidence;
 }
 
+/** Observable operational holds sensed from the ops-status feed. */
+export interface OpsHolds {
+  suspendedFacilities: string[]; // dock/throughput down (labor action)
+  qualityHeldSkus: string[]; // network-wide quarantine
+}
+
 export interface ScenarioState {
   networkId: string;
   /** Sim hour this state describes. */
@@ -99,6 +105,8 @@ export interface ScenarioState {
   orders: Order[];
   production: ProductionRun[];
   assets: AssetTrack[];
+  /** Operational holds sensed from the ops feed (empty when none observed). */
+  opsHolds: OpsHolds;
   /** Aggregate estimator confidence 0..1; 1 for direct-sim ground truth. */
   overallConfidence: Confidence;
 }

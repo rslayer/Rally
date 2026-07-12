@@ -51,12 +51,34 @@ export function buildEstimatedWorld(config: SimConfig, state: ScenarioState, hou
   world.shipments = state.shipments
     .filter((s) => s.kind !== "customer" && s.status === "in_transit" && s.quantityUnits > 0 && s.skuId !== "unknown")
     .map((s) => ({ ...s, confidence: 1 }));
+  // Operational holds come from the ops feed, NOT config — so out-of-scope
+  // escalation on the estimated path is sensor-grounded, not privileged.
+  world.opsHolds = state.opsHolds;
   return world;
 }
 
 export function detectOnState(config: SimConfig, state: ScenarioState, hour: number): StockoutRisk[] {
   const world = buildEstimatedWorld(config, state, hour);
   const risks: StockoutRisk[] = [];
+
+  // A suspended dock (from the ops feed) strands inventory without depleting it,
+  // so the stockout projection is blind to it — surface it directly as a risk
+  // (the resolver will escalate it via the same feed-sensed hold).
+  for (const dc of DC_IDS) {
+    if (!state.opsHolds.suspendedFacilities.includes(dc)) continue;
+    for (const sku of config.network.skus) {
+      risks.push({
+        riskId: `OPS-${dc}-${sku.skuId}-${hour}`,
+        facilityId: dc,
+        skuId: sku.skuId,
+        detectedAtHour: hour,
+        hoursToStockout: 0,
+        projectedShortfallUnits: 999999,
+        confidence: 0.9,
+        drivers: [`throughput suspended at ${dc} (ops feed)`],
+      });
+    }
+  }
   for (const dc of DC_IDS) {
     for (const sku of config.network.skus) {
       const proj = projectCell(world, dc, sku.skuId, hour, RISK_HORIZON_HOURS);

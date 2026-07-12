@@ -65,3 +65,6 @@ jobs:
 
       - name: Estimated-path scorecard (cost of imperfect eyes on decisions)
         run: npm run estimated-scorecard
+
+      - name: Ops-status feed (held-out escalated from sensed status)
+        run: npm run ops-status
