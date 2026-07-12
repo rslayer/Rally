@@ -462,7 +462,7 @@
   {
     "seq": 5,
     "as_of": "2026-01-07T00:00:00.000Z",
-    "received": "2026-01-07T01:07:00.000Z",
+    "received": "2026-01-07T01:56:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -485,7 +485,7 @@
   {
     "seq": 5,
     "as_of": "2026-01-07T00:00:00.000Z",
-    "received": "2026-01-07T00:32:00.000Z",
+    "received": "2026-01-07T01:27:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -508,7 +508,7 @@
   {
     "seq": 5,
     "as_of": "2026-01-07T00:00:00.000Z",
-    "received": "2026-01-07T01:41:00.000Z",
+    "received": "2026-01-07T01:10:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -531,7 +531,7 @@
   {
     "seq": 5,
     "as_of": "2026-01-07T00:00:00.000Z",
-    "received": "2026-01-07T01:34:00.000Z",
+    "received": "2026-01-07T01:00:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -554,7 +554,7 @@
   {
     "seq": 5,
     "as_of": "2026-01-07T00:00:00.000Z",
-    "received": "2026-01-07T00:34:00.000Z",
+    "received": "2026-01-07T01:31:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -577,7 +577,7 @@
   {
     "seq": 6,
     "as_of": "2026-01-07T12:00:00.000Z",
-    "received": "2026-01-07T12:47:00.000Z",
+    "received": "2026-01-07T13:06:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -600,7 +600,7 @@
   {
     "seq": 6,
     "as_of": "2026-01-07T12:00:00.000Z",
-    "received": "2026-01-07T13:56:00.000Z",
+    "received": "2026-01-07T13:42:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -623,7 +623,7 @@
   {
     "seq": 6,
     "as_of": "2026-01-07T12:00:00.000Z",
-    "received": "2026-01-07T13:27:00.000Z",
+    "received": "2026-01-07T12:32:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -646,7 +646,7 @@
   {
     "seq": 6,
     "as_of": "2026-01-07T12:00:00.000Z",
-    "received": "2026-01-07T13:47:00.000Z",
+    "received": "2026-01-07T13:30:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -669,7 +669,7 @@
   {
     "seq": 6,
     "as_of": "2026-01-07T12:00:00.000Z",
-    "received": "2026-01-07T13:07:00.000Z",
+    "received": "2026-01-07T12:40:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -692,7 +692,7 @@
   {
     "seq": 7,
     "as_of": "2026-01-08T00:00:00.000Z",
-    "received": "2026-01-08T00:34:00.000Z",
+    "received": "2026-01-08T00:30:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -715,7 +715,7 @@
   {
     "seq": 7,
     "as_of": "2026-01-08T00:00:00.000Z",
-    "received": "2026-01-08T00:37:00.000Z",
+    "received": "2026-01-08T01:09:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -738,7 +738,7 @@
   {
     "seq": 7,
     "as_of": "2026-01-08T00:00:00.000Z",
-    "received": "2026-01-08T01:13:00.000Z",
+    "received": "2026-01-08T00:49:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -761,7 +761,7 @@
   {
     "seq": 7,
     "as_of": "2026-01-08T00:00:00.000Z",
-    "received": "2026-01-08T01:18:00.000Z",
+    "received": "2026-01-08T00:49:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -784,7 +784,7 @@
   {
     "seq": 7,
     "as_of": "2026-01-08T00:00:00.000Z",
-    "received": "2026-01-08T00:47:00.000Z",
+    "received": "2026-01-08T01:53:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -807,7 +807,7 @@
   {
     "seq": 8,
     "as_of": "2026-01-08T12:00:00.000Z",
-    "received": "2026-01-08T12:57:00.000Z",
+    "received": "2026-01-08T13:40:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -830,7 +830,7 @@
   {
     "seq": 8,
     "as_of": "2026-01-08T12:00:00.000Z",
-    "received": "2026-01-08T13:18:00.000Z",
+    "received": "2026-01-08T13:36:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -853,7 +853,7 @@
   {
     "seq": 8,
     "as_of": "2026-01-08T12:00:00.000Z",
-    "received": "2026-01-08T13:48:00.000Z",
+    "received": "2026-01-08T13:11:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -876,7 +876,7 @@
   {
     "seq": 8,
     "as_of": "2026-01-08T12:00:00.000Z",
-    "received": "2026-01-08T13:30:00.000Z",
+    "received": "2026-01-08T13:23:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -899,7 +899,7 @@
   {
     "seq": 8,
     "as_of": "2026-01-08T12:00:00.000Z",
-    "received": "2026-01-08T14:00:00.000Z",
+    "received": "2026-01-08T13:08:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -922,7 +922,7 @@
   {
     "seq": 9,
     "as_of": "2026-01-09T00:00:00.000Z",
-    "received": "2026-01-09T00:46:00.000Z",
+    "received": "2026-01-09T01:02:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -945,7 +945,7 @@
   {
     "seq": 9,
     "as_of": "2026-01-09T00:00:00.000Z",
-    "received": "2026-01-09T01:20:00.000Z",
+    "received": "2026-01-09T01:59:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -968,7 +968,7 @@
   {
     "seq": 9,
     "as_of": "2026-01-09T00:00:00.000Z",
-    "received": "2026-01-09T00:50:00.000Z",
+    "received": "2026-01-09T01:30:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -991,7 +991,7 @@
   {
     "seq": 9,
     "as_of": "2026-01-09T00:00:00.000Z",
-    "received": "2026-01-09T00:37:00.000Z",
+    "received": "2026-01-09T01:51:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1014,7 +1014,7 @@
   {
     "seq": 9,
     "as_of": "2026-01-09T00:00:00.000Z",
-    "received": "2026-01-09T01:51:00.000Z",
+    "received": "2026-01-09T01:52:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1037,7 +1037,7 @@
   {
     "seq": 10,
     "as_of": "2026-01-09T12:00:00.000Z",
-    "received": "2026-01-09T12:52:00.000Z",
+    "received": "2026-01-09T13:46:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1060,7 +1060,7 @@
   {
     "seq": 10,
     "as_of": "2026-01-09T12:00:00.000Z",
-    "received": "2026-01-09T12:47:00.000Z",
+    "received": "2026-01-09T12:34:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1083,7 +1083,7 @@
   {
     "seq": 10,
     "as_of": "2026-01-09T12:00:00.000Z",
-    "received": "2026-01-09T13:43:00.000Z",
+    "received": "2026-01-09T13:55:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -1106,7 +1106,7 @@
   {
     "seq": 10,
     "as_of": "2026-01-09T12:00:00.000Z",
-    "received": "2026-01-09T12:31:00.000Z",
+    "received": "2026-01-09T13:03:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1129,7 +1129,7 @@
   {
     "seq": 10,
     "as_of": "2026-01-09T12:00:00.000Z",
-    "received": "2026-01-09T13:09:00.000Z",
+    "received": "2026-01-09T13:26:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1152,7 +1152,7 @@
   {
     "seq": 11,
     "as_of": "2026-01-10T00:00:00.000Z",
-    "received": "2026-01-10T01:56:00.000Z",
+    "received": "2026-01-10T01:29:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1175,7 +1175,7 @@
   {
     "seq": 11,
     "as_of": "2026-01-10T00:00:00.000Z",
-    "received": "2026-01-10T01:13:00.000Z",
+    "received": "2026-01-10T01:19:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1198,7 +1198,7 @@
   {
     "seq": 11,
     "as_of": "2026-01-10T00:00:00.000Z",
-    "received": "2026-01-10T01:15:00.000Z",
+    "received": "2026-01-10T01:26:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -1221,7 +1221,7 @@
   {
     "seq": 11,
     "as_of": "2026-01-10T00:00:00.000Z",
-    "received": "2026-01-10T01:28:00.000Z",
+    "received": "2026-01-10T01:33:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1244,7 +1244,7 @@
   {
     "seq": 11,
     "as_of": "2026-01-10T00:00:00.000Z",
-    "received": "2026-01-10T01:38:00.000Z",
+    "received": "2026-01-10T01:51:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1267,7 +1267,7 @@
   {
     "seq": 12,
     "as_of": "2026-01-10T12:00:00.000Z",
-    "received": "2026-01-10T13:51:00.000Z",
+    "received": "2026-01-10T13:18:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1290,7 +1290,7 @@
   {
     "seq": 12,
     "as_of": "2026-01-10T12:00:00.000Z",
-    "received": "2026-01-10T13:30:00.000Z",
+    "received": "2026-01-10T13:05:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1313,7 +1313,7 @@
   {
     "seq": 12,
     "as_of": "2026-01-10T12:00:00.000Z",
-    "received": "2026-01-10T13:36:00.000Z",
+    "received": "2026-01-10T12:53:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -1336,7 +1336,7 @@
   {
     "seq": 12,
     "as_of": "2026-01-10T12:00:00.000Z",
-    "received": "2026-01-10T12:49:00.000Z",
+    "received": "2026-01-10T13:56:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1359,7 +1359,7 @@
   {
     "seq": 12,
     "as_of": "2026-01-10T12:00:00.000Z",
-    "received": "2026-01-10T13:31:00.000Z",
+    "received": "2026-01-10T13:53:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1382,7 +1382,7 @@
   {
     "seq": 13,
     "as_of": "2026-01-11T00:00:00.000Z",
-    "received": "2026-01-11T01:29:00.000Z",
+    "received": "2026-01-11T01:38:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1405,7 +1405,7 @@
   {
     "seq": 13,
     "as_of": "2026-01-11T00:00:00.000Z",
-    "received": "2026-01-11T01:54:00.000Z",
+    "received": "2026-01-11T01:03:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1428,7 +1428,7 @@
   {
     "seq": 13,
     "as_of": "2026-01-11T00:00:00.000Z",
-    "received": "2026-01-11T01:01:00.000Z",
+    "received": "2026-01-11T00:41:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -1451,7 +1451,7 @@
   {
     "seq": 13,
     "as_of": "2026-01-11T00:00:00.000Z",
-    "received": "2026-01-11T00:53:00.000Z",
+    "received": "2026-01-11T01:49:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1474,7 +1474,7 @@
   {
     "seq": 13,
     "as_of": "2026-01-11T00:00:00.000Z",
-    "received": "2026-01-11T00:40:00.000Z",
+    "received": "2026-01-11T00:35:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1497,7 +1497,7 @@
   {
     "seq": 14,
     "as_of": "2026-01-11T12:00:00.000Z",
-    "received": "2026-01-11T13:45:00.000Z",
+    "received": "2026-01-11T12:30:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1520,7 +1520,7 @@
   {
     "seq": 14,
     "as_of": "2026-01-11T12:00:00.000Z",
-    "received": "2026-01-11T12:41:00.000Z",
+    "received": "2026-01-11T13:30:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1566,7 +1566,7 @@
   {
     "seq": 14,
     "as_of": "2026-01-11T12:00:00.000Z",
-    "received": "2026-01-11T12:41:00.000Z",
+    "received": "2026-01-11T13:00:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1589,7 +1589,7 @@
   {
     "seq": 14,
     "as_of": "2026-01-11T12:00:00.000Z",
-    "received": "2026-01-11T13:06:00.000Z",
+    "received": "2026-01-11T13:40:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1612,7 +1612,7 @@
   {
     "seq": 15,
     "as_of": "2026-01-12T00:00:00.000Z",
-    "received": "2026-01-12T00:52:00.000Z",
+    "received": "2026-01-12T00:45:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1635,7 +1635,7 @@
   {
     "seq": 15,
     "as_of": "2026-01-12T00:00:00.000Z",
-    "received": "2026-01-12T00:35:00.000Z",
+    "received": "2026-01-12T00:52:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1658,7 +1658,7 @@
   {
     "seq": 15,
     "as_of": "2026-01-12T00:00:00.000Z",
-    "received": "2026-01-12T01:44:00.000Z",
+    "received": "2026-01-12T00:38:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -1681,7 +1681,7 @@
   {
     "seq": 15,
     "as_of": "2026-01-12T00:00:00.000Z",
-    "received": "2026-01-12T01:00:00.000Z",
+    "received": "2026-01-12T00:46:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1704,7 +1704,7 @@
   {
     "seq": 15,
     "as_of": "2026-01-12T00:00:00.000Z",
-    "received": "2026-01-12T00:59:00.000Z",
+    "received": "2026-01-12T01:18:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1727,7 +1727,7 @@
   {
     "seq": 16,
     "as_of": "2026-01-12T12:00:00.000Z",
-    "received": "2026-01-12T13:00:00.000Z",
+    "received": "2026-01-12T13:06:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1750,7 +1750,7 @@
   {
     "seq": 16,
     "as_of": "2026-01-12T12:00:00.000Z",
-    "received": "2026-01-12T13:05:00.000Z",
+    "received": "2026-01-12T12:48:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1773,7 +1773,7 @@
   {
     "seq": 16,
     "as_of": "2026-01-12T12:00:00.000Z",
-    "received": "2026-01-12T12:41:00.000Z",
+    "received": "2026-01-12T13:54:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -1796,7 +1796,7 @@
   {
     "seq": 16,
     "as_of": "2026-01-12T12:00:00.000Z",
-    "received": "2026-01-12T13:29:00.000Z",
+    "received": "2026-01-12T12:31:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1819,7 +1819,7 @@
   {
     "seq": 16,
     "as_of": "2026-01-12T12:00:00.000Z",
-    "received": "2026-01-12T12:39:00.000Z",
+    "received": "2026-01-12T13:18:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1842,7 +1842,7 @@
   {
     "seq": 17,
     "as_of": "2026-01-13T00:00:00.000Z",
-    "received": "2026-01-13T00:30:00.000Z",
+    "received": "2026-01-13T01:35:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1865,7 +1865,7 @@
   {
     "seq": 17,
     "as_of": "2026-01-13T00:00:00.000Z",
-    "received": "2026-01-13T01:05:00.000Z",
+    "received": "2026-01-13T01:53:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -1888,7 +1888,7 @@
   {
     "seq": 17,
     "as_of": "2026-01-13T00:00:00.000Z",
-    "received": "2026-01-13T00:33:00.000Z",
+    "received": "2026-01-13T01:31:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -1911,7 +1911,7 @@
   {
     "seq": 17,
     "as_of": "2026-01-13T00:00:00.000Z",
-    "received": "2026-01-13T00:56:00.000Z",
+    "received": "2026-01-13T00:54:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -1934,7 +1934,7 @@
   {
     "seq": 17,
     "as_of": "2026-01-13T00:00:00.000Z",
-    "received": "2026-01-13T00:30:00.000Z",
+    "received": "2026-01-13T01:31:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -1957,7 +1957,7 @@
   {
     "seq": 18,
     "as_of": "2026-01-13T12:00:00.000Z",
-    "received": "2026-01-13T13:34:00.000Z",
+    "received": "2026-01-13T13:48:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -1980,7 +1980,7 @@
   {
     "seq": 18,
     "as_of": "2026-01-13T12:00:00.000Z",
-    "received": "2026-01-13T13:31:00.000Z",
+    "received": "2026-01-13T12:40:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2003,7 +2003,7 @@
   {
     "seq": 18,
     "as_of": "2026-01-13T12:00:00.000Z",
-    "received": "2026-01-13T13:04:00.000Z",
+    "received": "2026-01-13T13:23:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2026,7 +2026,7 @@
   {
     "seq": 18,
     "as_of": "2026-01-13T12:00:00.000Z",
-    "received": "2026-01-13T12:34:00.000Z",
+    "received": "2026-01-13T13:50:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2049,7 +2049,7 @@
   {
     "seq": 18,
     "as_of": "2026-01-13T12:00:00.000Z",
-    "received": "2026-01-13T12:45:00.000Z",
+    "received": "2026-01-13T13:08:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2072,7 +2072,7 @@
   {
     "seq": 19,
     "as_of": "2026-01-14T00:00:00.000Z",
-    "received": "2026-01-14T02:00:00.000Z",
+    "received": "2026-01-14T00:38:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2095,7 +2095,7 @@
   {
     "seq": 19,
     "as_of": "2026-01-14T00:00:00.000Z",
-    "received": "2026-01-14T00:38:00.000Z",
+    "received": "2026-01-14T01:17:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2118,7 +2118,7 @@
   {
     "seq": 19,
     "as_of": "2026-01-14T00:00:00.000Z",
-    "received": "2026-01-14T01:26:00.000Z",
+    "received": "2026-01-14T01:05:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2141,7 +2141,7 @@
   {
     "seq": 19,
     "as_of": "2026-01-14T00:00:00.000Z",
-    "received": "2026-01-14T01:40:00.000Z",
+    "received": "2026-01-14T01:17:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2164,7 +2164,7 @@
   {
     "seq": 19,
     "as_of": "2026-01-14T00:00:00.000Z",
-    "received": "2026-01-14T01:06:00.000Z",
+    "received": "2026-01-14T00:45:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2187,7 +2187,7 @@
   {
     "seq": 20,
     "as_of": "2026-01-14T12:00:00.000Z",
-    "received": "2026-01-14T13:11:00.000Z",
+    "received": "2026-01-14T13:33:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2210,7 +2210,7 @@
   {
     "seq": 20,
     "as_of": "2026-01-14T12:00:00.000Z",
-    "received": "2026-01-14T12:46:00.000Z",
+    "received": "2026-01-14T13:17:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2233,7 +2233,7 @@
   {
     "seq": 20,
     "as_of": "2026-01-14T12:00:00.000Z",
-    "received": "2026-01-14T13:01:00.000Z",
+    "received": "2026-01-14T13:57:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2256,7 +2256,7 @@
   {
     "seq": 20,
     "as_of": "2026-01-14T12:00:00.000Z",
-    "received": "2026-01-14T13:57:00.000Z",
+    "received": "2026-01-14T12:40:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2279,7 +2279,7 @@
   {
     "seq": 20,
     "as_of": "2026-01-14T12:00:00.000Z",
-    "received": "2026-01-14T13:13:00.000Z",
+    "received": "2026-01-14T13:02:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2302,7 +2302,7 @@
   {
     "seq": 21,
     "as_of": "2026-01-15T00:00:00.000Z",
-    "received": "2026-01-15T00:35:00.000Z",
+    "received": "2026-01-15T01:29:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2325,7 +2325,7 @@
   {
     "seq": 21,
     "as_of": "2026-01-15T00:00:00.000Z",
-    "received": "2026-01-15T01:27:00.000Z",
+    "received": "2026-01-15T01:43:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2348,7 +2348,7 @@
   {
     "seq": 21,
     "as_of": "2026-01-15T00:00:00.000Z",
-    "received": "2026-01-15T00:50:00.000Z",
+    "received": "2026-01-15T01:20:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2371,7 +2371,7 @@
   {
     "seq": 21,
     "as_of": "2026-01-15T00:00:00.000Z",
-    "received": "2026-01-15T01:40:00.000Z",
+    "received": "2026-01-15T01:08:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2394,7 +2394,7 @@
   {
     "seq": 21,
     "as_of": "2026-01-15T00:00:00.000Z",
-    "received": "2026-01-15T01:18:00.000Z",
+    "received": "2026-01-15T01:38:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2417,7 +2417,7 @@
   {
     "seq": 22,
     "as_of": "2026-01-15T12:00:00.000Z",
-    "received": "2026-01-15T13:51:00.000Z",
+    "received": "2026-01-15T12:56:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2440,7 +2440,7 @@
   {
     "seq": 22,
     "as_of": "2026-01-15T12:00:00.000Z",
-    "received": "2026-01-15T13:39:00.000Z",
+    "received": "2026-01-15T13:43:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2463,7 +2463,7 @@
   {
     "seq": 22,
     "as_of": "2026-01-15T12:00:00.000Z",
-    "received": "2026-01-15T12:40:00.000Z",
+    "received": "2026-01-15T12:50:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2486,7 +2486,7 @@
   {
     "seq": 22,
     "as_of": "2026-01-15T12:00:00.000Z",
-    "received": "2026-01-15T13:17:00.000Z",
+    "received": "2026-01-15T12:31:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2532,7 +2532,7 @@
   {
     "seq": 23,
     "as_of": "2026-01-16T00:00:00.000Z",
-    "received": "2026-01-16T01:16:00.000Z",
+    "received": "2026-01-16T00:34:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2555,7 +2555,7 @@
   {
     "seq": 23,
     "as_of": "2026-01-16T00:00:00.000Z",
-    "received": "2026-01-16T01:51:00.000Z",
+    "received": "2026-01-16T00:40:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2578,7 +2578,7 @@
   {
     "seq": 23,
     "as_of": "2026-01-16T00:00:00.000Z",
-    "received": "2026-01-16T00:59:00.000Z",
+    "received": "2026-01-16T01:18:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2601,7 +2601,7 @@
   {
     "seq": 23,
     "as_of": "2026-01-16T00:00:00.000Z",
-    "received": "2026-01-16T01:22:00.000Z",
+    "received": "2026-01-16T00:43:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2624,7 +2624,7 @@
   {
     "seq": 23,
     "as_of": "2026-01-16T00:00:00.000Z",
-    "received": "2026-01-16T01:38:00.000Z",
+    "received": "2026-01-16T01:12:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2647,7 +2647,7 @@
   {
     "seq": 24,
     "as_of": "2026-01-16T12:00:00.000Z",
-    "received": "2026-01-16T13:26:00.000Z",
+    "received": "2026-01-16T13:11:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2670,7 +2670,7 @@
   {
     "seq": 24,
     "as_of": "2026-01-16T12:00:00.000Z",
-    "received": "2026-01-16T13:17:00.000Z",
+    "received": "2026-01-16T12:46:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2693,7 +2693,7 @@
   {
     "seq": 24,
     "as_of": "2026-01-16T12:00:00.000Z",
-    "received": "2026-01-16T12:55:00.000Z",
+    "received": "2026-01-16T13:28:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2716,7 +2716,7 @@
   {
     "seq": 24,
     "as_of": "2026-01-16T12:00:00.000Z",
-    "received": "2026-01-16T13:31:00.000Z",
+    "received": "2026-01-16T13:15:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2739,7 +2739,7 @@
   {
     "seq": 24,
     "as_of": "2026-01-16T12:00:00.000Z",
-    "received": "2026-01-16T13:19:00.000Z",
+    "received": "2026-01-16T13:25:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2762,7 +2762,7 @@
   {
     "seq": 25,
     "as_of": "2026-01-17T00:00:00.000Z",
-    "received": "2026-01-17T01:51:00.000Z",
+    "received": "2026-01-17T01:21:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2785,7 +2785,7 @@
   {
     "seq": 25,
     "as_of": "2026-01-17T00:00:00.000Z",
-    "received": "2026-01-17T01:16:00.000Z",
+    "received": "2026-01-17T00:36:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2808,7 +2808,7 @@
   {
     "seq": 25,
     "as_of": "2026-01-17T00:00:00.000Z",
-    "received": "2026-01-17T01:32:00.000Z",
+    "received": "2026-01-17T01:28:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2831,7 +2831,7 @@
   {
     "seq": 25,
     "as_of": "2026-01-17T00:00:00.000Z",
-    "received": "2026-01-17T00:43:00.000Z",
+    "received": "2026-01-17T00:42:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2854,7 +2854,7 @@
   {
     "seq": 25,
     "as_of": "2026-01-17T00:00:00.000Z",
-    "received": "2026-01-17T01:10:00.000Z",
+    "received": "2026-01-17T00:50:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2877,7 +2877,7 @@
   {
     "seq": 26,
     "as_of": "2026-01-17T12:00:00.000Z",
-    "received": "2026-01-17T13:59:00.000Z",
+    "received": "2026-01-17T13:18:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -2900,7 +2900,7 @@
   {
     "seq": 26,
     "as_of": "2026-01-17T12:00:00.000Z",
-    "received": "2026-01-17T13:13:00.000Z",
+    "received": "2026-01-17T12:37:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -2923,7 +2923,7 @@
   {
     "seq": 26,
     "as_of": "2026-01-17T12:00:00.000Z",
-    "received": "2026-01-17T13:32:00.000Z",
+    "received": "2026-01-17T13:33:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -2946,7 +2946,7 @@
   {
     "seq": 26,
     "as_of": "2026-01-17T12:00:00.000Z",
-    "received": "2026-01-17T13:29:00.000Z",
+    "received": "2026-01-17T12:54:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -2969,7 +2969,7 @@
   {
     "seq": 26,
     "as_of": "2026-01-17T12:00:00.000Z",
-    "received": "2026-01-17T12:58:00.000Z",
+    "received": "2026-01-17T13:37:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -2992,7 +2992,7 @@
   {
     "seq": 27,
     "as_of": "2026-01-18T00:00:00.000Z",
-    "received": "2026-01-18T01:54:00.000Z",
+    "received": "2026-01-18T01:36:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -3015,7 +3015,7 @@
   {
     "seq": 27,
     "as_of": "2026-01-18T00:00:00.000Z",
-    "received": "2026-01-18T00:59:00.000Z",
+    "received": "2026-01-18T01:42:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -3038,7 +3038,7 @@
   {
     "seq": 27,
     "as_of": "2026-01-18T00:00:00.000Z",
-    "received": "2026-01-18T01:21:00.000Z",
+    "received": "2026-01-18T01:23:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -3061,7 +3061,7 @@
   {
     "seq": 27,
     "as_of": "2026-01-18T00:00:00.000Z",
-    "received": "2026-01-18T01:12:00.000Z",
+    "received": "2026-01-18T01:31:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -3084,7 +3084,7 @@
   {
     "seq": 27,
     "as_of": "2026-01-18T00:00:00.000Z",
-    "received": "2026-01-18T01:55:00.000Z",
+    "received": "2026-01-18T01:24:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {
@@ -3107,7 +3107,7 @@
   {
     "seq": 28,
     "as_of": "2026-01-18T12:00:00.000Z",
-    "received": "2026-01-18T12:54:00.000Z",
+    "received": "2026-01-18T13:14:00.000Z",
     "facility_id": "DC_DAL",
     "positions": [
       {
@@ -3130,7 +3130,7 @@
   {
     "seq": 28,
     "as_of": "2026-01-18T12:00:00.000Z",
-    "received": "2026-01-18T13:55:00.000Z",
+    "received": "2026-01-18T13:56:00.000Z",
     "facility_id": "DC_HOU",
     "positions": [
       {
@@ -3153,7 +3153,7 @@
   {
     "seq": 28,
     "as_of": "2026-01-18T12:00:00.000Z",
-    "received": "2026-01-18T13:49:00.000Z",
+    "received": "2026-01-18T13:51:00.000Z",
     "facility_id": "DC_SAT",
     "positions": [
       {
@@ -3176,7 +3176,7 @@
   {
     "seq": 28,
     "as_of": "2026-01-18T12:00:00.000Z",
-    "received": "2026-01-18T13:44:00.000Z",
+    "received": "2026-01-18T13:24:00.000Z",
     "facility_id": "DC_OKC",
     "positions": [
       {
@@ -3199,7 +3199,7 @@
   {
     "seq": 28,
     "as_of": "2026-01-18T12:00:00.000Z",
-    "received": "2026-01-18T13:01:00.000Z",
+    "received": "2026-01-18T12:59:00.000Z",
     "facility_id": "PLANT_DAL",
     "positions": [
       {

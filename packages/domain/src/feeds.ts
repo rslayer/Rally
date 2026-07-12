@@ -8,7 +8,7 @@
 
 import type { GeoPoint } from "./geo.js";
 
-export type FeedType = "movement" | "warehouse" | "inventory_snapshot";
+export type FeedType = "movement" | "warehouse" | "inventory_snapshot" | "asn";
 export type Provenance = "synthetic" | "real";
 
 export interface FeedQuality {
@@ -88,11 +88,29 @@ export interface InventorySnapshot {
   positions: InventoryPosition[];
 }
 
+/* ------------------------------------------------------------------ *
+ * ASN feed (advance ship notice, EDI 856-shaped).
+ * Real analog: an EDI 856 the shipper sends AHEAD of the shipment. Unlike a WMS
+ * ship-confirm, it declares the DESTINATION and promised arrival up front, so
+ * the estimator can see in-flight inbound without joining telematics for a dest.
+ * ------------------------------------------------------------------ */
+
+export interface AdvanceShipNotice {
+  shipmentRef: string;
+  originId: string;
+  destId: string;
+  skuId: string;
+  quantityUnits: number;
+  shippedAt: string; // when it left origin
+  expectedArrivalAt: string; // promised delivery (ETA)
+}
+
 /** Discriminated union carried on the wire, one envelope per message. */
 export type AnyFeedMessage =
   | FeedEnvelope<MovementEvent>
   | FeedEnvelope<WarehouseEvent>
-  | FeedEnvelope<InventorySnapshot>;
+  | FeedEnvelope<InventorySnapshot>
+  | FeedEnvelope<AdvanceShipNotice>;
 
 export function isMovement(
   m: AnyFeedMessage,
@@ -108,4 +126,7 @@ export function isInventorySnapshot(
   m: AnyFeedMessage,
 ): m is FeedEnvelope<InventorySnapshot> {
   return m.feedType === "inventory_snapshot";
+}
+export function isAsn(m: AnyFeedMessage): m is FeedEnvelope<AdvanceShipNotice> {
+  return m.feedType === "asn";
 }

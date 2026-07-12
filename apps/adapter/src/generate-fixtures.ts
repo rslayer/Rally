@@ -23,6 +23,7 @@ const files = feedsToVendorFiles(episode.feeds);
 writeFileSync(`${dir}/telematics.csv`, files.telematics);
 writeFileSync(`${dir}/wms.csv`, files.wms);
 writeFileSync(`${dir}/inventory.json`, files.inventory);
+writeFileSync(`${dir}/asn.json`, files.asn);
 
 // The observed physical outcome (no feeds — those are the vendor files above).
 const observed = {
@@ -41,4 +42,5 @@ console.log(`Wrote vendor fixtures to ${dir}`);
 console.log(`  telematics.csv   ${counts.movement ?? 0} GPS pings`);
 console.log(`  wms.csv          ${counts.warehouse ?? 0} transactions`);
 console.log(`  inventory.json   ${counts.inventory_snapshot ?? 0} on-hand extracts`);
+console.log(`  asn.json         ${counts.asn ?? 0} advance ship notices`);
 console.log(`  observed.json    ${episode.truth.length} truth samples · ${episode.exceptions.length} exceptions · ${episode.stockoutHours} stockout-hours`);

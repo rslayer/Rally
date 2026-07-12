@@ -18,7 +18,7 @@ import { emitFeedsForHour } from "./feed-emitter.js";
 import type { SimWorld } from "./types.js";
 
 export function stepSimulation(world: SimWorld): void {
-  world.txn = { picks: [], receipts: [], shipConfirms: [] }; // fresh WMS log
+  world.txn = { picks: [], receipts: [], shipConfirms: [], asns: [] }; // fresh WMS/EDI log
   applyDisruptionOnset(world); // 1. disruptions land
   runProduction(world); //        2. plants complete runs
   advanceShipments(world); //     3. in-transit loads arrive

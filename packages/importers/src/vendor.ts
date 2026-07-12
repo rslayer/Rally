@@ -15,6 +15,7 @@
  */
 
 import type {
+  AdvanceShipNotice,
   AnyFeedMessage,
   FeedEnvelope,
   InventoryPosition,
@@ -203,12 +204,73 @@ export function parseInventory(text: string): FeedEnvelope<InventorySnapshot>[] 
   });
 }
 
+/* ---------------------------------- ASN --------------------------------- */
+
+interface AsnJsonEntry {
+  seq: number;
+  shipped_at: string;
+  received: string;
+  shipment_ref: string;
+  origin_id: string;
+  dest_id: string;
+  sku: string;
+  qty: number;
+  expected_arrival: string;
+}
+
+export function serializeAsn(feeds: AnyFeedMessage[]): string {
+  const out: AsnJsonEntry[] = [];
+  for (const m of feeds) {
+    if (m.feedType !== "asn") continue;
+    const p = m.payload as AdvanceShipNotice;
+    out.push({
+      seq: m.sequence,
+      shipped_at: p.shippedAt,
+      received: m.ingestedAt,
+      shipment_ref: p.shipmentRef,
+      origin_id: p.originId,
+      dest_id: p.destId,
+      sku: p.skuId,
+      qty: p.quantityUnits,
+      expected_arrival: p.expectedArrivalAt,
+    });
+  }
+  return JSON.stringify(out, null, 2) + "\n";
+}
+
+export function parseAsn(text: string): FeedEnvelope<AdvanceShipNotice>[] {
+  const entries = JSON.parse(text) as AsnJsonEntry[];
+  return entries.map((e) => {
+    const payload: AdvanceShipNotice = {
+      shipmentRef: e.shipment_ref,
+      originId: e.origin_id,
+      destId: e.dest_id,
+      skuId: e.sku,
+      quantityUnits: e.qty,
+      shippedAt: e.shipped_at,
+      expectedArrivalAt: e.expected_arrival,
+    };
+    const lat = latencyMinutes(e.shipped_at, e.received);
+    return {
+      feedId: `asn-${e.origin_id}`,
+      feedType: "asn",
+      sequence: e.seq,
+      emittedAt: e.shipped_at,
+      ingestedAt: e.received,
+      provenance: "real",
+      quality: { latencyMinutes: lat, confidence: estimateConfidence(lat) },
+      payload,
+    };
+  });
+}
+
 /* --------------------------------- API ---------------------------------- */
 
 export interface VendorFiles {
   telematics: string;
   wms: string;
   inventory: string;
+  asn: string;
 }
 
 /** Serialize a synthetic feed stream into vendor-shaped export files. */
@@ -217,6 +279,7 @@ export function feedsToVendorFiles(feeds: AnyFeedMessage[]): VendorFiles {
     telematics: serializeTelematics(feeds),
     wms: serializeWms(feeds),
     inventory: serializeInventory(feeds),
+    asn: serializeAsn(feeds),
   };
 }
 
@@ -226,5 +289,6 @@ export function loadVendorFiles(files: Partial<VendorFiles>): AnyFeedMessage[] {
   if (files.telematics) out.push(...parseTelematics(files.telematics));
   if (files.wms) out.push(...parseWms(files.wms));
   if (files.inventory) out.push(...parseInventory(files.inventory));
+  if (files.asn) out.push(...parseAsn(files.asn));
   return out;
 }

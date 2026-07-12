@@ -92,7 +92,11 @@ function flaggedCells(config: SimConfig, state: ScenarioState, hour: number): Se
  * estimate reconstructed from live feeds, at the same ticks, and compare. High
  * agreement means the eyes are good enough to drive the brain.
  */
-export function liveDetectionFidelity(seed: number, disruption: Disruption): LiveDetectionReport {
+export function liveDetectionFidelity(
+  seed: number,
+  disruption: Disruption,
+  opts: { ignoreAsn?: boolean } = {},
+): LiveDetectionReport {
   const config = makeConfig({ seed, disruptions: [disruption], resolverEnabled: false, emitFeeds: true });
   const cells = DC_IDS.length * config.network.skus.length;
 
@@ -107,7 +111,8 @@ export function liveDetectionFidelity(seed: number, disruption: Disruption): Liv
     const processed = world.hour - 1;
     if (tickSet.has(processed)) truthAt.set(processed, snapshot(world));
   }
-  const feeds = world.feedSink ?? [];
+  const allFeeds = world.feedSink ?? [];
+  const feeds = opts.ignoreAsn ? allFeeds.filter((m) => m.feedType !== "asn") : allFeeds;
 
   let tp = 0, fn = 0, fp = 0, agree = 0, truthFlags = 0, estFlags = 0, ticks = 0;
   for (const T of [...tickSet].sort((a, b) => a - b)) {
@@ -143,10 +148,14 @@ export function liveDetectionFidelity(seed: number, disruption: Disruption): Liv
 }
 
 /** Aggregate across seeds for a stable read. */
-export function liveDetectionSweep(seeds: number[], make: (seed: number) => Disruption): LiveDetectionReport {
+export function liveDetectionSweep(
+  seeds: number[],
+  make: (seed: number) => Disruption,
+  opts: { ignoreAsn?: boolean } = {},
+): LiveDetectionReport {
   let tp = 0, fn = 0, fp = 0, truthFlags = 0, estFlags = 0, ticks = 0, agreeCells = 0, totalCells = 0;
   for (const seed of seeds) {
-    const r = liveDetectionFidelity(seed, make(seed));
+    const r = liveDetectionFidelity(seed, make(seed), opts);
     tp += r.truePositive;
     fn += r.falseNegative;
     fp += r.falsePositive;

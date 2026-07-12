@@ -30,7 +30,7 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 50 tests across all build phases
+npm test             # 54 tests across all build phases
 npm run web          # the three-panel control tower → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
@@ -39,6 +39,7 @@ npm run live-sync    # Slice 3: pull from a (mock) Samsara-shaped API — auth, 
 npm run incremental-sync  # Slice 4: a scheduled poller — watermark, dedup, resume across restarts
 npm run orchestrate  # Slice 6: run telematics + WMS connectors together, one merged stream
 npm run live-detect  # Slice 7: run stockout detection on ESTIMATED state, scored vs ground truth
+npm run asn          # Slice 8: prove the ASN feed closes the inbound gap (precision 14% → 98%)
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -269,7 +270,21 @@ cell-tick agreement         95.7%
 precision (alarms real)     14.5%   ← conservative: it over-alerts where inbound is still unseen
 ```
 
-The finding is the interesting part, not a vanity number: the sensor-grounded estimate is a **safe superset** — it catches *every* real risk (100% recall, zero false negatives) but raises extra alarms wherever it can't yet see incoming replenishment. For a control tower whose job is to escalate what it must, that bias is the *safe* direction. The precision gap is the honest cost of the current sensor set, and it points straight at the fix: an ASN / EDI-856 advance-ship-notice feed would tell you what's inbound and where, collapsing the false alarms — a well-motivated next slice, discovered by measurement rather than assumed.
+The finding is the interesting part, not a vanity number: the sensor-grounded estimate is a **safe superset** — it catches *every* real risk (100% recall, zero false negatives) but raises extra alarms wherever it can't yet see incoming replenishment. For a control tower whose job is to escalate what it must, that bias is the *safe* direction. The precision gap is the honest cost of the current sensor set, and it points straight at the fix.
+
+## Slice 8 — the ASN feed closes the gap 📩
+
+Slice 7 didn't just report a number — it **diagnosed** one. The false alarms came from one blind spot: the estimator couldn't always see what was inbound. The fix is the feed built for exactly that — an **ASN / EDI-856 advance ship notice**, which the shipper sends *ahead* of the truck declaring destination + quantity + promised arrival. Add it as a first-class feed (domain type, emitter, vendor codec, and a live `AsnClient` on the same generic connector), teach the estimator to prefer it for in-flight inbound, and re-run the *exact same* Slice-7 harness:
+
+```
+                        without ASN     with ASN
+recall (real risks)      100.0%         100.0%
+precision (alarms real)   14.5%          97.8%     ← +83 points
+cell-tick agreement       95.7%         100.0%
+estimate flags              311             46     (ground truth 45)
+```
+
+Recall never moved; precision went from 14.5% to **97.8%**. A gap discovered by measurement (Slice 7), closed by the right feed (Slice 8) — and proven by re-running the very harness that found it. That's the whole method in miniature: don't assume where the eyes fall short, *measure* it, then fix what the measurement points at.
 
 ---
 

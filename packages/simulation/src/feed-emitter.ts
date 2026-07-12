@@ -8,6 +8,7 @@
  */
 
 import type {
+  AdvanceShipNotice,
   AnyFeedMessage,
   FeedEnvelope,
   GeoPoint,
@@ -131,6 +132,21 @@ export function emitFeedsForHour(world: SimWorld): void {
       shipmentRef: sc.shipmentRef,
     };
     sink.push(envelope(world, `wms-${sc.facilityId}`, "warehouse", h, rng.int(0, 8), rng.float(0.9, 1), payload));
+  }
+
+  // --- ASN feed: an EDI 856 per dispatch, from the shipping origin. ---
+  for (const a of world.txn.asns) {
+    const payload: AdvanceShipNotice = {
+      shipmentRef: a.shipmentRef,
+      originId: a.originId,
+      destId: a.destId,
+      skuId: a.skuId,
+      quantityUnits: a.qty,
+      shippedAt: hourToIso(h),
+      expectedArrivalAt: hourToIso(a.etaHour),
+    };
+    // EDI can lag; the shipper's notice sometimes arrives after the truck rolls.
+    sink.push(envelope(world, `asn-${a.originId}`, "asn", h, rng.int(0, 45), rng.float(0.9, 1), payload));
   }
 
   // --- Inventory feed: periodic, lagging on-hand extract per facility. ---

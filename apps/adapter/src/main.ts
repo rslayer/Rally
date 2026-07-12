@@ -31,6 +31,7 @@ const files = {
   telematics: read("telematics.csv"),
   wms: read("wms.csv"),
   inventory: read("inventory.json"),
+  asn: read("asn.json"),
 };
 
 // 1) Parse vendor files → the shared FeedEnvelope stream.

@@ -67,6 +67,7 @@ export interface HourTxn {
   picks: Array<{ facilityId: string; skuId: string; qty: number }>;
   receipts: Array<{ facilityId: string; skuId: string; qty: number; shipmentRef?: string }>;
   shipConfirms: Array<{ facilityId: string; skuId: string; qty: number; shipmentRef: string }>;
+  asns: Array<{ shipmentRef: string; originId: string; destId: string; skuId: string; qty: number; etaHour: number }>;
 }
 
 export interface RunMetrics {

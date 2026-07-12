@@ -37,6 +37,14 @@ describe("vendor codec", () => {
     expect(reloaded.every((m) => m.provenance === "real")).toBe(true);
   });
 
+  it("round-trips advance ship notices, preserving the declared destination", () => {
+    const origAsn = episode.feeds.find((m) => m.feedType === "asn")!;
+    const roundAsn = reloaded.find((m) => m.feedType === "asn" && m.sequence === origAsn.sequence)!;
+    expect(roundAsn).toBeDefined();
+    expect((roundAsn.payload as any).destId).toBe((origAsn.payload as any).destId);
+    expect((roundAsn.payload as any).quantityUnits).toBe((origAsn.payload as any).quantityUnits);
+  });
+
   it("keeps sequence gaps visible (empty telematics is a no-op)", () => {
     expect(parseTelematics(serializeTelematics([]))).toEqual([]);
   });

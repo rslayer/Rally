@@ -56,3 +56,6 @@ jobs:
 
       - name: Decisions on estimated state (principle #5 fidelity)
         run: npm run live-detect
+
+      - name: ASN / EDI-856 feed closes the inbound gap (precision lift)
+        run: npm run asn

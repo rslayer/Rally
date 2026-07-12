@@ -32,4 +32,13 @@ describe("detection on estimated state (Phase 7)", () => {
     expect(r.truePositive + r.falseNegative).toBe(r.truthFlags);
     expect(r.truePositive + r.falsePositive).toBe(r.estFlags);
   });
+
+  it("Slice 8: the ASN feed lifts precision sharply while recall holds (100%)", () => {
+    const withoutAsn = liveDetectionSweep(seeds, make, { ignoreAsn: true });
+    const withAsn = liveDetectionSweep(seeds, make, { ignoreAsn: false });
+    // The advance ship notice closes the inbound-visibility gap.
+    expect(withAsn.precision - withoutAsn.precision).toBeGreaterThan(0.3);
+    expect(withAsn.precision).toBeGreaterThanOrEqual(0.8);
+    expect(withAsn.recall).toBeGreaterThanOrEqual(0.9);
+  });
 });

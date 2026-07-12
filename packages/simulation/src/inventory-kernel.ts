@@ -120,7 +120,7 @@ export function initWorld(config: SimConfig, rng: SimWorld["rng"]): SimWorld {
     risks: [],
     decisions: [],
     metrics: emptyMetrics(),
-    txn: { picks: [], receipts: [], shipConfirms: [] },
+    txn: { picks: [], receipts: [], shipConfirms: [], asns: [] },
     seenRiskKeys: new Map(),
     seq: { shipment: 0, order: 0, run: runSeq, exc: 0, risk: 0, asset: 0 },
     feedSink: config.emitFeeds ? [] : undefined,
@@ -440,6 +440,9 @@ export function createReplenishment(
   // and qty. Joined to the truck's movement pings (which carry the destination)
   // by shipmentRef, this lets the estimator reconstruct in-flight inbound.
   world.txn.shipConfirms.push({ facilityId: originId, skuId, qty, shipmentRef: ship.shipmentId });
+  // Advance ship notice (EDI 856): the shipper declares dest + qty + ETA up
+  // front, so inbound is visible without joining telematics for a destination.
+  world.txn.asns.push({ shipmentRef: ship.shipmentId, originId, destId, skuId, qty, etaHour: ship.etaHour });
   return ship;
 }
 

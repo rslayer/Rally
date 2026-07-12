@@ -28,7 +28,7 @@ import type {
   Shipment,
   WarehouseEvent,
 } from "@rally/domain";
-import { haversineMiles, isMovement, isWarehouse, isInventorySnapshot, lane } from "@rally/domain";
+import { haversineMiles, isMovement, isWarehouse, isInventorySnapshot, isAsn, lane } from "@rally/domain";
 import { isoToHour } from "./time.js";
 import { laneLeadHours } from "./lead.js";
 
@@ -77,6 +77,7 @@ export function estimateState(
   const warehouseByFacility = new Map<string, WhEvt[]>();
   const snapsByFacility = new Map<string, SnapEvt[]>();
   const movementByAsset = new Map<string, MovEvt[]>();
+  const asnByRef = new Map<string, { originId: string; destId: string; skuId: string; qty: number; etaHour: number; conf: number }>();
 
   for (const m of feeds) {
     const emitHour = isoToHour(m.emittedAt);
@@ -89,6 +90,9 @@ export function estimateState(
       push(snapsByFacility, fac, { hour: emitHour, snap: m.payload, conf: m.quality.confidence });
     } else if (isMovement(m)) {
       push(movementByAsset, m.payload.assetId, { seq: m.sequence, hour: emitHour, ev: m.payload, conf: m.quality.confidence });
+    } else if (isAsn(m)) {
+      const a = m.payload;
+      asnByRef.set(a.shipmentRef, { originId: a.originId, destId: a.destId, skuId: a.skuId, qty: a.quantityUnits, etaHour: isoToHour(a.expectedArrivalAt), conf: m.quality.confidence });
     }
   }
 
@@ -161,8 +165,31 @@ export function estimateState(
     }
   }
 
-  // --- Movement → shipment association + in-transit reconstruction. ---
-  const { shipments, assets } = associateMovement(movementByAsset, net, { shipConfirm, receipts });
+  // --- In-flight inbound, ASN-first ---
+  // An advance ship notice declares dest + qty + ETA directly, so inbound is
+  // fully visible without a telematics join. ASN is authoritative; movement-based
+  // reconstruction is the fallback for shipments with no ASN (or no dest yet).
+  const asnShipments: Shipment[] = [];
+  for (const [ref, a] of asnByRef) {
+    if (receipts.has(ref)) continue; // already landed
+    asnShipments.push({
+      shipmentId: ref,
+      kind: a.originId.startsWith("PLANT") ? "replenishment" : "transfer",
+      laneId: `${a.originId}->${a.destId}`,
+      originId: a.originId,
+      destId: a.destId,
+      skuId: a.skuId,
+      quantityUnits: a.qty,
+      status: "in_transit",
+      etaHour: a.etaHour,
+      expedited: false,
+      confidence: Number(a.conf.toFixed(3)),
+    });
+  }
+
+  // --- Movement → asset tracking + fallback in-transit reconstruction. ---
+  const { shipments: movementShipments, assets } = associateMovement(movementByAsset, net, { shipConfirm, receipts });
+  const shipments = [...asnShipments, ...movementShipments.filter((s) => !asnByRef.has(s.shipmentId))];
 
   const overall = confidences.length ? confidences.reduce((a, b) => a + b, 0) / confidences.length : 0.5;
 
