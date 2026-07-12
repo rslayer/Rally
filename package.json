@@ -16,7 +16,9 @@
     "web": "tsx apps/web/src/server.ts",
     "fixtures": "tsx apps/adapter/src/generate-fixtures.ts",
     "adapter": "tsx apps/adapter/src/main.ts",
-    "backtest": "tsx packages/simulation/src/dev/backtest-check.ts"
+    "backtest": "tsx packages/simulation/src/dev/backtest-check.ts",
+    "live-sync": "tsx apps/adapter/src/live-sync.ts",
+    "mock-samsara": "tsx apps/adapter/src/mock-samsara.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

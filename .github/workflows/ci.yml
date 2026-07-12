@@ -44,3 +44,6 @@ jobs:
 
       - name: Real-feed adapter (vendor files → estimated state)
         run: npm run fixtures && npm run adapter
+
+      - name: Live vendor-API sync (auth · paginate · backfill · retry, vs mock)
+        run: npm run live-sync

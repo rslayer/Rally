@@ -30,11 +30,12 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 27 tests across all five build phases
+npm test             # 33 tests across all build phases
 npm run web          # the three-panel control tower → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
 npm run adapter      # ingest real-shaped vendor exports (CSV/JSON) → estimated state
+npm run live-sync    # Slice 3: pull from a (mock) Samsara-shaped API — auth, paging, backfill
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -113,12 +114,13 @@ packages/
   data-gen/     the Texas–Oklahoma network, demand, seeded RNG, disruption generator
   simulation/   the brains: state-estimator · inventory-kernel (the loop) ·
                 projection · resolver · scorer (oracle + 2×2) · backtest (record→replay)
-  importers/    the real-feed seam — validation, gap/lateness detection, and the
-                vendor codec (Samsara/WMS/ERP export files ⇄ FeedEnvelope)
+  importers/    the real-feed seam — validation, gap/lateness detection, the vendor
+                codec (export files ⇄ FeedEnvelope), and the live Samsara-shaped
+                connector (auth · pagination · backfill · retry · checkpoint) + its mock
 apps/
   worker/       runs the sweep and prints the scorecard   (npm run harness)
   web/          the three-panel control tower              (npm run web)
-  adapter/      ingest real-shaped vendor exports + fixtures (npm run adapter / fixtures)
+  adapter/      file ingest, live sync, fixtures, mock API (npm run adapter / live-sync / …)
 fixtures/
   real-feed/    vendor-shaped exports a customer would hand you (telematics.csv,
                 wms.csv, inventory.json) + the observed outcome (observed.json)
@@ -154,7 +156,7 @@ npm run backtest                                         # Phase 5
 ## Honest caveats (because that's the whole spirit)
 
 - The ~2–3% dangerous false-resolves are **real and shown on the scorecard**. The stragglers are sustained mega-spikes that one-shot actions only _partly_ fix — the proper cure is raising a standing policy level, a lever deliberately left out of this slice's toolbox. Surfacing that is exactly what the instrument is for.
-- It's a **closed simulated world** on purpose — that's the only way to have a perfect oracle to grade against. The real-feed adapter and backtest (Slice 2) show the bridge out; a _live_ production integration (auth, paging, backfill against a real vendor API) is the next step beyond a file-based adapter.
+- It's a **closed simulated world** on purpose — that's the only way to have a perfect oracle to grade against. The file adapter + backtest (Slice 2) and the production-shaped live connector (Slice 3) are the bridge out; the connector is developed and CI-tested against a faithful **mock** of the vendor API, so the only step left to run against production is a real base URL + token.
 - The resolver is **deterministic by design**. Model-based judgment is welcome later — but only where a plain policy provably can't decide, and only if it beats this baseline.
 
 ---
@@ -174,6 +176,33 @@ deterministic replay    true
 ```
 
 That's the whole point of building the seam this way: pointing Rally at a real telematics or WMS export is a **data-source swap**, and the backtest is how you'd earn trust that the twin matches reality before letting it decide anything.
+
+## Slice 3 — the live vendor-API connector 🔌
+
+A file export is one way in; a real fleet API is the other. `packages/importers/live` is a **production-shaped Samsara connector** — the real analog for PepsiCo-owned telematics — with everything a live integration actually needs:
+
+- **Auth** — bearer token read from the environment, never hardcoded; auth failures are *not* retried.
+- **Pagination** — cursor-based, following `endCursor` until the window is drained.
+- **Backfill** — a time-windowed historical pull that maps every GPS row into the same `FeedEnvelope<MovementEvent>`.
+- **Resilience** — retry with backoff on 429 / 5xx, honoring `Retry-After`.
+- **Resumability** — a `Checkpoint` after every page, so a crashed or rate-limited sync picks up exactly where it left off — no gaps, no double-pulls.
+
+Because I have no real Samsara account (and won't handle anyone's credentials), the connector is developed and CI-tested against a **faithful mock** of the API — the same way you'd build a real integration behind a sandbox. `npm run live-sync` runs the whole thing: it authenticates, backfills the window (surviving an injected rate-limit), merges the **live** telematics stream with **batch** WMS/ERP feeds, and hands the lot to the estimator:
+
+```
+backfill                17 pages · 1631 GPS rows
+resilience              1 retry · 1 rate-limit hit handled
+checkpoint (resumable)  rows=1631
+estimated @ 108h        confidence 1 · drift ≤ 4u · 24 assets tracked (21 in transit)
+```
+
+Going live is two environment variables — nothing else moves:
+
+```bash
+RALLY_SAMSARA_BASE_URL=https://api.samsara.com \
+RALLY_SAMSARA_TOKEN=***your-token*** \
+npm run live-sync
+```
 
 ---
 
