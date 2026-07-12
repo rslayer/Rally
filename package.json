@@ -13,7 +13,10 @@
     "test:watch": "vitest",
     "harness": "tsx apps/worker/src/main.ts",
     "loop": "tsx packages/simulation/src/dev/loop-check.ts",
-    "web": "tsx apps/web/src/server.ts"
+    "web": "tsx apps/web/src/server.ts",
+    "fixtures": "tsx apps/adapter/src/generate-fixtures.ts",
+    "adapter": "tsx apps/adapter/src/main.ts",
+    "backtest": "tsx packages/simulation/src/dev/backtest-check.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

@@ -1,0 +1,3222 @@
+[
+  {
+    "seq": 1,
+    "as_of": "2026-01-05T00:00:00.000Z",
+    "received": "2026-01-05T01:26:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 5415,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 7735,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3481,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 1,
+    "as_of": "2026-01-05T00:00:00.000Z",
+    "received": "2026-01-05T01:08:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4998,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 7140,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3213,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 1,
+    "as_of": "2026-01-05T00:00:00.000Z",
+    "received": "2026-01-05T01:31:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3749,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5355,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2410,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 1,
+    "as_of": "2026-01-05T00:00:00.000Z",
+    "received": "2026-01-05T01:40:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2916,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4165,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1874,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 1,
+    "as_of": "2026-01-05T00:00:00.000Z",
+    "received": "2026-01-05T01:51:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 17220,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 24600,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 11070,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 2,
+    "as_of": "2026-01-05T12:00:00.000Z",
+    "received": "2026-01-05T13:44:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4673,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 6676,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3004,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 2,
+    "as_of": "2026-01-05T12:00:00.000Z",
+    "received": "2026-01-05T12:48:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4313,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 6162,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2773,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 2,
+    "as_of": "2026-01-05T12:00:00.000Z",
+    "received": "2026-01-05T12:59:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3235,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4622,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2080,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 2,
+    "as_of": "2026-01-05T12:00:00.000Z",
+    "received": "2026-01-05T13:34:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2516,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3595,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1618,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 2,
+    "as_of": "2026-01-05T12:00:00.000Z",
+    "received": "2026-01-05T13:46:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 17220,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 24600,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 11070,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 3,
+    "as_of": "2026-01-06T00:00:00.000Z",
+    "received": "2026-01-06T00:56:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3977,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5681,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2557,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 3,
+    "as_of": "2026-01-06T00:00:00.000Z",
+    "received": "2026-01-06T01:37:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3671,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5244,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2360,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 3,
+    "as_of": "2026-01-06T00:00:00.000Z",
+    "received": "2026-01-06T00:47:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2753,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3933,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1770,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 3,
+    "as_of": "2026-01-06T00:00:00.000Z",
+    "received": "2026-01-06T01:04:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2141,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3059,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1377,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 3,
+    "as_of": "2026-01-06T00:00:00.000Z",
+    "received": "2026-01-06T01:04:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 26220,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 36600,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 17070,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 4,
+    "as_of": "2026-01-06T12:00:00.000Z",
+    "received": "2026-01-06T13:08:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3235,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4622,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2080,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 4,
+    "as_of": "2026-01-06T12:00:00.000Z",
+    "received": "2026-01-06T13:12:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2986,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4266,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1920,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 4,
+    "as_of": "2026-01-06T12:00:00.000Z",
+    "received": "2026-01-06T12:43:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2240,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3200,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1440,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 4,
+    "as_of": "2026-01-06T12:00:00.000Z",
+    "received": "2026-01-06T13:03:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1742,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2489,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1120,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 4,
+    "as_of": "2026-01-06T12:00:00.000Z",
+    "received": "2026-01-06T13:28:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 26220,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 36600,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 17070,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 5,
+    "as_of": "2026-01-07T00:00:00.000Z",
+    "received": "2026-01-07T01:07:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2539,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3628,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1632,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 5,
+    "as_of": "2026-01-07T00:00:00.000Z",
+    "received": "2026-01-07T00:32:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2344,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3349,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1507,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 5,
+    "as_of": "2026-01-07T00:00:00.000Z",
+    "received": "2026-01-07T01:41:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1758,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2511,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1130,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 5,
+    "as_of": "2026-01-07T00:00:00.000Z",
+    "received": "2026-01-07T01:34:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1367,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1953,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 879,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 5,
+    "as_of": "2026-01-07T00:00:00.000Z",
+    "received": "2026-01-07T00:34:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 23138,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 31341,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 15303,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 6,
+    "as_of": "2026-01-07T12:00:00.000Z",
+    "received": "2026-01-07T12:47:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1798,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2568,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1156,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 6,
+    "as_of": "2026-01-07T12:00:00.000Z",
+    "received": "2026-01-07T13:56:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1659,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2371,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1067,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 6,
+    "as_of": "2026-01-07T12:00:00.000Z",
+    "received": "2026-01-07T13:27:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1245,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1778,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 800,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 6,
+    "as_of": "2026-01-07T12:00:00.000Z",
+    "received": "2026-01-07T13:47:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 968,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1383,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 622,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 6,
+    "as_of": "2026-01-07T12:00:00.000Z",
+    "received": "2026-01-07T13:07:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 23138,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 31341,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 15303,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 7,
+    "as_of": "2026-01-08T00:00:00.000Z",
+    "received": "2026-01-08T00:34:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4933,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 6955,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3171,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 7,
+    "as_of": "2026-01-08T00:00:00.000Z",
+    "received": "2026-01-08T00:37:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1017,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1453,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 654,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 7,
+    "as_of": "2026-01-08T00:00:00.000Z",
+    "received": "2026-01-08T01:13:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 763,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1090,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 490,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 7,
+    "as_of": "2026-01-08T00:00:00.000Z",
+    "received": "2026-01-08T01:18:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2656,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3794,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1707,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 7,
+    "as_of": "2026-01-08T00:00:00.000Z",
+    "received": "2026-01-08T00:47:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 32138,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 43341,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 21303,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 8,
+    "as_of": "2026-01-08T12:00:00.000Z",
+    "received": "2026-01-08T12:57:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4191,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4412,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2695,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 8,
+    "as_of": "2026-01-08T12:00:00.000Z",
+    "received": "2026-01-08T13:18:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3868,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5526,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2487,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 8,
+    "as_of": "2026-01-08T12:00:00.000Z",
+    "received": "2026-01-08T13:48:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2901,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4145,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1865,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 8,
+    "as_of": "2026-01-08T12:00:00.000Z",
+    "received": "2026-01-08T13:30:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2257,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3224,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1451,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 8,
+    "as_of": "2026-01-08T12:00:00.000Z",
+    "received": "2026-01-08T14:00:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 32138,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 43341,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 21303,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 9,
+    "as_of": "2026-01-09T00:00:00.000Z",
+    "received": "2026-01-09T00:46:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3495,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2026,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2247,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 9,
+    "as_of": "2026-01-09T00:00:00.000Z",
+    "received": "2026-01-09T01:20:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3226,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4608,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2074,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 9,
+    "as_of": "2026-01-09T00:00:00.000Z",
+    "received": "2026-01-09T00:50:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2419,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3457,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1555,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 9,
+    "as_of": "2026-01-09T00:00:00.000Z",
+    "received": "2026-01-09T00:37:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1882,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2689,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1210,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 9,
+    "as_of": "2026-01-09T00:00:00.000Z",
+    "received": "2026-01-09T01:51:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 32070,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 39421,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 21474,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 10,
+    "as_of": "2026-01-09T12:00:00.000Z",
+    "received": "2026-01-09T12:52:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2754,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 0,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1770,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 10,
+    "as_of": "2026-01-09T12:00:00.000Z",
+    "received": "2026-01-09T12:47:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2541,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3630,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1634,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 10,
+    "as_of": "2026-01-09T12:00:00.000Z",
+    "received": "2026-01-09T13:43:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1906,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2723,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1225,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 10,
+    "as_of": "2026-01-09T12:00:00.000Z",
+    "received": "2026-01-09T12:31:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1483,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2118,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 953,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 10,
+    "as_of": "2026-01-09T12:00:00.000Z",
+    "received": "2026-01-09T13:09:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 32070,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 39421,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 21474,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 11,
+    "as_of": "2026-01-10T00:00:00.000Z",
+    "received": "2026-01-10T01:56:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4926,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 6687,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3166,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 11,
+    "as_of": "2026-01-10T00:00:00.000Z",
+    "received": "2026-01-10T01:13:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1893,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2703,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1217,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 11,
+    "as_of": "2026-01-10T00:00:00.000Z",
+    "received": "2026-01-10T01:15:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1419,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2028,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 913,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 11,
+    "as_of": "2026-01-10T00:00:00.000Z",
+    "received": "2026-01-10T01:28:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2652,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3788,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1705,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 11,
+    "as_of": "2026-01-10T00:00:00.000Z",
+    "received": "2026-01-10T01:38:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 41070,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 51421,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 27474,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 12,
+    "as_of": "2026-01-10T12:00:00.000Z",
+    "received": "2026-01-10T13:51:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4073,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5469,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2618,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 12,
+    "as_of": "2026-01-10T12:00:00.000Z",
+    "received": "2026-01-10T13:30:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3759,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5371,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2416,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 12,
+    "as_of": "2026-01-10T12:00:00.000Z",
+    "received": "2026-01-10T13:36:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2820,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4028,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1813,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 12,
+    "as_of": "2026-01-10T12:00:00.000Z",
+    "received": "2026-01-10T12:49:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2193,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3133,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1410,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 12,
+    "as_of": "2026-01-10T12:00:00.000Z",
+    "received": "2026-01-10T13:31:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 41070,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 51421,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 27474,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 13,
+    "as_of": "2026-01-11T00:00:00.000Z",
+    "received": "2026-01-11T01:29:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3272,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4325,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2104,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 13,
+    "as_of": "2026-01-11T00:00:00.000Z",
+    "received": "2026-01-11T01:54:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3021,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4315,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1941,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 13,
+    "as_of": "2026-01-11T00:00:00.000Z",
+    "received": "2026-01-11T01:01:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2266,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3236,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1457,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 13,
+    "as_of": "2026-01-11T00:00:00.000Z",
+    "received": "2026-01-11T00:53:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1762,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2517,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1132,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 13,
+    "as_of": "2026-01-11T00:00:00.000Z",
+    "received": "2026-01-11T00:40:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 40301,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 49114,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 27193,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 14,
+    "as_of": "2026-01-11T12:00:00.000Z",
+    "received": "2026-01-11T13:45:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2420,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3107,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1555,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 14,
+    "as_of": "2026-01-11T12:00:00.000Z",
+    "received": "2026-01-11T12:41:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2233,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3191,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1435,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 14,
+    "as_of": "2026-01-11T12:00:00.000Z",
+    "received": "2026-01-11T13:38:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1675,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2393,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1077,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 14,
+    "as_of": "2026-01-11T12:00:00.000Z",
+    "received": "2026-01-11T12:41:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1303,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1861,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 837,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 14,
+    "as_of": "2026-01-11T12:00:00.000Z",
+    "received": "2026-01-11T13:06:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 40301,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 49114,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 27193,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 15,
+    "as_of": "2026-01-12T00:00:00.000Z",
+    "received": "2026-01-12T00:52:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4724,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 6748,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3036,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 15,
+    "as_of": "2026-01-12T00:00:00.000Z",
+    "received": "2026-01-12T00:35:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1501,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2144,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 964,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 15,
+    "as_of": "2026-01-12T00:00:00.000Z",
+    "received": "2026-01-12T01:44:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1126,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1608,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 724,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 15,
+    "as_of": "2026-01-12T00:00:00.000Z",
+    "received": "2026-01-12T01:00:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2544,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3633,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1636,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 15,
+    "as_of": "2026-01-12T00:00:00.000Z",
+    "received": "2026-01-12T00:59:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 49301,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 61114,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 33193,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 16,
+    "as_of": "2026-01-12T12:00:00.000Z",
+    "received": "2026-01-12T13:00:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3982,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5689,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2560,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 16,
+    "as_of": "2026-01-12T12:00:00.000Z",
+    "received": "2026-01-12T13:05:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3675,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5251,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2363,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 16,
+    "as_of": "2026-01-12T12:00:00.000Z",
+    "received": "2026-01-12T12:41:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2757,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3938,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1772,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 16,
+    "as_of": "2026-01-12T12:00:00.000Z",
+    "received": "2026-01-12T13:29:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2144,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3063,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1379,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 16,
+    "as_of": "2026-01-12T12:00:00.000Z",
+    "received": "2026-01-12T12:39:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 49301,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 61114,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 33193,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 17,
+    "as_of": "2026-01-13T00:00:00.000Z",
+    "received": "2026-01-13T00:30:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3286,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4695,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2112,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 17,
+    "as_of": "2026-01-13T00:00:00.000Z",
+    "received": "2026-01-13T01:05:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3033,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4333,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1950,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 17,
+    "as_of": "2026-01-13T00:00:00.000Z",
+    "received": "2026-01-13T00:33:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2275,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3250,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1462,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 17,
+    "as_of": "2026-01-13T00:00:00.000Z",
+    "received": "2026-01-13T00:56:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1770,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2527,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1138,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 17,
+    "as_of": "2026-01-13T00:00:00.000Z",
+    "received": "2026-01-13T00:30:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 48575,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 59219,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 32940,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 18,
+    "as_of": "2026-01-13T12:00:00.000Z",
+    "received": "2026-01-13T13:34:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2545,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3635,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1635,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 18,
+    "as_of": "2026-01-13T12:00:00.000Z",
+    "received": "2026-01-13T13:31:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2348,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3355,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1510,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 18,
+    "as_of": "2026-01-13T12:00:00.000Z",
+    "received": "2026-01-13T13:04:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1761,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2517,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1132,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 18,
+    "as_of": "2026-01-13T12:00:00.000Z",
+    "received": "2026-01-13T12:34:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1370,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1957,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 881,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 18,
+    "as_of": "2026-01-13T12:00:00.000Z",
+    "received": "2026-01-13T12:45:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 48575,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 59219,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 32940,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 19,
+    "as_of": "2026-01-14T00:00:00.000Z",
+    "received": "2026-01-14T02:00:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4933,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 7046,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3171,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 19,
+    "as_of": "2026-01-14T00:00:00.000Z",
+    "received": "2026-01-14T00:38:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1706,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2438,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1097,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 19,
+    "as_of": "2026-01-14T00:00:00.000Z",
+    "received": "2026-01-14T01:26:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1280,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1828,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 822,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 19,
+    "as_of": "2026-01-14T00:00:00.000Z",
+    "received": "2026-01-14T01:40:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2655,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3795,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1707,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 19,
+    "as_of": "2026-01-14T00:00:00.000Z",
+    "received": "2026-01-14T01:06:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 57575,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 71219,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 38940,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 20,
+    "as_of": "2026-01-14T12:00:00.000Z",
+    "received": "2026-01-14T13:11:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4191,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5987,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2694,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 20,
+    "as_of": "2026-01-14T12:00:00.000Z",
+    "received": "2026-01-14T12:46:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3868,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5527,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2487,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 20,
+    "as_of": "2026-01-14T12:00:00.000Z",
+    "received": "2026-01-14T13:01:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2901,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4145,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1865,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 20,
+    "as_of": "2026-01-14T12:00:00.000Z",
+    "received": "2026-01-14T13:57:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2256,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3224,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1451,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 20,
+    "as_of": "2026-01-14T12:00:00.000Z",
+    "received": "2026-01-14T13:13:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 57575,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 71219,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 38940,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 21,
+    "as_of": "2026-01-15T00:00:00.000Z",
+    "received": "2026-01-15T00:35:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3495,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4992,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2247,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 21,
+    "as_of": "2026-01-15T00:00:00.000Z",
+    "received": "2026-01-15T01:27:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3226,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4609,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2074,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 21,
+    "as_of": "2026-01-15T00:00:00.000Z",
+    "received": "2026-01-15T00:50:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2419,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3456,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1556,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 21,
+    "as_of": "2026-01-15T00:00:00.000Z",
+    "received": "2026-01-15T01:40:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1881,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2689,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1210,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 21,
+    "as_of": "2026-01-15T00:00:00.000Z",
+    "received": "2026-01-15T01:18:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 57506,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 70265,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 39112,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 22,
+    "as_of": "2026-01-15T12:00:00.000Z",
+    "received": "2026-01-15T13:51:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2754,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3933,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1770,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 22,
+    "as_of": "2026-01-15T12:00:00.000Z",
+    "received": "2026-01-15T13:39:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2541,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3631,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1634,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 22,
+    "as_of": "2026-01-15T12:00:00.000Z",
+    "received": "2026-01-15T12:40:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1906,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2723,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1226,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 22,
+    "as_of": "2026-01-15T12:00:00.000Z",
+    "received": "2026-01-15T13:17:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1482,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2118,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 953,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 22,
+    "as_of": "2026-01-15T12:00:00.000Z",
+    "received": "2026-01-15T12:41:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 57506,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 70265,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 39112,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 23,
+    "as_of": "2026-01-16T00:00:00.000Z",
+    "received": "2026-01-16T01:16:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4933,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 7047,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3171,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 23,
+    "as_of": "2026-01-16T00:00:00.000Z",
+    "received": "2026-01-16T01:51:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1899,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2713,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1221,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 23,
+    "as_of": "2026-01-16T00:00:00.000Z",
+    "received": "2026-01-16T00:59:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1424,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2035,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 916,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 23,
+    "as_of": "2026-01-16T00:00:00.000Z",
+    "received": "2026-01-16T01:22:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2656,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3794,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1707,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 23,
+    "as_of": "2026-01-16T00:00:00.000Z",
+    "received": "2026-01-16T01:38:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 66506,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 82265,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 45112,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 24,
+    "as_of": "2026-01-16T12:00:00.000Z",
+    "received": "2026-01-16T13:26:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4191,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5987,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2694,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 24,
+    "as_of": "2026-01-16T12:00:00.000Z",
+    "received": "2026-01-16T13:17:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3868,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5526,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2487,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 24,
+    "as_of": "2026-01-16T12:00:00.000Z",
+    "received": "2026-01-16T12:55:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2902,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4145,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1865,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 24,
+    "as_of": "2026-01-16T12:00:00.000Z",
+    "received": "2026-01-16T13:31:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2257,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3223,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1450,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 24,
+    "as_of": "2026-01-16T12:00:00.000Z",
+    "received": "2026-01-16T13:19:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 66506,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 82265,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 45112,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 25,
+    "as_of": "2026-01-17T00:00:00.000Z",
+    "received": "2026-01-17T01:51:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3488,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4983,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2242,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 25,
+    "as_of": "2026-01-17T00:00:00.000Z",
+    "received": "2026-01-17T01:16:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3219,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 4599,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2070,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 25,
+    "as_of": "2026-01-17T00:00:00.000Z",
+    "received": "2026-01-17T01:32:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2415,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3450,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1552,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 25,
+    "as_of": "2026-01-17T00:00:00.000Z",
+    "received": "2026-01-17T00:43:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1878,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2683,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1207,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 25,
+    "as_of": "2026-01-17T00:00:00.000Z",
+    "received": "2026-01-17T01:10:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 66416,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 81280,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 45268,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 26,
+    "as_of": "2026-01-17T12:00:00.000Z",
+    "received": "2026-01-17T13:59:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2635,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3765,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1694,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 26,
+    "as_of": "2026-01-17T12:00:00.000Z",
+    "received": "2026-01-17T13:13:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2432,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3475,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1564,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 26,
+    "as_of": "2026-01-17T12:00:00.000Z",
+    "received": "2026-01-17T13:32:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1825,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2607,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1172,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 26,
+    "as_of": "2026-01-17T12:00:00.000Z",
+    "received": "2026-01-17T13:29:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1419,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2027,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 912,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 26,
+    "as_of": "2026-01-17T12:00:00.000Z",
+    "received": "2026-01-17T12:58:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 66416,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 81280,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 45268,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 27,
+    "as_of": "2026-01-18T00:00:00.000Z",
+    "received": "2026-01-18T01:54:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 4717,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 6738,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 3032,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 27,
+    "as_of": "2026-01-18T00:00:00.000Z",
+    "received": "2026-01-18T00:59:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1693,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2419,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1089,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 27,
+    "as_of": "2026-01-18T00:00:00.000Z",
+    "received": "2026-01-18T01:21:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 1270,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 1815,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 816,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 27,
+    "as_of": "2026-01-18T00:00:00.000Z",
+    "received": "2026-01-18T01:12:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2540,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3628,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1633,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 27,
+    "as_of": "2026-01-18T00:00:00.000Z",
+    "received": "2026-01-18T01:55:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 75416,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 93280,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 51268,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 28,
+    "as_of": "2026-01-18T12:00:00.000Z",
+    "received": "2026-01-18T12:54:00.000Z",
+    "facility_id": "DC_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3864,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5520,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2484,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 28,
+    "as_of": "2026-01-18T12:00:00.000Z",
+    "received": "2026-01-18T13:55:00.000Z",
+    "facility_id": "DC_HOU",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 3567,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 5096,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 2293,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 28,
+    "as_of": "2026-01-18T12:00:00.000Z",
+    "received": "2026-01-18T13:49:00.000Z",
+    "facility_id": "DC_SAT",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2675,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 3822,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1720,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 28,
+    "as_of": "2026-01-18T12:00:00.000Z",
+    "received": "2026-01-18T13:44:00.000Z",
+    "facility_id": "DC_OKC",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 2081,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 2972,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 1338,
+        "allocated": 0
+      }
+    ]
+  },
+  {
+    "seq": 28,
+    "as_of": "2026-01-18T12:00:00.000Z",
+    "received": "2026-01-18T13:01:00.000Z",
+    "facility_id": "PLANT_DAL",
+    "positions": [
+      {
+        "sku": "SKU_CHIP",
+        "on_hand": 75416,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_COLA",
+        "on_hand": 93280,
+        "allocated": 0
+      },
+      {
+        "sku": "SKU_BAR",
+        "on_hand": 51268,
+        "allocated": 0
+      }
+    ]
+  }
+]

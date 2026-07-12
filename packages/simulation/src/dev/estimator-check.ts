@@ -27,7 +27,9 @@ const probeHours = [5, 17, 29, 41, 77, 101, 149, 197, 233, 293, 331];
 const truthAt = new Map<number, ScenarioState>();
 for (let h = 0; h < config.horizonHours; h++) {
   stepSimulation(world);
-  if (probeHours.includes(world.hour)) truthAt.set(world.hour, snapshot(world));
+  // Feeds for the just-processed hour are labeled `world.hour - 1`; sample truth
+  // on the same convention so an anchor never straddles a same-hour delivery.
+  if (probeHours.includes(world.hour - 1)) truthAt.set(world.hour - 1, snapshot(world));
 }
 const feeds: AnyFeedMessage[] = world.feedSink ?? [];
 

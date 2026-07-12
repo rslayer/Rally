@@ -1,0 +1,1078 @@
+{
+  "seed": 4000,
+  "disruption": {
+    "disruptionId": "BT-DAL-COLA-HEATWAVE",
+    "type": "demand_spike",
+    "facilityId": "DC_DAL",
+    "skuId": "SKU_COLA",
+    "startHour": 72,
+    "durationHours": 48,
+    "magnitude": 2.4,
+    "label": "resolvable",
+    "expects": "projected_stockout"
+  },
+  "horizonHours": 336,
+  "probeHours": [
+    6,
+    12,
+    18,
+    24,
+    30,
+    36,
+    42,
+    48,
+    54,
+    60,
+    66,
+    72,
+    78,
+    84,
+    90,
+    96,
+    102,
+    108,
+    114,
+    120,
+    126,
+    132,
+    138,
+    144,
+    150,
+    156,
+    162,
+    168,
+    174,
+    180,
+    186,
+    192,
+    198,
+    204,
+    210,
+    216,
+    222,
+    228,
+    234,
+    240,
+    246,
+    252,
+    258,
+    264,
+    270,
+    276,
+    282,
+    288,
+    294,
+    300,
+    306,
+    312,
+    318,
+    324,
+    330
+  ],
+  "truth": [
+    {
+      "hour": 6,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 5142,
+        "DC_DAL|SKU_COLA": 7345,
+        "DC_DAL|SKU_BAR": 3305,
+        "DC_HOU|SKU_CHIP": 4746,
+        "DC_HOU|SKU_COLA": 6780,
+        "DC_HOU|SKU_BAR": 3051,
+        "DC_SAT|SKU_CHIP": 3560,
+        "DC_SAT|SKU_COLA": 5085,
+        "DC_SAT|SKU_BAR": 2288,
+        "DC_OKC|SKU_CHIP": 2769,
+        "DC_OKC|SKU_COLA": 3955,
+        "DC_OKC|SKU_BAR": 1780
+      }
+    },
+    {
+      "hour": 12,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4673,
+        "DC_DAL|SKU_COLA": 6676,
+        "DC_DAL|SKU_BAR": 3004,
+        "DC_HOU|SKU_CHIP": 4313,
+        "DC_HOU|SKU_COLA": 6162,
+        "DC_HOU|SKU_BAR": 2773,
+        "DC_SAT|SKU_CHIP": 3235,
+        "DC_SAT|SKU_COLA": 4622,
+        "DC_SAT|SKU_BAR": 2080,
+        "DC_OKC|SKU_CHIP": 2516,
+        "DC_OKC|SKU_COLA": 3595,
+        "DC_OKC|SKU_BAR": 1618
+      }
+    },
+    {
+      "hour": 18,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4250,
+        "DC_DAL|SKU_COLA": 6071,
+        "DC_DAL|SKU_BAR": 2732,
+        "DC_HOU|SKU_CHIP": 3923,
+        "DC_HOU|SKU_COLA": 5604,
+        "DC_HOU|SKU_BAR": 2522,
+        "DC_SAT|SKU_CHIP": 2942,
+        "DC_SAT|SKU_COLA": 4203,
+        "DC_SAT|SKU_BAR": 1891,
+        "DC_OKC|SKU_CHIP": 2288,
+        "DC_OKC|SKU_COLA": 3269,
+        "DC_OKC|SKU_BAR": 1471
+      }
+    },
+    {
+      "hour": 24,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3977,
+        "DC_DAL|SKU_COLA": 5681,
+        "DC_DAL|SKU_BAR": 2557,
+        "DC_HOU|SKU_CHIP": 3671,
+        "DC_HOU|SKU_COLA": 5244,
+        "DC_HOU|SKU_BAR": 2360,
+        "DC_SAT|SKU_CHIP": 2753,
+        "DC_SAT|SKU_COLA": 3933,
+        "DC_SAT|SKU_BAR": 1770,
+        "DC_OKC|SKU_CHIP": 2141,
+        "DC_OKC|SKU_COLA": 3059,
+        "DC_OKC|SKU_BAR": 1377
+      }
+    },
+    {
+      "hour": 30,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3704,
+        "DC_DAL|SKU_COLA": 5291,
+        "DC_DAL|SKU_BAR": 2381,
+        "DC_HOU|SKU_CHIP": 3419,
+        "DC_HOU|SKU_COLA": 4884,
+        "DC_HOU|SKU_BAR": 2198,
+        "DC_SAT|SKU_CHIP": 2564,
+        "DC_SAT|SKU_COLA": 3663,
+        "DC_SAT|SKU_BAR": 1648,
+        "DC_OKC|SKU_CHIP": 1994,
+        "DC_OKC|SKU_COLA": 2849,
+        "DC_OKC|SKU_BAR": 1282
+      }
+    },
+    {
+      "hour": 36,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3235,
+        "DC_DAL|SKU_COLA": 4622,
+        "DC_DAL|SKU_BAR": 2080,
+        "DC_HOU|SKU_CHIP": 2986,
+        "DC_HOU|SKU_COLA": 4266,
+        "DC_HOU|SKU_BAR": 1920,
+        "DC_SAT|SKU_CHIP": 2240,
+        "DC_SAT|SKU_COLA": 3200,
+        "DC_SAT|SKU_BAR": 1440,
+        "DC_OKC|SKU_CHIP": 1742,
+        "DC_OKC|SKU_COLA": 2489,
+        "DC_OKC|SKU_BAR": 1120
+      }
+    },
+    {
+      "hour": 42,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2812,
+        "DC_DAL|SKU_COLA": 4018,
+        "DC_DAL|SKU_BAR": 1808,
+        "DC_HOU|SKU_CHIP": 2596,
+        "DC_HOU|SKU_COLA": 3709,
+        "DC_HOU|SKU_BAR": 1669,
+        "DC_SAT|SKU_CHIP": 1947,
+        "DC_SAT|SKU_COLA": 2781,
+        "DC_SAT|SKU_BAR": 1252,
+        "DC_OKC|SKU_CHIP": 1514,
+        "DC_OKC|SKU_COLA": 2163,
+        "DC_OKC|SKU_BAR": 973
+      }
+    },
+    {
+      "hour": 48,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2539,
+        "DC_DAL|SKU_COLA": 3628,
+        "DC_DAL|SKU_BAR": 1632,
+        "DC_HOU|SKU_CHIP": 2344,
+        "DC_HOU|SKU_COLA": 3349,
+        "DC_HOU|SKU_BAR": 1507,
+        "DC_SAT|SKU_CHIP": 1758,
+        "DC_SAT|SKU_COLA": 2511,
+        "DC_SAT|SKU_BAR": 1130,
+        "DC_OKC|SKU_CHIP": 1367,
+        "DC_OKC|SKU_COLA": 1953,
+        "DC_OKC|SKU_BAR": 879
+      }
+    },
+    {
+      "hour": 54,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2266,
+        "DC_DAL|SKU_COLA": 3238,
+        "DC_DAL|SKU_BAR": 1457,
+        "DC_HOU|SKU_CHIP": 2092,
+        "DC_HOU|SKU_COLA": 2989,
+        "DC_HOU|SKU_BAR": 1345,
+        "DC_SAT|SKU_CHIP": 1569,
+        "DC_SAT|SKU_COLA": 2241,
+        "DC_SAT|SKU_BAR": 1009,
+        "DC_OKC|SKU_CHIP": 1220,
+        "DC_OKC|SKU_COLA": 1743,
+        "DC_OKC|SKU_BAR": 784
+      }
+    },
+    {
+      "hour": 60,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 1798,
+        "DC_DAL|SKU_COLA": 2568,
+        "DC_DAL|SKU_BAR": 1156,
+        "DC_HOU|SKU_CHIP": 1659,
+        "DC_HOU|SKU_COLA": 2371,
+        "DC_HOU|SKU_BAR": 1067,
+        "DC_SAT|SKU_CHIP": 1245,
+        "DC_SAT|SKU_COLA": 1778,
+        "DC_SAT|SKU_BAR": 800,
+        "DC_OKC|SKU_CHIP": 968,
+        "DC_OKC|SKU_COLA": 1383,
+        "DC_OKC|SKU_BAR": 622
+      }
+    },
+    {
+      "hour": 66,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 1375,
+        "DC_DAL|SKU_COLA": 1964,
+        "DC_DAL|SKU_BAR": 884,
+        "DC_HOU|SKU_CHIP": 1269,
+        "DC_HOU|SKU_COLA": 1813,
+        "DC_HOU|SKU_BAR": 816,
+        "DC_SAT|SKU_CHIP": 952,
+        "DC_SAT|SKU_COLA": 1360,
+        "DC_SAT|SKU_BAR": 612,
+        "DC_OKC|SKU_CHIP": 740,
+        "DC_OKC|SKU_COLA": 1057,
+        "DC_OKC|SKU_BAR": 476
+      }
+    },
+    {
+      "hour": 72,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4933,
+        "DC_DAL|SKU_COLA": 6955,
+        "DC_DAL|SKU_BAR": 3171,
+        "DC_HOU|SKU_CHIP": 1017,
+        "DC_HOU|SKU_COLA": 1453,
+        "DC_HOU|SKU_BAR": 654,
+        "DC_SAT|SKU_CHIP": 763,
+        "DC_SAT|SKU_COLA": 1090,
+        "DC_SAT|SKU_BAR": 490,
+        "DC_OKC|SKU_CHIP": 2656,
+        "DC_OKC|SKU_COLA": 3794,
+        "DC_OKC|SKU_BAR": 1707
+      }
+    },
+    {
+      "hour": 78,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4660,
+        "DC_DAL|SKU_COLA": 6019,
+        "DC_DAL|SKU_BAR": 2996,
+        "DC_HOU|SKU_CHIP": 4301,
+        "DC_HOU|SKU_COLA": 6144,
+        "DC_HOU|SKU_BAR": 2765,
+        "DC_SAT|SKU_CHIP": 3226,
+        "DC_SAT|SKU_COLA": 4609,
+        "DC_SAT|SKU_BAR": 2074,
+        "DC_OKC|SKU_CHIP": 2509,
+        "DC_OKC|SKU_COLA": 3584,
+        "DC_OKC|SKU_BAR": 1613
+      }
+    },
+    {
+      "hour": 84,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4191,
+        "DC_DAL|SKU_COLA": 4412,
+        "DC_DAL|SKU_BAR": 2695,
+        "DC_HOU|SKU_CHIP": 3868,
+        "DC_HOU|SKU_COLA": 5526,
+        "DC_HOU|SKU_BAR": 2487,
+        "DC_SAT|SKU_CHIP": 2901,
+        "DC_SAT|SKU_COLA": 4145,
+        "DC_SAT|SKU_BAR": 1865,
+        "DC_OKC|SKU_CHIP": 2257,
+        "DC_OKC|SKU_COLA": 3224,
+        "DC_OKC|SKU_BAR": 1451
+      }
+    },
+    {
+      "hour": 90,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3768,
+        "DC_DAL|SKU_COLA": 2962,
+        "DC_DAL|SKU_BAR": 2423,
+        "DC_HOU|SKU_CHIP": 3478,
+        "DC_HOU|SKU_COLA": 4968,
+        "DC_HOU|SKU_BAR": 2236,
+        "DC_SAT|SKU_CHIP": 2608,
+        "DC_SAT|SKU_COLA": 3727,
+        "DC_SAT|SKU_BAR": 1677,
+        "DC_OKC|SKU_CHIP": 2029,
+        "DC_OKC|SKU_COLA": 2899,
+        "DC_OKC|SKU_BAR": 1304
+      }
+    },
+    {
+      "hour": 96,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3495,
+        "DC_DAL|SKU_COLA": 2026,
+        "DC_DAL|SKU_BAR": 2247,
+        "DC_HOU|SKU_CHIP": 3226,
+        "DC_HOU|SKU_COLA": 4608,
+        "DC_HOU|SKU_BAR": 2074,
+        "DC_SAT|SKU_CHIP": 2419,
+        "DC_SAT|SKU_COLA": 3457,
+        "DC_SAT|SKU_BAR": 1555,
+        "DC_OKC|SKU_CHIP": 1882,
+        "DC_OKC|SKU_COLA": 2689,
+        "DC_OKC|SKU_BAR": 1210
+      }
+    },
+    {
+      "hour": 102,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3222,
+        "DC_DAL|SKU_COLA": 1090,
+        "DC_DAL|SKU_BAR": 2072,
+        "DC_HOU|SKU_CHIP": 2974,
+        "DC_HOU|SKU_COLA": 4248,
+        "DC_HOU|SKU_BAR": 1912,
+        "DC_SAT|SKU_CHIP": 2230,
+        "DC_SAT|SKU_COLA": 3187,
+        "DC_SAT|SKU_BAR": 1434,
+        "DC_OKC|SKU_CHIP": 1735,
+        "DC_OKC|SKU_COLA": 2479,
+        "DC_OKC|SKU_BAR": 1115
+      }
+    },
+    {
+      "hour": 108,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2754,
+        "DC_DAL|SKU_COLA": 0,
+        "DC_DAL|SKU_BAR": 1770,
+        "DC_HOU|SKU_CHIP": 2541,
+        "DC_HOU|SKU_COLA": 3630,
+        "DC_HOU|SKU_BAR": 1634,
+        "DC_SAT|SKU_CHIP": 1906,
+        "DC_SAT|SKU_COLA": 2723,
+        "DC_SAT|SKU_BAR": 1225,
+        "DC_OKC|SKU_CHIP": 1483,
+        "DC_OKC|SKU_COLA": 2118,
+        "DC_OKC|SKU_BAR": 953
+      }
+    },
+    {
+      "hour": 114,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2330,
+        "DC_DAL|SKU_COLA": 0,
+        "DC_DAL|SKU_BAR": 1498,
+        "DC_HOU|SKU_CHIP": 2151,
+        "DC_HOU|SKU_COLA": 3072,
+        "DC_HOU|SKU_BAR": 1383,
+        "DC_SAT|SKU_CHIP": 1613,
+        "DC_SAT|SKU_COLA": 2305,
+        "DC_SAT|SKU_BAR": 1037,
+        "DC_OKC|SKU_CHIP": 1255,
+        "DC_OKC|SKU_COLA": 1793,
+        "DC_OKC|SKU_BAR": 807
+      }
+    },
+    {
+      "hour": 120,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4926,
+        "DC_DAL|SKU_COLA": 6687,
+        "DC_DAL|SKU_BAR": 3166,
+        "DC_HOU|SKU_CHIP": 1893,
+        "DC_HOU|SKU_COLA": 2703,
+        "DC_HOU|SKU_BAR": 1217,
+        "DC_SAT|SKU_CHIP": 1419,
+        "DC_SAT|SKU_COLA": 2028,
+        "DC_SAT|SKU_BAR": 913,
+        "DC_OKC|SKU_CHIP": 2652,
+        "DC_OKC|SKU_COLA": 3788,
+        "DC_OKC|SKU_BAR": 1705
+      }
+    },
+    {
+      "hour": 126,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4612,
+        "DC_DAL|SKU_COLA": 6239,
+        "DC_DAL|SKU_BAR": 2965,
+        "DC_HOU|SKU_CHIP": 4257,
+        "DC_HOU|SKU_COLA": 6081,
+        "DC_HOU|SKU_BAR": 2736,
+        "DC_SAT|SKU_CHIP": 3193,
+        "DC_SAT|SKU_COLA": 4561,
+        "DC_SAT|SKU_BAR": 2053,
+        "DC_OKC|SKU_CHIP": 2483,
+        "DC_OKC|SKU_COLA": 3547,
+        "DC_OKC|SKU_BAR": 1596
+      }
+    },
+    {
+      "hour": 132,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4073,
+        "DC_DAL|SKU_COLA": 5469,
+        "DC_DAL|SKU_BAR": 2618,
+        "DC_HOU|SKU_CHIP": 3759,
+        "DC_HOU|SKU_COLA": 5371,
+        "DC_HOU|SKU_BAR": 2416,
+        "DC_SAT|SKU_CHIP": 2820,
+        "DC_SAT|SKU_COLA": 4028,
+        "DC_SAT|SKU_BAR": 1813,
+        "DC_OKC|SKU_CHIP": 2193,
+        "DC_OKC|SKU_COLA": 3133,
+        "DC_OKC|SKU_BAR": 1410
+      }
+    },
+    {
+      "hour": 138,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3586,
+        "DC_DAL|SKU_COLA": 4774,
+        "DC_DAL|SKU_BAR": 2306,
+        "DC_HOU|SKU_CHIP": 3310,
+        "DC_HOU|SKU_COLA": 4729,
+        "DC_HOU|SKU_BAR": 2128,
+        "DC_SAT|SKU_CHIP": 2483,
+        "DC_SAT|SKU_COLA": 3547,
+        "DC_SAT|SKU_BAR": 1597,
+        "DC_OKC|SKU_CHIP": 1931,
+        "DC_OKC|SKU_COLA": 2758,
+        "DC_OKC|SKU_BAR": 1241
+      }
+    },
+    {
+      "hour": 144,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3272,
+        "DC_DAL|SKU_COLA": 4325,
+        "DC_DAL|SKU_BAR": 2104,
+        "DC_HOU|SKU_CHIP": 3021,
+        "DC_HOU|SKU_COLA": 4315,
+        "DC_HOU|SKU_BAR": 1941,
+        "DC_SAT|SKU_CHIP": 2266,
+        "DC_SAT|SKU_COLA": 3236,
+        "DC_SAT|SKU_BAR": 1457,
+        "DC_OKC|SKU_CHIP": 1762,
+        "DC_OKC|SKU_COLA": 2517,
+        "DC_OKC|SKU_BAR": 1132
+      }
+    },
+    {
+      "hour": 150,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2958,
+        "DC_DAL|SKU_COLA": 3877,
+        "DC_DAL|SKU_BAR": 1902,
+        "DC_HOU|SKU_CHIP": 2731,
+        "DC_HOU|SKU_COLA": 3901,
+        "DC_HOU|SKU_BAR": 1755,
+        "DC_SAT|SKU_CHIP": 2049,
+        "DC_SAT|SKU_COLA": 2926,
+        "DC_SAT|SKU_BAR": 1317,
+        "DC_OKC|SKU_CHIP": 1593,
+        "DC_OKC|SKU_COLA": 2275,
+        "DC_OKC|SKU_BAR": 1024
+      }
+    },
+    {
+      "hour": 156,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2420,
+        "DC_DAL|SKU_COLA": 3107,
+        "DC_DAL|SKU_BAR": 1555,
+        "DC_HOU|SKU_CHIP": 2233,
+        "DC_HOU|SKU_COLA": 3191,
+        "DC_HOU|SKU_BAR": 1435,
+        "DC_SAT|SKU_CHIP": 1675,
+        "DC_SAT|SKU_COLA": 2393,
+        "DC_SAT|SKU_BAR": 1077,
+        "DC_OKC|SKU_CHIP": 1303,
+        "DC_OKC|SKU_COLA": 1861,
+        "DC_OKC|SKU_BAR": 837
+      }
+    },
+    {
+      "hour": 162,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 1933,
+        "DC_DAL|SKU_COLA": 2412,
+        "DC_DAL|SKU_BAR": 1243,
+        "DC_HOU|SKU_CHIP": 1784,
+        "DC_HOU|SKU_COLA": 2549,
+        "DC_HOU|SKU_BAR": 1147,
+        "DC_SAT|SKU_CHIP": 1339,
+        "DC_SAT|SKU_COLA": 1912,
+        "DC_SAT|SKU_BAR": 861,
+        "DC_OKC|SKU_CHIP": 1041,
+        "DC_OKC|SKU_COLA": 1487,
+        "DC_OKC|SKU_BAR": 669
+      }
+    },
+    {
+      "hour": 168,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4724,
+        "DC_DAL|SKU_COLA": 6748,
+        "DC_DAL|SKU_BAR": 3036,
+        "DC_HOU|SKU_CHIP": 1501,
+        "DC_HOU|SKU_COLA": 2144,
+        "DC_HOU|SKU_BAR": 964,
+        "DC_SAT|SKU_CHIP": 1126,
+        "DC_SAT|SKU_COLA": 1608,
+        "DC_SAT|SKU_BAR": 724,
+        "DC_OKC|SKU_CHIP": 2544,
+        "DC_OKC|SKU_COLA": 3633,
+        "DC_OKC|SKU_BAR": 1636
+      }
+    },
+    {
+      "hour": 174,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4451,
+        "DC_DAL|SKU_COLA": 6358,
+        "DC_DAL|SKU_BAR": 2861,
+        "DC_HOU|SKU_CHIP": 4108,
+        "DC_HOU|SKU_COLA": 5869,
+        "DC_HOU|SKU_BAR": 2641,
+        "DC_SAT|SKU_CHIP": 3081,
+        "DC_SAT|SKU_COLA": 4402,
+        "DC_SAT|SKU_BAR": 1981,
+        "DC_OKC|SKU_CHIP": 2397,
+        "DC_OKC|SKU_COLA": 3423,
+        "DC_OKC|SKU_BAR": 1541
+      }
+    },
+    {
+      "hour": 180,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3982,
+        "DC_DAL|SKU_COLA": 5689,
+        "DC_DAL|SKU_BAR": 2560,
+        "DC_HOU|SKU_CHIP": 3675,
+        "DC_HOU|SKU_COLA": 5251,
+        "DC_HOU|SKU_BAR": 2363,
+        "DC_SAT|SKU_CHIP": 2757,
+        "DC_SAT|SKU_COLA": 3938,
+        "DC_SAT|SKU_BAR": 1772,
+        "DC_OKC|SKU_CHIP": 2144,
+        "DC_OKC|SKU_COLA": 3063,
+        "DC_OKC|SKU_BAR": 1379
+      }
+    },
+    {
+      "hour": 186,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3559,
+        "DC_DAL|SKU_COLA": 5085,
+        "DC_DAL|SKU_BAR": 2288,
+        "DC_HOU|SKU_CHIP": 3285,
+        "DC_HOU|SKU_COLA": 4693,
+        "DC_HOU|SKU_BAR": 2112,
+        "DC_SAT|SKU_CHIP": 2464,
+        "DC_SAT|SKU_COLA": 3520,
+        "DC_SAT|SKU_BAR": 1584,
+        "DC_OKC|SKU_CHIP": 1917,
+        "DC_OKC|SKU_COLA": 2737,
+        "DC_OKC|SKU_BAR": 1232
+      }
+    },
+    {
+      "hour": 192,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3286,
+        "DC_DAL|SKU_COLA": 4695,
+        "DC_DAL|SKU_BAR": 2112,
+        "DC_HOU|SKU_CHIP": 3033,
+        "DC_HOU|SKU_COLA": 4333,
+        "DC_HOU|SKU_BAR": 1950,
+        "DC_SAT|SKU_CHIP": 2275,
+        "DC_SAT|SKU_COLA": 3250,
+        "DC_SAT|SKU_BAR": 1462,
+        "DC_OKC|SKU_CHIP": 1770,
+        "DC_OKC|SKU_COLA": 2527,
+        "DC_OKC|SKU_BAR": 1138
+      }
+    },
+    {
+      "hour": 198,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3013,
+        "DC_DAL|SKU_COLA": 4305,
+        "DC_DAL|SKU_BAR": 1937,
+        "DC_HOU|SKU_CHIP": 2781,
+        "DC_HOU|SKU_COLA": 3973,
+        "DC_HOU|SKU_BAR": 1788,
+        "DC_SAT|SKU_CHIP": 2086,
+        "DC_SAT|SKU_COLA": 2980,
+        "DC_SAT|SKU_BAR": 1341,
+        "DC_OKC|SKU_CHIP": 1623,
+        "DC_OKC|SKU_COLA": 2317,
+        "DC_OKC|SKU_BAR": 1043
+      }
+    },
+    {
+      "hour": 204,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2545,
+        "DC_DAL|SKU_COLA": 3635,
+        "DC_DAL|SKU_BAR": 1635,
+        "DC_HOU|SKU_CHIP": 2348,
+        "DC_HOU|SKU_COLA": 3355,
+        "DC_HOU|SKU_BAR": 1510,
+        "DC_SAT|SKU_CHIP": 1761,
+        "DC_SAT|SKU_COLA": 2517,
+        "DC_SAT|SKU_BAR": 1132,
+        "DC_OKC|SKU_CHIP": 1370,
+        "DC_OKC|SKU_COLA": 1957,
+        "DC_OKC|SKU_BAR": 881
+      }
+    },
+    {
+      "hour": 210,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2122,
+        "DC_DAL|SKU_COLA": 3031,
+        "DC_DAL|SKU_BAR": 1363,
+        "DC_HOU|SKU_CHIP": 1958,
+        "DC_HOU|SKU_COLA": 2798,
+        "DC_HOU|SKU_BAR": 1259,
+        "DC_SAT|SKU_CHIP": 1469,
+        "DC_SAT|SKU_COLA": 2098,
+        "DC_SAT|SKU_BAR": 944,
+        "DC_OKC|SKU_CHIP": 1142,
+        "DC_OKC|SKU_COLA": 1632,
+        "DC_OKC|SKU_BAR": 735
+      }
+    },
+    {
+      "hour": 216,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4933,
+        "DC_DAL|SKU_COLA": 7046,
+        "DC_DAL|SKU_BAR": 3171,
+        "DC_HOU|SKU_CHIP": 1706,
+        "DC_HOU|SKU_COLA": 2438,
+        "DC_HOU|SKU_BAR": 1097,
+        "DC_SAT|SKU_CHIP": 1280,
+        "DC_SAT|SKU_COLA": 1828,
+        "DC_SAT|SKU_BAR": 822,
+        "DC_OKC|SKU_CHIP": 2655,
+        "DC_OKC|SKU_COLA": 3795,
+        "DC_OKC|SKU_BAR": 1707
+      }
+    },
+    {
+      "hour": 222,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4660,
+        "DC_DAL|SKU_COLA": 6656,
+        "DC_DAL|SKU_BAR": 2995,
+        "DC_HOU|SKU_CHIP": 4301,
+        "DC_HOU|SKU_COLA": 6145,
+        "DC_HOU|SKU_BAR": 2765,
+        "DC_SAT|SKU_CHIP": 3226,
+        "DC_SAT|SKU_COLA": 4608,
+        "DC_SAT|SKU_BAR": 2074,
+        "DC_OKC|SKU_CHIP": 2508,
+        "DC_OKC|SKU_COLA": 3585,
+        "DC_OKC|SKU_BAR": 1613
+      }
+    },
+    {
+      "hour": 228,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4191,
+        "DC_DAL|SKU_COLA": 5987,
+        "DC_DAL|SKU_BAR": 2694,
+        "DC_HOU|SKU_CHIP": 3868,
+        "DC_HOU|SKU_COLA": 5527,
+        "DC_HOU|SKU_BAR": 2487,
+        "DC_SAT|SKU_CHIP": 2901,
+        "DC_SAT|SKU_COLA": 4145,
+        "DC_SAT|SKU_BAR": 1865,
+        "DC_OKC|SKU_CHIP": 2256,
+        "DC_OKC|SKU_COLA": 3224,
+        "DC_OKC|SKU_BAR": 1451
+      }
+    },
+    {
+      "hour": 234,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3768,
+        "DC_DAL|SKU_COLA": 5382,
+        "DC_DAL|SKU_BAR": 2422,
+        "DC_HOU|SKU_CHIP": 3478,
+        "DC_HOU|SKU_COLA": 4969,
+        "DC_HOU|SKU_BAR": 2236,
+        "DC_SAT|SKU_CHIP": 2608,
+        "DC_SAT|SKU_COLA": 3726,
+        "DC_SAT|SKU_BAR": 1677,
+        "DC_OKC|SKU_CHIP": 2028,
+        "DC_OKC|SKU_COLA": 2899,
+        "DC_OKC|SKU_BAR": 1304
+      }
+    },
+    {
+      "hour": 240,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3495,
+        "DC_DAL|SKU_COLA": 4992,
+        "DC_DAL|SKU_BAR": 2247,
+        "DC_HOU|SKU_CHIP": 3226,
+        "DC_HOU|SKU_COLA": 4609,
+        "DC_HOU|SKU_BAR": 2074,
+        "DC_SAT|SKU_CHIP": 2419,
+        "DC_SAT|SKU_COLA": 3456,
+        "DC_SAT|SKU_BAR": 1556,
+        "DC_OKC|SKU_CHIP": 1881,
+        "DC_OKC|SKU_COLA": 2689,
+        "DC_OKC|SKU_BAR": 1210
+      }
+    },
+    {
+      "hour": 246,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3222,
+        "DC_DAL|SKU_COLA": 4602,
+        "DC_DAL|SKU_BAR": 2071,
+        "DC_HOU|SKU_CHIP": 2974,
+        "DC_HOU|SKU_COLA": 4249,
+        "DC_HOU|SKU_BAR": 1912,
+        "DC_SAT|SKU_CHIP": 2230,
+        "DC_SAT|SKU_COLA": 3186,
+        "DC_SAT|SKU_BAR": 1434,
+        "DC_OKC|SKU_CHIP": 1734,
+        "DC_OKC|SKU_COLA": 2479,
+        "DC_OKC|SKU_BAR": 1115
+      }
+    },
+    {
+      "hour": 252,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2754,
+        "DC_DAL|SKU_COLA": 3933,
+        "DC_DAL|SKU_BAR": 1770,
+        "DC_HOU|SKU_CHIP": 2541,
+        "DC_HOU|SKU_COLA": 3631,
+        "DC_HOU|SKU_BAR": 1634,
+        "DC_SAT|SKU_CHIP": 1906,
+        "DC_SAT|SKU_COLA": 2723,
+        "DC_SAT|SKU_BAR": 1226,
+        "DC_OKC|SKU_CHIP": 1482,
+        "DC_OKC|SKU_COLA": 2118,
+        "DC_OKC|SKU_BAR": 953
+      }
+    },
+    {
+      "hour": 258,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2331,
+        "DC_DAL|SKU_COLA": 3329,
+        "DC_DAL|SKU_BAR": 1498,
+        "DC_HOU|SKU_CHIP": 2151,
+        "DC_HOU|SKU_COLA": 3073,
+        "DC_HOU|SKU_BAR": 1383,
+        "DC_SAT|SKU_CHIP": 1613,
+        "DC_SAT|SKU_COLA": 2305,
+        "DC_SAT|SKU_BAR": 1037,
+        "DC_OKC|SKU_CHIP": 1254,
+        "DC_OKC|SKU_COLA": 1793,
+        "DC_OKC|SKU_BAR": 806
+      }
+    },
+    {
+      "hour": 264,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4933,
+        "DC_DAL|SKU_COLA": 7047,
+        "DC_DAL|SKU_BAR": 3171,
+        "DC_HOU|SKU_CHIP": 1899,
+        "DC_HOU|SKU_COLA": 2713,
+        "DC_HOU|SKU_BAR": 1221,
+        "DC_SAT|SKU_CHIP": 1424,
+        "DC_SAT|SKU_COLA": 2035,
+        "DC_SAT|SKU_BAR": 916,
+        "DC_OKC|SKU_CHIP": 2656,
+        "DC_OKC|SKU_COLA": 3794,
+        "DC_OKC|SKU_BAR": 1707
+      }
+    },
+    {
+      "hour": 270,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4660,
+        "DC_DAL|SKU_COLA": 6657,
+        "DC_DAL|SKU_BAR": 2995,
+        "DC_HOU|SKU_CHIP": 4301,
+        "DC_HOU|SKU_COLA": 6144,
+        "DC_HOU|SKU_BAR": 2765,
+        "DC_SAT|SKU_CHIP": 3226,
+        "DC_SAT|SKU_COLA": 4609,
+        "DC_SAT|SKU_BAR": 2073,
+        "DC_OKC|SKU_CHIP": 2509,
+        "DC_OKC|SKU_COLA": 3584,
+        "DC_OKC|SKU_BAR": 1612
+      }
+    },
+    {
+      "hour": 276,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4191,
+        "DC_DAL|SKU_COLA": 5987,
+        "DC_DAL|SKU_BAR": 2694,
+        "DC_HOU|SKU_CHIP": 3868,
+        "DC_HOU|SKU_COLA": 5526,
+        "DC_HOU|SKU_BAR": 2487,
+        "DC_SAT|SKU_CHIP": 2902,
+        "DC_SAT|SKU_COLA": 4145,
+        "DC_SAT|SKU_BAR": 1865,
+        "DC_OKC|SKU_CHIP": 2257,
+        "DC_OKC|SKU_COLA": 3223,
+        "DC_OKC|SKU_BAR": 1450
+      }
+    },
+    {
+      "hour": 282,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3768,
+        "DC_DAL|SKU_COLA": 5383,
+        "DC_DAL|SKU_BAR": 2422,
+        "DC_HOU|SKU_CHIP": 3478,
+        "DC_HOU|SKU_COLA": 4968,
+        "DC_HOU|SKU_BAR": 2236,
+        "DC_SAT|SKU_CHIP": 2609,
+        "DC_SAT|SKU_COLA": 3727,
+        "DC_SAT|SKU_BAR": 1677,
+        "DC_OKC|SKU_CHIP": 2029,
+        "DC_OKC|SKU_COLA": 2898,
+        "DC_OKC|SKU_BAR": 1304
+      }
+    },
+    {
+      "hour": 288,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3488,
+        "DC_DAL|SKU_COLA": 4983,
+        "DC_DAL|SKU_BAR": 2242,
+        "DC_HOU|SKU_CHIP": 3219,
+        "DC_HOU|SKU_COLA": 4599,
+        "DC_HOU|SKU_BAR": 2070,
+        "DC_SAT|SKU_CHIP": 2415,
+        "DC_SAT|SKU_COLA": 3450,
+        "DC_SAT|SKU_BAR": 1552,
+        "DC_OKC|SKU_CHIP": 1878,
+        "DC_OKC|SKU_COLA": 2683,
+        "DC_OKC|SKU_BAR": 1207
+      }
+    },
+    {
+      "hour": 294,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3174,
+        "DC_DAL|SKU_COLA": 4535,
+        "DC_DAL|SKU_BAR": 2040,
+        "DC_HOU|SKU_CHIP": 2930,
+        "DC_HOU|SKU_COLA": 4185,
+        "DC_HOU|SKU_BAR": 1884,
+        "DC_SAT|SKU_CHIP": 2198,
+        "DC_SAT|SKU_COLA": 3140,
+        "DC_SAT|SKU_BAR": 1412,
+        "DC_OKC|SKU_CHIP": 1709,
+        "DC_OKC|SKU_COLA": 2441,
+        "DC_OKC|SKU_BAR": 1098
+      }
+    },
+    {
+      "hour": 300,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2635,
+        "DC_DAL|SKU_COLA": 3765,
+        "DC_DAL|SKU_BAR": 1694,
+        "DC_HOU|SKU_CHIP": 2432,
+        "DC_HOU|SKU_COLA": 3475,
+        "DC_HOU|SKU_BAR": 1564,
+        "DC_SAT|SKU_CHIP": 1825,
+        "DC_SAT|SKU_COLA": 2607,
+        "DC_SAT|SKU_BAR": 1172,
+        "DC_OKC|SKU_CHIP": 1419,
+        "DC_OKC|SKU_COLA": 2027,
+        "DC_OKC|SKU_BAR": 912
+      }
+    },
+    {
+      "hour": 306,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 2149,
+        "DC_DAL|SKU_COLA": 3070,
+        "DC_DAL|SKU_BAR": 1381,
+        "DC_HOU|SKU_CHIP": 1983,
+        "DC_HOU|SKU_COLA": 2833,
+        "DC_HOU|SKU_BAR": 1275,
+        "DC_SAT|SKU_CHIP": 1488,
+        "DC_SAT|SKU_COLA": 2125,
+        "DC_SAT|SKU_BAR": 956,
+        "DC_OKC|SKU_CHIP": 1157,
+        "DC_OKC|SKU_COLA": 1653,
+        "DC_OKC|SKU_BAR": 743
+      }
+    },
+    {
+      "hour": 312,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4717,
+        "DC_DAL|SKU_COLA": 6738,
+        "DC_DAL|SKU_BAR": 3032,
+        "DC_HOU|SKU_CHIP": 1693,
+        "DC_HOU|SKU_COLA": 2419,
+        "DC_HOU|SKU_BAR": 1089,
+        "DC_SAT|SKU_CHIP": 1270,
+        "DC_SAT|SKU_COLA": 1815,
+        "DC_SAT|SKU_BAR": 816,
+        "DC_OKC|SKU_CHIP": 2540,
+        "DC_OKC|SKU_COLA": 3628,
+        "DC_OKC|SKU_BAR": 1633
+      }
+    },
+    {
+      "hour": 318,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 4403,
+        "DC_DAL|SKU_COLA": 6290,
+        "DC_DAL|SKU_BAR": 2830,
+        "DC_HOU|SKU_CHIP": 4064,
+        "DC_HOU|SKU_COLA": 5806,
+        "DC_HOU|SKU_BAR": 2613,
+        "DC_SAT|SKU_CHIP": 3048,
+        "DC_SAT|SKU_COLA": 4354,
+        "DC_SAT|SKU_BAR": 1959,
+        "DC_OKC|SKU_CHIP": 2371,
+        "DC_OKC|SKU_COLA": 3387,
+        "DC_OKC|SKU_BAR": 1524
+      }
+    },
+    {
+      "hour": 324,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3864,
+        "DC_DAL|SKU_COLA": 5520,
+        "DC_DAL|SKU_BAR": 2484,
+        "DC_HOU|SKU_CHIP": 3567,
+        "DC_HOU|SKU_COLA": 5096,
+        "DC_HOU|SKU_BAR": 2293,
+        "DC_SAT|SKU_CHIP": 2675,
+        "DC_SAT|SKU_COLA": 3822,
+        "DC_SAT|SKU_BAR": 1720,
+        "DC_OKC|SKU_CHIP": 2081,
+        "DC_OKC|SKU_COLA": 2972,
+        "DC_OKC|SKU_BAR": 1338
+      }
+    },
+    {
+      "hour": 330,
+      "onHand": {
+        "DC_DAL|SKU_CHIP": 3378,
+        "DC_DAL|SKU_COLA": 4825,
+        "DC_DAL|SKU_BAR": 2171,
+        "DC_HOU|SKU_CHIP": 3118,
+        "DC_HOU|SKU_COLA": 4454,
+        "DC_HOU|SKU_BAR": 2004,
+        "DC_SAT|SKU_CHIP": 2338,
+        "DC_SAT|SKU_COLA": 3340,
+        "DC_SAT|SKU_BAR": 1503,
+        "DC_OKC|SKU_CHIP": 1819,
+        "DC_OKC|SKU_COLA": 2598,
+        "DC_OKC|SKU_BAR": 1169
+      }
+    }
+  ],
+  "exceptions": [
+    {
+      "exceptionId": "EXC-0",
+      "hour": 35,
+      "type": "projected_stockout",
+      "facilityId": "DC_DAL",
+      "skuId": "SKU_COLA",
+      "detail": "available projected to cross zero in 72h (shortfall ~269u): baseline demand outpacing cover",
+      "confidence": 0.6047857449778046
+    },
+    {
+      "exceptionId": "EXC-1",
+      "hour": 36,
+      "type": "projected_stockout",
+      "facilityId": "DC_DAL",
+      "skuId": "SKU_COLA",
+      "detail": "available projected to cross zero in 71h (shortfall ~581u): baseline demand outpacing cover",
+      "confidence": 0.5868905743394323
+    },
+    {
+      "exceptionId": "EXC-2",
+      "hour": 38,
+      "type": "projected_stockout",
+      "facilityId": "DC_DAL",
+      "skuId": "SKU_COLA",
+      "detail": "available projected to cross zero in 69h (shortfall ~1179u): baseline demand outpacing cover",
+      "confidence": 0.636697433824237
+    },
+    {
+      "exceptionId": "EXC-3",
+      "hour": 42,
+      "type": "projected_stockout",
+      "facilityId": "DC_DAL",
+      "skuId": "SKU_COLA",
+      "detail": "available projected to cross zero in 65h (shortfall ~2032u): baseline demand outpacing cover",
+      "confidence": 0.6148772886324744
+    },
+    {
+      "exceptionId": "EXC-4",
+      "hour": 107,
+      "type": "order_at_risk",
+      "facilityId": "DC_DAL",
+      "skuId": "SKU_COLA",
+      "orderId": "ORD-205",
+      "detail": "205 units backordered of 1450 on SKU_COLA at DC_DAL",
+      "confidence": 1
+    },
+    {
+      "exceptionId": "EXC-5",
+      "hour": 113,
+      "type": "order_at_risk",
+      "facilityId": "DC_DAL",
+      "skuId": "SKU_COLA",
+      "orderId": "ORD-217",
+      "detail": "1606 units backordered of 1606 on SKU_COLA at DC_DAL",
+      "confidence": 1
+    },
+    {
+      "exceptionId": "EXC-6",
+      "hour": 119,
+      "type": "order_at_risk",
+      "facilityId": "DC_DAL",
+      "skuId": "SKU_COLA",
+      "orderId": "ORD-229",
+      "detail": "624 units backordered of 936 on SKU_COLA at DC_DAL",
+      "confidence": 1
+    }
+  ],
+  "stockoutHours": 11
+}

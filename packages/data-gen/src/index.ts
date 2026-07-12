@@ -4,4 +4,5 @@ export * from "./rng.js";
 export * from "./network.js";
 export * from "./demand.js";
 export * from "./disruptions.js";
+export * from "./episode.js";
 export { lane, facility } from "@rally/domain";

@@ -38,3 +38,9 @@ jobs:
 
       - name: Phase 4 · escalation scorecard
         run: npm run harness -- 30
+
+      - name: Phase 5 · backtest (record → replay)
+        run: npm run backtest
+
+      - name: Real-feed adapter (vendor files → estimated state)
+        run: npm run fixtures && npm run adapter

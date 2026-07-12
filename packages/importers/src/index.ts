@@ -22,6 +22,8 @@ import type {
   WarehouseEvent,
 } from "@rally/domain";
 
+export * from "./vendor.js";
+
 export interface IngestIssue {
   feedId: string;
   sequence: number;

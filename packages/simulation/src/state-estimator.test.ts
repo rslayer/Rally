@@ -22,7 +22,8 @@ describe("state estimator (Phase 2)", () => {
     const truthAt = new Map<number, ScenarioState>();
     for (let h = 0; h < config.horizonHours; h++) {
       stepSimulation(world);
-      if (probeHours.includes(world.hour)) truthAt.set(world.hour, snapshot(world));
+      // Feeds are labeled by the processed hour (world.hour - 1); match it.
+      if (probeHours.includes(world.hour - 1)) truthAt.set(world.hour - 1, snapshot(world));
     }
     const feeds: AnyFeedMessage[] = world.feedSink ?? [];
 

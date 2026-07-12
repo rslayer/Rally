@@ -20,3 +20,4 @@ export { resolveRisk, resolveRisks } from "./resolver.js";
 // Phase 2 / Phase 4 modules are wired in as they land:
 export * from "./state-estimator.js";
 export * from "./scorer.js";
+export * from "./backtest.js";
