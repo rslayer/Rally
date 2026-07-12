@@ -30,7 +30,7 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 38 tests across all build phases
+npm test             # 43 tests across all build phases
 npm run web          # the three-panel control tower → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
@@ -189,7 +189,9 @@ A file export is one way in; a real fleet API is the other. `packages/importers/
 - **Resilience** — retry with backoff on 429 / 5xx, honoring `Retry-After`.
 - **Resumability** — a `Checkpoint` after every page, so a crashed or rate-limited sync picks up exactly where it left off — no gaps, no double-pulls.
 
-Because I have no real Samsara account (and won't handle anyone's credentials), the connector is developed and CI-tested against a **faithful mock** of the API — the same way you'd build a real integration behind a sandbox. `npm run live-sync` runs the whole thing: it authenticates, backfills the window (surviving an injected rate-limit), merges the **live** telematics stream with **batch** WMS/ERP feeds, and hands the lot to the estimator:
+The plumbing (pagination, retry/backoff, resumable checkpoints) is a **generic `PagedConnector`**, so a second source is a wire contract plus a row map — not a copy-paste. A **WMS / EDI-945-shaped connector** (`WmsClient`) rides the same base, proving the seam isn't telematics-specific: a completely different feed type, same ingestion path, same downstream.
+
+Because I have no real Samsara account (and won't handle anyone's credentials), the connectors are developed and CI-tested against a **faithful mock** of the API — the same way you'd build a real integration behind a sandbox. `npm run live-sync` runs the whole thing: it authenticates, backfills the window (surviving an injected rate-limit), merges the **live** telematics stream with **batch** WMS/ERP feeds, and hands the lot to the estimator:
 
 ```
 backfill                17 pages · 1631 GPS rows
