@@ -4,6 +4,22 @@
   "private": true,
   "type": "module",
   "description": "Rally — a decision-first supply chain control tower that resolves disruptions autonomously and escalates only what it should.",
+  "license": "MIT",
+  "author": "rslayer",
+  "repository": { "type": "git", "url": "https://github.com/rslayer/Rally.git" },
+  "homepage": "https://github.com/rslayer/Rally#readme",
+  "keywords": [
+    "supply-chain",
+    "control-tower",
+    "decision-engine",
+    "state-estimation",
+    "closed-loop-simulation",
+    "digital-twin",
+    "escalation",
+    "telematics",
+    "wms",
+    "typescript"
+  ],
   "engines": {
     "node": ">=20"
   },

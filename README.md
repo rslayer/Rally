@@ -138,6 +138,57 @@ Everything downstream reads one `ScenarioState` shape, so the estimator, the dec
 
 ---
 
+## Architecture at a glance
+
+```mermaid
+flowchart LR
+  subgraph SRC["Sources · real or synthetic"]
+    T["Telematics GPS"]
+    W["WMS txns"]
+    A["ASN · EDI-856"]
+    O["Ops status"]
+    I["ERP inventory"]
+  end
+  subgraph ING["@rally/importers · one seam"]
+    C["Connectors<br/>auth · paging · backfill · retry"]
+    Y["Incremental sync<br/>watermark · dedup · resume"]
+    R["Orchestrator<br/>multi-source merge"]
+  end
+  SRC --> C --> Y --> R
+  R --> E["State Estimator<br/>association · gaps · interpolation"]
+  E --> ST["ScenarioState<br/>+ per-entity confidence"]
+  ST --> D["Detector<br/>policy-aware projection"]
+  D --> RES["Resolver<br/>transfer · expedite · pull-forward · escalate"]
+  RES --> SCR["Scorer<br/>closed-world oracle · 2×2"]
+  ST --> CT["Control-tower loop"]
+  RES --> CT
+  SCR --> UI["Web dashboard"]
+  CT --> UI
+```
+
+The through-line: sensor-shaped feeds enter through **one seam**, get fused into **one state shape** with confidence, drive a **deterministic decision**, and are **graded by a closed-world oracle** — with the whole thing runnable as a live loop.
+
+## The build arc
+
+Each slice is independently gated in CI. The method never changed: *measure honestly, then fix what the measurement points at.*
+
+| # | Slice | The point |
+|---|---|---|
+| 1 | Closed-loop + scorecard | Prove the thesis with a 2×2, not a vanity % |
+| 2 | File adapter + backtest | Real-shaped exports through the seam; record→replay fidelity |
+| 3 | Live connector | Samsara-shaped API: auth, paging, backfill, retry |
+| 4 | Incremental sync | Watermark · lookback · dedup · resume |
+| 5 | Second connector (WMS) | The seam generalizes beyond telematics |
+| 6 | Orchestrator | Many sources, independent watermarks, failure isolation |
+| 7 | Decisions on estimated state | Detection fidelity vs ground truth (recall 100%, precision 14.5%) |
+| 8 | ASN feed | Closes the inbound gap → precision **14.5% → 97.8%** |
+| 9 | Control-tower loop | The whole system running, end to end |
+| 10 | Live dashboard | Watch it operate |
+| 11 | Estimated-path scorecard | The cost of imperfect eyes on *decisions* (−13.5 pts, still safe) |
+| 12 | Ops-status feed | Held-out disruptions escalated from *sensed* status, not config |
+
+---
+
 ## Built in phases, each with a gate it had to pass
 
 | Phase | What                     | The bar it had to clear                                              |
