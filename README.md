@@ -1,6 +1,7 @@
 # Rally 🚚
 
 [![CI](https://github.com/rslayer/Rally/actions/workflows/ci.yml/badge.svg)](https://github.com/rslayer/Rally/actions/workflows/ci.yml)
+&nbsp;·&nbsp; **[Overview / landing page →](https://claude.ai/code/artifact/0915e49b-20dd-43cf-903e-43d970753895)**
 
 **A supply-chain control tower that actually _decides_ — it resolves disruptions on its own, and raises its hand only when it should.**
 
