@@ -22,7 +22,7 @@ import { initWorld, snapshot, RISK_HORIZON_HOURS, MATERIALITY_UNITS } from "./in
 import { stepSimulation } from "./step.js";
 import { projectCell } from "./projection.js";
 import { estimateState } from "./state-estimator.js";
-import type { SimConfig } from "./types.js";
+import type { SimConfig, SimWorld } from "./types.js";
 
 const cellK = (f: string, s: string) => `${f}|${s}`;
 
@@ -32,7 +32,10 @@ const cellK = (f: string, s: string) => `${f}|${s}`;
  * schedule, demand model) come from config; only the physical on-hand is sensed.
  * In-flight inbound is not observed, so it is deliberately excluded.
  */
-export function detectOnState(config: SimConfig, state: ScenarioState, hour: number): StockoutRisk[] {
+/** Build a transient SimWorld whose on-hand + in-flight inbound come from the
+ *  ESTIMATE, but whose planning parameters (policy, production) come from config.
+ *  The detector and the resolver both operate on this world. */
+export function buildEstimatedWorld(config: SimConfig, state: ScenarioState, hour: number): SimWorld {
   const world = initWorld(config, makeRng(config.seed));
   world.hour = hour;
   for (const p of state.positions) {
@@ -42,13 +45,17 @@ export function detectOnState(config: SimConfig, state: ScenarioState, hour: num
       cell.allocatedUnits = p.allocatedUnits;
     }
   }
-  // In-flight inbound reconstructed by the estimator (WMS ship-confirm qty/SKU
+  // In-flight inbound reconstructed by the estimator (ASN, or WMS ship-confirm
   // joined to telematics dest via shipmentRef). Only replenishment/transfer to a
   // DC counts as inbound cover; drop anything with unknown quantity.
   world.shipments = state.shipments
     .filter((s) => s.kind !== "customer" && s.status === "in_transit" && s.quantityUnits > 0 && s.skuId !== "unknown")
     .map((s) => ({ ...s, confidence: 1 }));
+  return world;
+}
 
+export function detectOnState(config: SimConfig, state: ScenarioState, hour: number): StockoutRisk[] {
+  const world = buildEstimatedWorld(config, state, hour);
   const risks: StockoutRisk[] = [];
   for (const dc of DC_IDS) {
     for (const sku of config.network.skus) {

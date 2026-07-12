@@ -30,7 +30,7 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 54 tests across all build phases
+npm test             # 58 tests across all build phases
 npm run web          # the three-panel control tower → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
@@ -40,6 +40,7 @@ npm run incremental-sync  # Slice 4: a scheduled poller — watermark, dedup, re
 npm run orchestrate  # Slice 6: run telematics + WMS connectors together, one merged stream
 npm run live-detect  # Slice 7: run stockout detection on ESTIMATED state, scored vs ground truth
 npm run asn          # Slice 8: prove the ASN feed closes the inbound gap (precision 14% → 98%)
+npm run control-tower  # Slice 9: the whole system running — ingest→estimate→detect→resolve
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -285,6 +286,20 @@ estimate flags              311             46     (ground truth 45)
 ```
 
 Recall never moved; precision went from 14.5% to **97.8%**. A gap discovered by measurement (Slice 7), closed by the right feed (Slice 8) — and proven by re-running the very harness that found it. That's the whole method in miniature: don't assume where the eyes fall short, *measure* it, then fix what the measurement points at.
+
+## Slice 9 — the control tower, running 🗼
+
+Every slice, wired into one system that *runs*. On an advancing clock, each cycle: ingest fresh events from all sources incrementally (orchestrator + per-source watermarks), re-estimate canonical state from everything seen so far, detect projected stockouts on that estimate, and **run the resolver on the estimated world** — resolving or escalating each new risk with a rationale. Decision-first, end to end, on sensor-grounded state: the same brain from Slice 1, now driven by the real-feed eyes from Slices 2–8.
+
+```
+clock  fresh  maxLag  estConf  openRisks  decisions
+  54h    375    116m     0.92          1          1      ✔ resolve  DC_OKC/BAR  pull_forward_production
+ 180h    433    110m     0.92          2          1      ⤴ escalate DC_SAT/COLA  (no in-set action recovers)
+ 234h    288    113m     0.92          2          1      ⤴ escalate DC_HOU/CHIP  (injected — correctly handed off)
+stockout coverage  3/3 ground-truth risk cells flagged by the live estimate
+```
+
+Across seeds the loop catches ~85% of the risks ground truth surfaces and acts on them — a live control tower operating on imperfect eyes, resolving what it can and escalating what it must. `npm run control-tower` runs it; `npm run control-tower-check` is the gate.
 
 ---
 

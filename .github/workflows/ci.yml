@@ -59,3 +59,6 @@ jobs:
 
       - name: ASN / EDI-856 feed closes the inbound gap (precision lift)
         run: npm run asn
+
+      - name: Control tower end to end (ingest → estimate → detect → resolve)
+        run: npm run control-tower-check

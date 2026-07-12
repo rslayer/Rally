@@ -22,7 +22,9 @@
     "incremental-sync": "tsx apps/adapter/src/incremental-sync.ts",
     "orchestrate": "tsx apps/adapter/src/orchestrate.ts",
     "live-detect": "tsx packages/simulation/src/dev/live-detect-check.ts",
-    "asn": "tsx packages/simulation/src/dev/asn-check.ts"
+    "asn": "tsx packages/simulation/src/dev/asn-check.ts",
+    "control-tower": "tsx apps/adapter/src/control-tower.ts",
+    "control-tower-check": "tsx packages/simulation/src/dev/control-tower-check.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

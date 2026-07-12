@@ -22,3 +22,4 @@ export * from "./state-estimator.js";
 export * from "./scorer.js";
 export * from "./backtest.js";
 export * from "./live-detect.js";
+export * from "./control-tower.js";
