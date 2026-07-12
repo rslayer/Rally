@@ -172,7 +172,7 @@ function pullForwardCandidates(world: SimWorld, risk: StockoutRisk): Candidate[]
         plantCell.onHandUnits += run.quantityUnits;
         run.status = "complete";
         createReplenishment(world, PLANT_ID, dc, skuId, qty, true);
-        return { kind: "pull_forward_production", runId: run.runId, fromHour: fromH, toHour: run.completesAtHour };
+        return { kind: "pull_forward_production", runId: run.runId, fromHour: fromH, toHour: run.completesAtHour, toFacilityId: dc, skuId, units: qty };
       },
     },
   ];
@@ -311,5 +311,43 @@ export function resolveRisks(world: SimWorld, fresh: StockoutRisk[]): void {
   for (const risk of fresh) {
     const decision = resolveRisk(world, risk);
     world.decisions.push(decision);
+  }
+}
+
+/**
+ * Replay a decision (made against the ESTIMATED world) onto the TRUE world.
+ * The action + intended quantities come from the estimate; the physical effect
+ * lands in reality — capped by what's actually there. This is the seam that lets
+ * the resolver decide on sensor-grounded state while the oracle measures the
+ * real outcome (Slice 11).
+ */
+export function applyEffectToTrueWorld(world: SimWorld, effect: ResolutionEffect): void {
+  switch (effect.kind) {
+    case "transfer_inventory": {
+      createReplenishment(world, effect.fromFacilityId, effect.toFacilityId, effect.skuId, effect.units, false);
+      break;
+    }
+    case "expedite_inbound": {
+      const s = world.shipments.find((x) => x.shipmentId === effect.shipmentId);
+      if (s && s.status !== "delivered" && s.status !== "cancelled") {
+        s.etaHour = effect.newEtaHour;
+        s.expedited = true;
+      }
+      break;
+    }
+    case "pull_forward_production": {
+      const run = world.production.find((r) => r.runId === effect.runId);
+      if (run && run.status !== "complete" && run.status !== "cancelled") {
+        run.completesAtHour = effect.toHour;
+        run.scheduledStartHour = Math.min(run.scheduledStartHour, effect.toHour);
+        const plant = getCell(world, PLANT_ID, effect.skuId);
+        if (plant) plant.onHandUnits += run.quantityUnits;
+        run.status = "complete";
+      }
+      createReplenishment(world, PLANT_ID, effect.toFacilityId, effect.skuId, effect.units, true);
+      break;
+    }
+    case "partial_ship_backorder":
+      break; // no structural mutation
   }
 }

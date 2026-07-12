@@ -62,3 +62,6 @@ jobs:
 
       - name: Control tower end to end (ingest → estimate → detect → resolve)
         run: npm run control-tower-check
+
+      - name: Estimated-path scorecard (cost of imperfect eyes on decisions)
+        run: npm run estimated-scorecard

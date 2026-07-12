@@ -30,7 +30,7 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 58 tests across all build phases
+npm test             # 61 tests across all build phases
 npm run web          # the control-tower dashboard (state · decisions · scorecard · live loop) → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
@@ -41,6 +41,7 @@ npm run orchestrate  # Slice 6: run telematics + WMS connectors together, one me
 npm run live-detect  # Slice 7: run stockout detection on ESTIMATED state, scored vs ground truth
 npm run asn          # Slice 8: prove the ASN feed closes the inbound gap (precision 14% → 98%)
 npm run control-tower  # Slice 9: the whole system running — ingest→estimate→detect→resolve
+npm run estimated-scorecard  # Slice 11: the scorecard, resolver deciding on estimated state
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -300,6 +301,21 @@ stockout coverage  3/3 ground-truth risk cells flagged by the live estimate
 ```
 
 Across seeds the loop catches ~85% of the risks ground truth surfaces and acts on them — a live control tower operating on imperfect eyes, resolving what it can and escalating what it must. `npm run control-tower` runs it in the terminal; `npm run control-tower-check` is the gate; and `npm run web` now renders it as a **fourth panel** — a per-cycle operations view (fresh feeds, sync lag, estimate confidence, open risks) alongside a live decision log.
+
+## Slice 11 — the scorecard on the estimated path 🎯
+
+Slice 7 measured the cost of imperfect eyes on *detection*. This measures it on *decisions* — the ultimate principle-5 number. Run the exact Slice-1 oracle, but with the resolver **deciding on state estimated from the live feeds**, its chosen actions replayed onto the true world (capped by what's actually there) and the outcome measured by the oracle:
+
+```
+                              ground-truth     estimated
+touchless (all)                  25.0%          11.5%     ← −13.5 pts
+escalation safety recall        100.0%          94.6%     ← still safe
+escalation precision             97.4%          87.5%
+dangerous false-resolves             1              6
+↳ injected falsely resolved          0              0     ← never resolves a truly-unrecoverable one
+```
+
+The honest verdict: deciding on sensor-grounded state costs real touchless rate and adds a few dangerous resolves — but it **stays safe** (recall > 90%, and it never falsely resolves an injected-unresolvable). And it degrades in the *right* direction (it can't out-perform the oracle it approximates). Better eyes ⇒ closer to the oracle — which is exactly why Slices 2–8 were worth building. This is the whole thesis, closed: not "95% resolved," but *"here is precisely what automation buys, what it costs, and how safely it fails — measured, on the real path."*
 
 ---
 

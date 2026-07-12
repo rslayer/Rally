@@ -12,6 +12,7 @@ export interface ScenarioOptions {
   resolverEnabled?: boolean;
   emitFeeds?: boolean;
   forceAction?: ResolutionAction;
+  decideOnEstimatedState?: boolean;
 }
 
 export function makeConfig(opts: ScenarioOptions): SimConfig {
@@ -26,7 +27,9 @@ export function makeConfig(opts: ScenarioOptions): SimConfig {
     resolverEnabled: opts.resolverEnabled ?? false,
     orderBucketHours: 6,
     cover: { initialDays: 3, reorderDays: 2.0, orderUpToDays: 3.5 },
-    emitFeeds: opts.emitFeeds ?? false,
+    // Deciding on estimated state needs the feed stream to estimate from.
+    emitFeeds: (opts.emitFeeds ?? false) || !!opts.decideOnEstimatedState,
     ...(opts.forceAction ? { forceAction: opts.forceAction } : {}),
+    ...(opts.decideOnEstimatedState ? { decideOnEstimatedState: true } : {}),
   };
 }

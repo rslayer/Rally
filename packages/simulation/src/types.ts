@@ -40,6 +40,11 @@ export interface SimConfig {
    * Used by the scorer to test, per action, whether service is recoverable.
    */
   forceAction?: import("@rally/domain").ResolutionAction;
+  /**
+   * Slice 11: the resolver DECIDES on state estimated from the live feeds, and
+   * the chosen action's effect is replayed onto the true world. Requires feeds.
+   */
+  decideOnEstimatedState?: boolean;
 }
 
 /** Mutable inventory position keyed by facility|sku. */

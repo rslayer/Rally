@@ -83,11 +83,11 @@ export function generateScenarioSet(seed: number): Array<{ disruption: Disruptio
   return out;
 }
 
-function unmet(seed: number, d: Disruption, opts: { resolverEnabled: boolean; forceAction?: ResolutionAction }) {
+function unmet(seed: number, d: Disruption, opts: { resolverEnabled: boolean; forceAction?: ResolutionAction; decideOnEstimatedState?: boolean }) {
   return runScenario(makeConfig({ seed, disruptions: [d], ...opts }));
 }
 
-export function scoreScenario(seed: number, d: Disruption, category: Category): ScenarioRecord | null {
+export function scoreScenario(seed: number, d: Disruption, category: Category, opts: { estimated?: boolean } = {}): ScenarioRecord | null {
   const hold = unmet(seed, d, { resolverEnabled: false });
   const holdUnmet = Math.round(hold.metrics.unmetUnits);
   if (holdUnmet < MIN_MISS_UNITS) return null; // benign — never a real exception
@@ -100,8 +100,9 @@ export function scoreScenario(seed: number, d: Disruption, category: Category): 
   }
   const resolvableTruth = bestForcedUnmet <= Math.max(1, holdUnmet * RECOVERY_FRAC);
 
-  // The decision under test.
-  const live = unmet(seed, d, { resolverEnabled: true });
+  // The decision under test — on ground-truth state, or (Slice 11) on the state
+  // estimated from the live feeds with effects replayed onto the true world.
+  const live = unmet(seed, d, { resolverEnabled: true, ...(opts.estimated ? { decideOnEstimatedState: true } : {}) });
   const liveUnmet = Math.round(live.metrics.unmetUnits);
   const riskById = new Map(live.risks.map((r) => [r.riskId, r]));
   // A disruption re-fires as it grows; judge the system by how it handled the
@@ -184,11 +185,11 @@ function emptyCell(): ConfusionCell & { silentMiss: number } {
   return { touchlessResolutionRate: 0, trueResolve: 0, trueEscalate: 0, falseEscalate: 0, falseResolve: 0, total: 0, silentMiss: 0 };
 }
 
-export function buildScorecard(seeds: number[]): ScorecardResult {
+export function buildScorecard(seeds: number[], opts: { estimated?: boolean } = {}): ScorecardResult {
   const records: ScenarioRecord[] = [];
   for (const seed of seeds) {
     for (const { disruption, category } of generateScenarioSet(seed)) {
-      const rec = scoreScenario(seed, disruption, category);
+      const rec = scoreScenario(seed, disruption, category, opts);
       if (rec) records.push(rec);
     }
   }

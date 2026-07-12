@@ -55,6 +55,9 @@ export type ResolutionEffect =
       runId: string;
       fromHour: number;
       toHour: number;
+      toFacilityId: string;
+      skuId: string;
+      units: number;
     }
   | {
       kind: "expedite_inbound";
