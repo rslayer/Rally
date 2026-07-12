@@ -7,8 +7,10 @@ import {
   estimateState,
   buildScorecard,
   generateScenarioSet,
+  runControlTower,
 } from "@rally/simulation";
-import type { ScenarioRecord } from "@rally/simulation";
+import type { ScenarioRecord, TowerCycle, TowerDecision } from "@rally/simulation";
+import type { Disruption } from "@rally/domain";
 import { TX_OK_NETWORK, makeRng } from "@rally/data-gen";
 
 export interface DecisionRow {
@@ -33,7 +35,21 @@ export interface Showcase {
   decisions: DecisionRow[];
   scorecard: ReturnType<typeof buildScorecard>["scorecard"];
   records: ScenarioRecord[];
+  tower: {
+    cycles: TowerCycle[];
+    decisions: TowerDecision[];
+    resolved: number;
+    escalated: number;
+    caught: number;
+    truth: number;
+  };
 }
+
+const TOWER_DISRUPTIONS: Disruption[] = [
+  { disruptionId: "SPK1", type: "demand_spike", facilityId: "DC_OKC", skuId: "SKU_BAR", startHour: 60, durationHours: 48, magnitude: 2.0, label: "resolvable", expects: "projected_stockout" },
+  { disruptionId: "SPK2", type: "demand_spike", facilityId: "DC_SAT", skuId: "SKU_COLA", startHour: 200, durationHours: 48, magnitude: 2.2, label: "resolvable", expects: "projected_stockout" },
+  { disruptionId: "INJ", type: "demand_spike", facilityId: "DC_HOU", skuId: "SKU_CHIP", startHour: 300, durationHours: 40, magnitude: 8, label: "unresolvable", expects: "projected_stockout", injectedUnresolvable: true },
+];
 
 const CELL_LABEL: Record<string, string> = {
   trueResolve: "resolved · value captured",
@@ -71,9 +87,10 @@ function decisionSample(records: ScenarioRecord[]): DecisionRow[] {
   return rows;
 }
 
-export function buildShowcase(seed = 4000, scorecardSeeds = 12): Showcase {
+export async function buildShowcase(seed = 4000, scorecardSeeds = 12): Promise<Showcase> {
   const seeds = Array.from({ length: scorecardSeeds }, (_, i) => 4000 + i);
   const { scorecard, records } = buildScorecard(seeds);
+  const towerResult = await runControlTower(seed, TOWER_DISRUPTIONS);
 
   // State layer: a representative run WITH feeds, so track-and-trace reads from
   // ESTIMATED (not ground-truth) state and shows resolver actions in transit.
@@ -93,5 +110,13 @@ export function buildShowcase(seed = 4000, scorecardSeeds = 12): Showcase {
     decisions: decisionSample(records),
     scorecard,
     records,
+    tower: {
+      cycles: towerResult.cycles,
+      decisions: towerResult.decisions,
+      resolved: towerResult.resolved,
+      escalated: towerResult.escalated,
+      caught: towerResult.caughtStockoutCells,
+      truth: towerResult.truthStockoutCells,
+    },
   };
 }

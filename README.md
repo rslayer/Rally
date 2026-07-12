@@ -31,7 +31,7 @@ npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
 npm test             # 58 tests across all build phases
-npm run web          # the three-panel control tower → http://localhost:8137
+npm run web          # the control-tower dashboard (state · decisions · scorecard · live loop) → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
 npm run adapter      # ingest real-shaped vendor exports (CSV/JSON) → estimated state
@@ -299,7 +299,7 @@ clock  fresh  maxLag  estConf  openRisks  decisions
 stockout coverage  3/3 ground-truth risk cells flagged by the live estimate
 ```
 
-Across seeds the loop catches ~85% of the risks ground truth surfaces and acts on them — a live control tower operating on imperfect eyes, resolving what it can and escalating what it must. `npm run control-tower` runs it; `npm run control-tower-check` is the gate.
+Across seeds the loop catches ~85% of the risks ground truth surfaces and acts on them — a live control tower operating on imperfect eyes, resolving what it can and escalating what it must. `npm run control-tower` runs it in the terminal; `npm run control-tower-check` is the gate; and `npm run web` now renders it as a **fourth panel** — a per-cycle operations view (fresh feeds, sync lag, estimate confidence, open risks) alongside a live decision log.
 
 ---
 

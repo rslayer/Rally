@@ -10,7 +10,7 @@
  */
 
 import { createServer } from "node:http";
-import { buildShowcase } from "./showcase.js";
+import { buildShowcase, type Showcase } from "./showcase.js";
 
 const PORT = Number(process.env.PORT ?? 8137);
 
@@ -23,8 +23,8 @@ function confBar(c: number): string {
   return `<span class="cbar"><span style="width:${w}%;background:hsl(${hue} 70% 45%)"></span></span><span class="cnum">${c.toFixed(2)}</span>`;
 }
 
-function render(seed: number): string {
-  const s = buildShowcase(seed);
+async function render(seed: number): Promise<string> {
+  const s = await buildShowcase(seed);
   const sc = s.scorecard;
 
   // ---- Panel 1: state layer ----
@@ -91,6 +91,37 @@ function render(seed: number): string {
   const dangerRate = unresolvable.length ? unresolvable.filter((r) => r.cell === "falseResolve" || r.cell === "silentMiss").length / unresolvable.length : 0;
   const safe = injectedDanger === 0 && sc.escalationSafetyRecall >= 0.9 && dangerRate <= 0.05;
 
+  // ---- Panel 4: live control tower ----
+  const t = s.tower;
+  const maxFresh = Math.max(1, ...t.cycles.map((c) => c.freshFeeds));
+  const towerRows = t.cycles
+    .map((c) => {
+      const w = Math.round((c.freshFeeds / maxFresh) * 100);
+      const risky = c.openRisks > 0;
+      return `<tr class="${c.decisions > 0 ? "hasdec" : ""}">
+        <td class="num">${c.hour}h</td>
+        <td><span class="spark"><span style="width:${w}%"></span></span> ${c.freshFeeds}</td>
+        <td class="num">${c.maxLatencyMin}m</td>
+        <td>${confBar(c.estConfidence)}</td>
+        <td class="num ${risky ? "warn" : ""}">${c.openRisks}</td>
+        <td class="num ${c.decisions ? "good" : ""}">${c.decisions || ""}</td>
+      </tr>`;
+    })
+    .join("");
+  const towerDecRows = t.decisions
+    .map((d) => {
+      const cls = d.outcome === "resolved" ? "resolved" : "escalated";
+      return `<tr class="${cls}">
+        <td class="num">${d.hour}h</td>
+        <td><span class="badge ${cls}">${d.outcome}</span></td>
+        <td>${esc(d.cell)}</td>
+        <td>${esc(d.action)}</td>
+        <td class="rationale">${esc(d.rationale)}</td>
+        <td>${confBar(d.confidence)}</td>
+      </tr>`;
+    })
+    .join("");
+
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rally · Control Tower — ${esc(s.region)}</title>
@@ -129,6 +160,14 @@ function render(seed: number): string {
   .cnum{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
   .good{color:var(--good)} .warn{color:var(--warn)} .bad{color:var(--bad);font-weight:700}
   .mark{font-weight:700} .mark.good{color:var(--good)} .mark.bad{color:var(--bad)}
+  .tower{margin:0 28px 40px}
+  .towergrid{display:grid;grid-template-columns:1fr 1.4fr;gap:0}
+  .towergrid>div{border-right:1px solid var(--line)} .towergrid>div:last-child{border-right:0}
+  .subh{padding:10px 14px;color:var(--muted);font-size:12px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--panel2)}
+  tr.hasdec td{background:color-mix(in srgb,var(--accent) 7%,transparent)}
+  .spark{display:inline-block;width:60px;height:8px;border-radius:3px;background:var(--panel2);overflow:hidden;vertical-align:middle;margin-right:6px}
+  .spark>span{display:block;height:100%;background:var(--accent)}
+  @media (max-width:920px){.towergrid{grid-template-columns:1fr}.tower{margin:0 16px 24px}}
   .metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
   .metric{background:var(--panel);padding:12px 16px}
   .metric .k{color:var(--muted);font-size:12px}
@@ -191,10 +230,31 @@ function render(seed: number): string {
     </section>
   </div>
 </div>
+
+<section class="panel tower">
+  <h2>④ Live control tower — ingest → estimate → detect → resolve <span class="pill">${t.resolved} resolved · ${t.escalated} escalated · coverage ${t.caught}/${t.truth}</span></h2>
+  <div class="towergrid">
+    <div>
+      <div class="subh">operations (per ${18}h cycle)</div>
+      <div class="wrap" style="max-height:320px;overflow-y:auto"><table>
+        <thead><tr><th class="num">t</th><th>fresh feeds</th><th class="num">lag</th><th>est&nbsp;conf</th><th class="num">open</th><th class="num">dec</th></tr></thead>
+        <tbody>${towerRows}</tbody>
+      </table></div>
+    </div>
+    <div>
+      <div class="subh">decision log</div>
+      <div class="wrap"><table>
+        <thead><tr><th class="num">t</th><th>outcome</th><th>cell</th><th>action</th><th>rationale</th><th>conf</th></tr></thead>
+        <tbody>${towerDecRows || '<tr><td colspan="6" class="note">no risks surfaced yet</td></tr>'}</tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="note">The whole system, running on sensor-grounded state: each cycle ingests fresh feeds from every source (incrementally), re-estimates state, detects projected stockouts on the estimate, and resolves or escalates — decision-first, end to end.</div>
+</section>
 </body></html>`;
 }
 
-function resolvableTouchless(s: ReturnType<typeof buildShowcase>): number {
+function resolvableTouchless(s: Showcase): number {
   const resolvable = s.records.filter((r) => r.resolvableTruth);
   return resolvable.length ? resolvable.filter((r) => r.cell === "trueResolve").length / resolvable.length : 0;
 }
@@ -206,12 +266,9 @@ createServer((req, res) => {
     return;
   }
   const seed = Number(url.searchParams.get("seed") ?? 4000) || 4000;
-  try {
-    const html = render(seed);
-    res.writeHead(200, { "content-type": "text/html; charset=utf-8" }).end(html);
-  } catch (err) {
-    res.writeHead(500).end(`error: ${(err as Error).message}`);
-  }
+  render(seed)
+    .then((html) => res.writeHead(200, { "content-type": "text/html; charset=utf-8" }).end(html))
+    .catch((err) => res.writeHead(500).end(`error: ${(err as Error).message}`));
 }).listen(PORT, () => {
   console.log(`Rally control tower → http://localhost:${PORT}`);
 });
