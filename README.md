@@ -30,12 +30,13 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 33 tests across all build phases
+npm test             # 38 tests across all build phases
 npm run web          # the three-panel control tower → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
 npm run adapter      # ingest real-shaped vendor exports (CSV/JSON) → estimated state
 npm run live-sync    # Slice 3: pull from a (mock) Samsara-shaped API — auth, paging, backfill
+npm run incremental-sync  # Slice 4: a scheduled poller — watermark, dedup, resume across restarts
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -115,12 +116,13 @@ packages/
   simulation/   the brains: state-estimator · inventory-kernel (the loop) ·
                 projection · resolver · scorer (oracle + 2×2) · backtest (record→replay)
   importers/    the real-feed seam — validation, gap/lateness detection, the vendor
-                codec (export files ⇄ FeedEnvelope), and the live Samsara-shaped
-                connector (auth · pagination · backfill · retry · checkpoint) + its mock
+                codec (export files ⇄ FeedEnvelope), the live Samsara-shaped connector
+                (auth · pagination · backfill · retry · checkpoint) + mock, and the
+                connector-agnostic incremental sync engine (watermark · dedup · resume)
 apps/
   worker/       runs the sweep and prints the scorecard   (npm run harness)
   web/          the three-panel control tower              (npm run web)
-  adapter/      file ingest, live sync, fixtures, mock API (npm run adapter / live-sync / …)
+  adapter/      file ingest · live sync · incremental sync · fixtures · mock API
 fixtures/
   real-feed/    vendor-shaped exports a customer would hand you (telematics.csv,
                 wms.csv, inventory.json) + the observed outcome (observed.json)
@@ -203,6 +205,30 @@ RALLY_SAMSARA_BASE_URL=https://api.samsara.com \
 RALLY_SAMSARA_TOKEN=***your-token*** \
 npm run live-sync
 ```
+
+## Slice 4 — incremental sync ⏱️
+
+A real integration doesn't backfill all of history every run — it wakes on a schedule and pulls only what's new. `packages/importers/sync` is a **connector-agnostic** sync engine (it drives the Samsara client, or any pull) that does the four things a production poller must:
+
+- **Watermark** — advance a high-water mark to the newest event actually seen.
+- **Lookback** — re-scan a small window behind the watermark each cycle, so events that arrive *late* (ingested long after emitted) aren't missed.
+- **Dedup** — drop anything whose `feedId#sequence` was already delivered, so the lookback re-scan never produces duplicates.
+- **Resume** — all of it lives in a `SyncStore` (a file on disk in the demo, atomic writes), so a crashed poller picks up exactly where it left off.
+
+`npm run incremental-sync` runs several cycles with an advancing clock, then **throws away the engine and rebuilds it from the persisted file** to prove the resume:
+
+```
+cycle  clock   pulled  fresh  dup   watermark
+1        48h      12     12    0     48h
+2        96h     284    272   12     96h
+3·noop   96h      12      0   12     96h      ← no new data → nothing delivered
+         ·· restart: new engine rebuilt from sync/samsara.json ··
+4       168h     546    534   12    168h      ← resumed from disk
+5       336h     880    813   67    336h
+unique events synced  1631 / 1631 distinct GPS rows  ✓ exactly once
+```
+
+Incremental, resumable, exactly-once — the operational shape of a real poller, still landing every event in the same `FeedEnvelope` stream the estimator already reads.
 
 ---
 

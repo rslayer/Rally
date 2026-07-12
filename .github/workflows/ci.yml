@@ -47,3 +47,6 @@ jobs:
 
       - name: Live vendor-API sync (auth · paginate · backfill · retry, vs mock)
         run: npm run live-sync
+
+      - name: Incremental sync (watermark · lookback · dedup · resume, vs mock)
+        run: npm run incremental-sync
