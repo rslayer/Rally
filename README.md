@@ -30,13 +30,14 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 43 tests across all build phases
+npm test             # 46 tests across all build phases
 npm run web          # the three-panel control tower → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
 npm run adapter      # ingest real-shaped vendor exports (CSV/JSON) → estimated state
 npm run live-sync    # Slice 3: pull from a (mock) Samsara-shaped API — auth, paging, backfill
 npm run incremental-sync  # Slice 4: a scheduled poller — watermark, dedup, resume across restarts
+npm run orchestrate  # Slice 6: run telematics + WMS connectors together, one merged stream
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -231,6 +232,28 @@ unique events synced  1631 / 1631 distinct GPS rows  ✓ exactly once
 ```
 
 Incremental, resumable, exactly-once — the operational shape of a real poller, still landing every event in the same `FeedEnvelope` stream the estimator already reads.
+
+## Slice 6 — multi-source ingestion 🎛️
+
+A control tower doesn't watch one feed; it watches several at once — telematics, WMS, ERP — each on its own cadence and each with its own failure modes. The `IngestionOrchestrator` runs a `SyncEngine` per source, pulls them **concurrently**, and merges the fresh events into one time-ordered stream, with two properties that matter in production:
+
+- **Independent watermarks** — each source keeps its own state, so a source that's backfilling or lagging never rewinds or skips another.
+- **Failure isolation** — if one vendor is down, its cycle records an error and does *not* advance its watermark (it retries next cycle), while every other source syncs normally. No data lost, no cross-contamination.
+
+`npm run orchestrate` runs a **live Samsara connector and a live WMS connector together** (against their mocks), rebuilds the orchestrator from disk mid-run, and fuses the result with batch ERP inventory into the estimator:
+
+```
+cycle  clock   telematics(fresh/dup)   wms(fresh/dup)   merged
+1        48h                 12/0           702/0      714
+2        96h               272/12         702/111      974
+         ·· restart: orchestrator rebuilt from .rally/sync/*.json ··
+3       168h               534/12        1036/111     1570
+4       336h               813/67        2439/105     3252
+exactly-once   telematics 1631/1631 ✓ · wms 4879/4879 ✓
+fused feeds    6650 (live telematics + live WMS + batch ERP) → estimated, drift ≤ 4u
+```
+
+Two live sources, independent watermarks, one merged stream — the complete eyes layer as a single, resumable unit.
 
 ---
 

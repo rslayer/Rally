@@ -32,6 +32,7 @@ export * from "./live/mock-samsara.js";
 export * from "./live/mock-wms.js";
 export * from "./sync/store.js";
 export * from "./sync/engine.js";
+export * from "./sync/orchestrator.js";
 
 export interface IngestIssue {
   feedId: string;

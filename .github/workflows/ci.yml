@@ -50,3 +50,6 @@ jobs:
 
       - name: Incremental sync (watermark · lookback · dedup · resume, vs mock)
         run: npm run incremental-sync
+
+      - name: Multi-source ingestion (telematics + WMS, merged, vs mocks)
+        run: npm run orchestrate
