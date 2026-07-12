@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: typecheck · tests · phase gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck (Phase 0)
+        run: npm run typecheck
+
+      - name: Tests
+        run: npm test
+
+      - name: Phase 1 · close the loop
+        run: npx tsx packages/simulation/src/dev/loop-check.ts
+
+      - name: Phase 2 · state estimator
+        run: npx tsx packages/simulation/src/dev/estimator-check.ts
+
+      - name: Phase 3 · resolver vs hold baseline
+        run: npx tsx packages/simulation/src/dev/resolver-check.ts
+
+      - name: Phase 4 · escalation scorecard
+        run: npm run harness -- 30

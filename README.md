@@ -1,5 +1,7 @@
 # Rally 🚚
 
+[![CI](https://github.com/rslayer/Rally/actions/workflows/ci.yml/badge.svg)](https://github.com/rslayer/Rally/actions/workflows/ci.yml)
+
 **A supply-chain control tower that actually _decides_ — it resolves disruptions on its own, and raises its hand only when it should.**
 
 Most "control towers" are really just dashboards. They light up a red alert, show you a map, and leave the actual fix to a human at 2 a.m. Rally flips that around: the thing it produces is a **resolved disruption**, not another chart to stare at. Visibility is an ingredient, never the meal.
