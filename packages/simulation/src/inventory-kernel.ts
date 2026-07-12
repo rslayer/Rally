@@ -436,6 +436,10 @@ export function createReplenishment(
   };
   world.shipments.push(ship);
   world.metrics.shipmentsCreated++;
+  // Dispatch record: a WMS ship-confirm at origin carrying the shipmentRef, sku,
+  // and qty. Joined to the truck's movement pings (which carry the destination)
+  // by shipmentRef, this lets the estimator reconstruct in-flight inbound.
+  world.txn.shipConfirms.push({ facilityId: originId, skuId, qty, shipmentRef: ship.shipmentId });
   return ship;
 }
 
@@ -578,4 +582,4 @@ export function snapshot(world: SimWorld): ScenarioState {
   };
 }
 
-export { RISK_HORIZON_HOURS, CUSTOMER_TRANSIT_HOURS };
+export { RISK_HORIZON_HOURS, CUSTOMER_TRANSIT_HOURS, MATERIALITY_UNITS };

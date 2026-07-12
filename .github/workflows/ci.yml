@@ -53,3 +53,6 @@ jobs:
 
       - name: Multi-source ingestion (telematics + WMS, merged, vs mocks)
         run: npm run orchestrate
+
+      - name: Decisions on estimated state (principle #5 fidelity)
+        run: npm run live-detect

@@ -28,8 +28,9 @@ import type {
   Shipment,
   WarehouseEvent,
 } from "@rally/domain";
-import { haversineMiles, isMovement, isWarehouse, isInventorySnapshot } from "@rally/domain";
+import { haversineMiles, isMovement, isWarehouse, isInventorySnapshot, lane } from "@rally/domain";
 import { isoToHour } from "./time.js";
+import { laneLeadHours } from "./lead.js";
 
 export interface DriftReport {
   perCell: Record<string, number>; // abs unit drift at the latest reconciled snapshot
@@ -147,8 +148,21 @@ export function estimateState(
   drift.meanAbs = driftVals.length ? driftVals.reduce((a, b) => a + b, 0) / driftVals.length : 0;
   drift.maxAbs = driftVals.length ? Math.max(...driftVals) : 0;
 
+  // --- Join WMS dispatch/receipt records across the whole stream, so movement
+  //     association can attach a quantity + SKU + dest to each in-flight truck. ---
+  const shipConfirm = new Map<string, { sku?: string; qty: number; hour: number }>();
+  const receipts = new Set<string>();
+  for (const arr of warehouseByFacility.values()) {
+    for (const w of arr) {
+      const ref = w.ev.shipmentRef;
+      if (!ref) continue;
+      if (w.ev.type === "ship_confirm") shipConfirm.set(ref, { sku: w.ev.skuId, qty: w.ev.quantityUnits ?? 0, hour: w.hour });
+      else if (w.ev.type === "receipt") receipts.add(ref);
+    }
+  }
+
   // --- Movement → shipment association + in-transit reconstruction. ---
-  const { shipments, assets } = associateMovement(movementByAsset, net, targetHour);
+  const { shipments, assets } = associateMovement(movementByAsset, net, { shipConfirm, receipts });
 
   const overall = confidences.length ? confidences.reduce((a, b) => a + b, 0) / confidences.length : 0.5;
 
@@ -225,19 +239,25 @@ function cellConfidence(staleness: number, gaps: number, snapConf: number): numb
 
 /* ---------------------- movement association --------------------------- */
 
-function nearestFacility(net: Network, p: GeoPoint): { id: string; miles: number } {
+function nearestFacility(net: Network, p: GeoPoint, exclude?: Set<string>): { id: string; miles: number } {
   let best = { id: net.facilities[0]!.facilityId, miles: Infinity };
   for (const f of net.facilities) {
+    if (exclude?.has(f.facilityId)) continue;
     const d = haversineMiles(p, f.location);
     if (d < best.miles) best = { id: f.facilityId, miles: d };
   }
   return best;
 }
 
+interface Join {
+  shipConfirm: Map<string, { sku?: string; qty: number; hour: number }>;
+  receipts: Set<string>;
+}
+
 function associateMovement(
   movementByAsset: Map<string, MovEvt[]>,
   net: Network,
-  targetHour: number,
+  join: Join,
 ): { shipments: Shipment[]; assets: AssetTrack[] } {
   const shipments: Shipment[] = [];
   const assets: AssetTrack[] = [];
@@ -250,19 +270,22 @@ function associateMovement(
     // 1) Association: prefer a shipmentRef seen on ANY ping from this asset
     //    (same truck ⇒ same shipment); otherwise infer from geofence/lane geo.
     let shipmentRef = events.find((e) => e.ev.shipmentRef)?.ev.shipmentRef;
-    let associationConf = shipmentRef ? 0.95 : 0.6;
+    const associationConf = shipmentRef ? 0.95 : 0.6;
 
     // Origin: an 'exit' geofence, else the facility nearest the first ping.
     const exit = events.find((e) => e.ev.geofenceTransition === "exit");
     const originId = exit?.ev.geofenceId ?? nearestFacility(net, events[0]!.ev.location).id;
-    // Dest: an 'enter' geofence, else the facility nearest the last ping.
+    // Dest: an 'enter' geofence, else the nearest facility to the last ping that
+    // isn't the origin (a truck mid-lane can sit closest to where it departed).
     const enter = events.find((e) => e.ev.geofenceTransition === "enter");
-    const nearLast = nearestFacility(net, last.ev.location);
+    const nearLast = nearestFacility(net, last.ev.location, new Set([originId]));
     const destId = enter?.ev.geofenceId ?? nearLast.id;
 
     if (!shipmentRef) shipmentRef = `est:${originId}->${destId}@${events[0]!.hour}`;
 
-    const arrived = !!enter || nearLast.miles < 5;
+    // A receipt for this ref means the load has already landed.
+    const receiptSeen = join.receipts.has(shipmentRef);
+    const arrived = receiptSeen || !!enter || nearLast.miles < 5;
     const confidence = Number(clamp((arrived ? 0.9 : 0.75) * (1 - gaps * 0.04) * associationConf, 0.3, 1).toFixed(3));
 
     assets.push({
@@ -274,19 +297,25 @@ function associateMovement(
       confidence,
     });
 
-    // 2) Reconstruct an in-transit inbound shipment for trucks still en route.
+    // 2) Reconstruct an in-transit inbound shipment for trucks still en route,
+    //    enriched with the SKU + quantity from the joined WMS ship-confirm.
     if (!arrived && originId !== destId) {
+      const dispatch = join.shipConfirm.get(shipmentRef);
+      const ln = lane(net, originId, destId);
+      const departedAtHour = dispatch?.hour ?? events[0]!.hour;
+      // Known master-data lead (transit + handling) puts the ETA in the right place.
+      const etaHour = ln ? departedAtHour + laneLeadHours(ln.transitHours, false) : last.hour + 24;
       shipments.push({
         shipmentId: shipmentRef,
         kind: originId.startsWith("PLANT") ? "replenishment" : "transfer",
         laneId: `${originId}->${destId}`,
         originId,
         destId,
-        skuId: "unknown", // sku is not on the telematics feed until receipt
-        quantityUnits: 0,
+        skuId: dispatch?.sku ?? "unknown",
+        quantityUnits: dispatch?.qty ?? 0,
         status: "in_transit",
-        departedAtHour: events[0]!.hour,
-        etaHour: last.hour + 6, // coarse ETA from last ping; refined at receipt
+        departedAtHour,
+        etaHour,
         expedited: false,
         confidence,
       });

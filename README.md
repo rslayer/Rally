@@ -30,7 +30,7 @@ cd Rally
 npm install
 
 npm run harness      # 👈 the proof: runs the escalation scorecard across many seeds
-npm test             # 46 tests across all build phases
+npm test             # 50 tests across all build phases
 npm run web          # the three-panel control tower → http://localhost:8137
 
 npm run backtest     # Slice 2: record a disruption, replay it through the real-feed adapter
@@ -38,6 +38,7 @@ npm run adapter      # ingest real-shaped vendor exports (CSV/JSON) → estimate
 npm run live-sync    # Slice 3: pull from a (mock) Samsara-shaped API — auth, paging, backfill
 npm run incremental-sync  # Slice 4: a scheduled poller — watermark, dedup, resume across restarts
 npm run orchestrate  # Slice 6: run telematics + WMS connectors together, one merged stream
+npm run live-detect  # Slice 7: run stockout detection on ESTIMATED state, scored vs ground truth
 ```
 
 No build step, no Docker, no cloud. It runs on `tsx` and `vitest`. That's it.
@@ -254,6 +255,21 @@ fused feeds    6650 (live telematics + live WMS + batch ERP) → estimated, drif
 ```
 
 Two live sources, independent watermarks, one merged stream — the complete eyes layer as a single, resumable unit.
+
+## Slice 7 — decisions on estimated state 👁️→🧠
+
+Slice 1 proved the loop on *ground truth*. But in the real world the resolver never sees ground truth — it sees the **estimate** reconstructed from imperfect sensor feeds. This slice closes that gap and measures design principle #5 directly: *a better estimate of true physical state is a better stockout prediction — the quality of the eyes determines the quality of the brain.*
+
+The measurement is honest and apples-to-apples: run the **same** detector on ground-truth state and on the live-feed estimate, at the same ticks, and compare. Along the way the estimator does real multi-feed fusion — it reconstructs **in-flight inbound** by joining the WMS ship-confirm (which carries quantity + SKU) to the telematics movement (which carries the destination) **by shipment reference** — the "association" hard problem the whole design is built around.
+
+```
+detector flags            ground-truth 45 · estimate 310   (20 seeds, 520 ticks)
+recall (caught real risk)  100.0%   ← the estimate never misses a stockout ground truth saw
+cell-tick agreement         95.7%
+precision (alarms real)     14.5%   ← conservative: it over-alerts where inbound is still unseen
+```
+
+The finding is the interesting part, not a vanity number: the sensor-grounded estimate is a **safe superset** — it catches *every* real risk (100% recall, zero false negatives) but raises extra alarms wherever it can't yet see incoming replenishment. For a control tower whose job is to escalate what it must, that bias is the *safe* direction. The precision gap is the honest cost of the current sensor set, and it points straight at the fix: an ASN / EDI-856 advance-ship-notice feed would tell you what's inbound and where, collapsing the false alarms — a well-motivated next slice, discovered by measurement rather than assumed.
 
 ---
 

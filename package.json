@@ -20,7 +20,8 @@
     "live-sync": "tsx apps/adapter/src/live-sync.ts",
     "mock-samsara": "tsx apps/adapter/src/mock-samsara.ts",
     "incremental-sync": "tsx apps/adapter/src/incremental-sync.ts",
-    "orchestrate": "tsx apps/adapter/src/orchestrate.ts"
+    "orchestrate": "tsx apps/adapter/src/orchestrate.ts",
+    "live-detect": "tsx packages/simulation/src/dev/live-detect-check.ts"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

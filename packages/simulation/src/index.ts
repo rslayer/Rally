@@ -21,3 +21,4 @@ export { resolveRisk, resolveRisks } from "./resolver.js";
 export * from "./state-estimator.js";
 export * from "./scorer.js";
 export * from "./backtest.js";
+export * from "./live-detect.js";
