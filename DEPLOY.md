@@ -33,11 +33,16 @@ fly deploy
 `fly.toml` already sets `internal_port = 8137`, the `/healthz` check, and a
 512 MB shared VM that scales to zero.
 
-## Railway
+## Railway (recommended here)
 
-- **New Project → Deploy from GitHub → `rslayer/Rally`.**
-- Railway detects the [`Procfile`](Procfile) (`web: npm start`) and injects `$PORT`.
-- No build command needed.
+1. [railway.app](https://railway.app) → **New Project → Deploy from GitHub repo**
+   → authorize Railway and pick **`rslayer/Rally`**.
+2. Railway reads [`railway.json`](railway.json) and builds the [`Dockerfile`](Dockerfile),
+   then runs `npm start` with a `/healthz` check. `$PORT` is injected automatically.
+3. When the build is green: **Settings → Networking → Generate Domain** to get a
+   public `*.up.railway.app` URL, then open it.
+
+No sleep on Railway; the first render warms at boot.
 
 ## Docker (any container host — Cloud Run, ECS, a VPS)
 
