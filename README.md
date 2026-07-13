@@ -1,6 +1,7 @@
 # Rally 🚚
 
 [![CI](https://github.com/rslayer/Rally/actions/workflows/ci.yml/badge.svg)](https://github.com/rslayer/Rally/actions/workflows/ci.yml)
+&nbsp;·&nbsp; **[Live dashboard →](https://web-production-bdab7.up.railway.app)**
 &nbsp;·&nbsp; **[Overview / landing page →](https://claude.ai/code/artifact/0915e49b-20dd-43cf-903e-43d970753895)**
 
 **A supply-chain control tower that actually _decides_ — it resolves disruptions on its own, and raises its hand only when it should.**
@@ -24,6 +25,10 @@ The whole thing is deterministic and seeded, so every number in this README is a
 ---
 
 ## Try it in 30 seconds
+
+**No install:** open the **[live dashboard →](https://web-production-bdab7.up.railway.app)** — the four-panel control tower, running. (`?seed=4006` renders a different scenario.)
+
+Or run it locally:
 
 ```bash
 git clone https://github.com/rslayer/Rally.git
