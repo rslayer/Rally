@@ -1,0 +1,17 @@
+# Render Blueprint — one-click deploy from the GitHub repo.
+# New → Blueprint → connect rslayer/Rally. Render reads this file.
+services:
+  - type: web
+    name: rally
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production

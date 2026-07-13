@@ -259,16 +259,33 @@ function resolvableTouchless(s: Showcase): number {
   return resolvable.length ? resolvable.filter((r) => r.cell === "trueResolve").length / resolvable.length : 0;
 }
 
+// The render is deterministic per seed and a few seconds of CPU, so cache it.
+const cache = new Map<number, string>();
+async function renderCached(seed: number): Promise<string> {
+  const hit = cache.get(seed);
+  if (hit) return hit;
+  const html = await render(seed);
+  if (cache.size > 32) cache.clear(); // bound the cache
+  cache.set(seed, html);
+  return html;
+}
+
 createServer((req, res) => {
   const url = new URL(req.url ?? "/", `http://localhost:${PORT}`);
+  if (url.pathname === "/healthz") {
+    res.writeHead(200, { "content-type": "text/plain" }).end("ok");
+    return;
+  }
   if (url.pathname !== "/") {
     res.writeHead(404).end("not found");
     return;
   }
   const seed = Number(url.searchParams.get("seed") ?? 4000) || 4000;
-  render(seed)
-    .then((html) => res.writeHead(200, { "content-type": "text/html; charset=utf-8" }).end(html))
+  renderCached(seed)
+    .then((html) => res.writeHead(200, { "content-type": "text/html; charset=utf-8", "cache-control": "public, max-age=300" }).end(html))
     .catch((err) => res.writeHead(500).end(`error: ${(err as Error).message}`));
-}).listen(PORT, () => {
-  console.log(`Rally control tower → http://localhost:${PORT}`);
+}).listen(PORT, "0.0.0.0", () => {
+  console.log(`Rally control tower → http://0.0.0.0:${PORT}`);
+  // Warm the default view so the first real request is instant.
+  renderCached(4000).catch(() => {});
 });

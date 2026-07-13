@@ -1,0 +1,9 @@
+node_modules
+.git
+.github
+.rally
+coverage
+dist
+*.log
+.DS_Store
+scratch

@@ -24,6 +24,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "start": "tsx apps/web/src/server.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -44,9 +45,11 @@
     "estimated-scorecard": "tsx packages/simulation/src/dev/estimated-scorecard-check.ts",
     "ops-status": "tsx packages/simulation/src/dev/ops-status-check.ts"
   },
+  "dependencies": {
+    "tsx": "^4.19.2"
+  },
   "devDependencies": {
     "@types/node": "^26.1.1",
-    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   }
